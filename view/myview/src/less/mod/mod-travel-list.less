@@ -1,0 +1,1007 @@
+
+body {
+    background: #f9f9f9;
+    font-size: 12px;
+}
+
+@white: #ffffff;
+@orange: #ff7f00;
+@black: #000000;
+@blue: #5aa5f0;
+@grey: #cdcdcd;
+// 搜索栏
+.Container { 
+    line-height: 105px;
+    margin: 0 auto;
+    text-align: center;
+    .btnBg {
+        background-color: #EAEAEB;
+        background: -moz-linear-gradient(#fdfdfd, #F4F4F4, #EBEBEC);
+        background: -o-linear-gradient(#fdfdfd, #F4F4F4, #EBEBEC);
+        background: -webkit-linear-gradient(#fdfdfd, #F4F4F4, #EBEBEC);
+        background: linear-gradient(#fdfdfd, #F4F4F4, #EBEBEC);
+        border: 1px solid #DEDEDE;
+        box-shadow: 1px 1px 3px #ddd;
+        color: #444444;
+        filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = #fdfdfd, endColorstr = #EBEBEC);
+        float: left;
+        font-size: 12px;
+        line-height: 36px;
+        width: 200px;
+        height: 36px;
+        cursor: pointer;
+
+        .planeHotel{
+            display: inline-block;
+            float: left;
+            span{
+                font-size: 14px;
+                display: inline-block;
+                float: left;
+                &:first-child{
+                     background: url('@{pic_url}listSprite.png') top left no-repeat;
+                      background-position:-56px -112px; 
+                      width:77px; 
+                      height:20px;
+                      margin: 7px 14px;
+                }
+                &:nth-child(2){
+                    
+
+                }
+                &:nth-child(3){
+                     background: url('@{pic_url}listSprite.png') top left no-repeat;
+                     width:10px;
+                     height:7px; 
+                     background-position:-142px -142px;
+                     float: right;
+                    margin: 15px 22px;
+                }
+            }
+        }
+          .hotelMess{
+            display: inline-block;
+            .hotMeal{
+                display: inline-block;
+                width: 57px;
+                float: left;
+                margin-left: 14px;
+                font-size: 14px;
+                text-align: left;
+            }
+            span{
+                display: inline-block;
+                 background: url('@{pic_url}listSprite.png') top left no-repeat;
+                     background-position:-142px -142px;
+                 width:10px;
+                     height:7px; 
+                     margin: 15px 15px;
+            }
+          }  
+    }
+    .other {
+        color: @orange;
+        display: inline-block;
+        float: left;
+        line-height: 36px;
+        width: 205px;
+    }
+
+    .location {
+        background: url('@{pic_url}listSprite.png') top left no-repeat;
+         background-position:-143px -112px;
+        width:69px;
+         height:20px; 
+             line-height: 20px;
+        display: inline-block;
+        padding-left: 12px;
+        font-size: 14px;
+
+    }
+
+    .planeBg {
+        background: url('@{pic_url}plan_hot.png') left no-repeat;
+        display: inline-block;
+        margin-left: 18px;
+        padding-left: 87px;
+        width: 132px;
+    }
+
+
+    .searchContain {
+        position: relative;
+        display: inline-block;
+        height: 38px;
+        width: 1200px;
+        input {
+            border: 1px solid @grey;
+            color: #333;
+            display: inline-block;
+            float: left;
+            font-family: "宋体", "微软雅黑";
+            padding-left: 18px;
+            width: 276px;
+            height: 36px;
+        }
+        .floatBtn{
+            float: left;
+        }
+    .changeCity {
+        display: inline-block;
+        margin-left:20px;
+        font-size: 14px;
+        span{
+            &:nth-child(2){
+        background:url("@{pic_url}listSprite.png") top left no-repeat;
+        width:10px;
+         height:7px; 
+         background-position:-142px -142px;
+        display: inline-block;
+        float: right;
+        margin: 15px 11px;
+        line-height: 10px;
+                
+            }
+        }
+    }
+    }
+    //动态机加酒弹框
+    .planAddHotelPop{
+        position: absolute;
+        left: 0;
+        top:37px;
+        width: 400px;
+        height: 330px;
+        //background-color: #EAEAEB;
+        background: #fff;
+        border: 1px solid #EAEAEB;
+        //background: -moz-linear-gradient(#fdfdfd, #F4F4F4, #EBEBEC);
+        //background: -o-linear-gradient(#fdfdfd, #F4F4F4, #EBEBEC);
+        //background: -webkit-linear-gradient(#fdfdfd, #F4F4F4, #EBEBEC);
+        //background: linear-gradient(#fdfdfd, #F4F4F4, #EBEBEC);
+        z-index: 100;
+        display: none;
+        .planAddHotelPannel{
+            margin:25px 10px;
+            .ppline {
+                .inputCss,.selectModel {
+                    width: 140px;
+                    color:#333;
+                }
+                .hotelCity {
+                    width: 310px;
+                }
+
+            }
+            .btnPanner {
+                margin-top: 0;
+                margin-right: 16px;
+                .searchBtn {
+                    width: 225px;
+                    padding: 0 55px 0 55px;
+                    background-position: 28px 11px;
+                }
+            }
+        }
+    }
+    .small {
+        margin-left: 54px;
+        width: 130px;
+        position: relative;
+       ul {
+           display:none;
+           position: absolute;
+           top: 34px;
+           width: 131px;
+           height: 92px;
+           //overflow: auto!important;
+           border: 1px #ddd solid;
+           background-color: #ffffff;
+           left: -1px;
+           li {
+               padding: 4px 22px;
+               cursor: pointer;
+               line-height: 22px;
+               float: none;
+               height: auto;
+               display: block;
+               text-align: left;
+               &:hover {
+                   background-color: #eee ;
+               }
+           }
+       }
+    }
+
+    .serchBtn {
+        background-color: @orange;
+        border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 1px solid transparent;
+        display: inline-block;
+        float: left;
+        width: 120px;
+    }
+
+    .localPlay {
+        display: inline-block;
+        float: left;
+        margin-left: 44px;
+        cursor: pointer;
+         span{
+            display: inline-block;
+            &:first-child{
+              background:url("@{pic_url}listSprite.png") top left no-repeat;  
+               background-position:-158px -69px;
+               width:12px; 
+               height:17px;
+               margin: -2px 0; 
+            }
+            &:nth-child(2){
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .useCar {
+        // background: url('@{pic_url}icon_car.png') left no-repeat;
+        display: inline-block;
+        float: left;
+        margin-left: 27px;
+        cursor: pointer;
+        // padding-left: 29px;
+        span{
+            display: inline-block;
+            &:first-child{
+              background:url("@{pic_url}listSprite.png") top left no-repeat;  
+              background-position:-10px -142px;  
+              width:20px; 
+              height:17px; 
+              margin: -2px 0; 
+            }
+             &:nth-child(2){
+                margin-left: 10px;
+            }
+        }
+    }
+}
+.showBox {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+.productNote {
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin-right: 10px;
+    cursor: pointer;
+    background: #5AA5F0;
+    color: #fff;
+    display: flex;
+    padding:0 10px;
+
+    i {
+        display: block;
+        height: 20px;
+        line-height: 20px;
+    }
+    span {
+        display: block;
+        color: #fff;
+        padding-left:20px;
+        //font-size: 22px;
+        font-weight: lighter;
+        background:url("@{pic_url}rrow.png")no-repeat left center;
+    }
+}
+.clearAll {
+    height: 20px;
+    color: #FF7F00;
+    display: none;
+    cursor: pointer;
+}
+
+.productContain {
+    border: 1px solid #efefef;
+    margin: 0 auto;
+    width: 1200px;
+    background: @white;
+}
+
+.leaveCity,
+.leaveMonth,
+.proType,
+.tripDays,
+.proBox{
+    float: left;
+    padding: 15px 0;
+    //width: 1022px;
+    display: block;
+}
+
+.leaveCity span,
+.leaveMonth span,
+.proType span,
+.tripDays span,
+.proBox span{
+    display: block;
+    float: left;
+    margin-left: 37px;
+}
+.proBox ul {
+    float: left;
+    width:1040px ;
+}
+.proBox .hideLi {
+    height: 26px;
+    overflow: hidden;
+    li {
+        height: 26px;
+    }
+}
+
+.leaveCity li,
+.leaveMonth li,
+.proType li,
+.tripDays li,
+.proBox li{
+    display: inline;
+    float: left;
+    margin-bottom: 6px;
+    margin-left: 9px;
+    margin-right: 9px;
+    padding: 1px 10px;
+    text-decoration: none;
+}
+
+.leaveCity li:hover,
+.leaveMonth li:hover,
+.proType li:hover,
+.selected,
+.tripDays li:hover,
+.proBox li:hover{
+    background: @blue;
+    color: @white;
+    cursor: pointer;
+}
+
+.tripDays {
+    float: left;
+    //.tripBox{
+    //     float: left;
+    //    width: 936px;
+    //}
+}
+
+.rightBtn {
+    color: #ff8307;
+    float: right;
+    //padding: 15px 0;
+    .moreBtn {
+         //background: url('@{pic_url}yellow_icon.png') left no-repeat;
+        cursor: pointer;
+        float: left;
+        //padding-left: 13px;
+        span{
+            display: inline-block;
+            margin-left: 0;
+        }
+        .rrow{
+            background:url("@{pic_url}listSprite.png") top left no-repeat;
+            background-position:-106px -142px;
+            width:8px;
+            height:7px;
+            margin-right: 5px;
+            position: relative;
+            top:7px;
+        }
+        .rrowHide{
+            display: none;
+            background:url("@{pic_url}toprow.png") top left no-repeat;
+            background-position:-10px -10px;
+            width:8px;
+            height:7px;
+            margin-right: 5px;
+            position: relative;
+            top:7px;
+        }
+    }
+    .multiBtn {
+        cursor: pointer;
+        border: 1px solid #ff8307;
+        float: left;
+        margin-left: 10px;
+        padding: 0 7px;
+        text-align: center;
+    }
+}
+
+.hideDays {
+    display: none;
+    float: left;
+    margin-left: 159px;
+    padding-top: 10px;
+    li {
+        display: inline;
+        float: left;
+        margin-bottom: 6px;
+        margin-left: 13px;
+        margin-right: 3px;
+        padding: 1px 14px;
+        &:hover {
+            background: @blue;
+            color: @white;
+        }
+    }
+}
+
+.leaveCity {
+    span {
+        display: block;
+        float: left;
+    }
+    ul {
+        float: left;
+    }
+    li {
+        display: inline;
+        float: left;
+        margin-bottom: 6px;
+        margin-left: 13px;
+        margin-right: 6px;
+        padding: 1px 14px;
+    }
+}
+
+.hotel_planContain {
+    border: 1px solid #efefef;
+    margin: 11px auto;
+    width: 1200px;
+    background: @white;
+}
+
+.freeArea {
+    border-right: 1px solid #F6F6F6;
+    float: left;
+    height: 156px;
+    margin-top: 20px;
+    width: 257px;
+}
+
+.picBg {
+    // background: url('@{pic_url}free_icon.png') center no-repeat;
+    background:url("@{pic_url}listSprite.png") top left no-repeat;
+     background-position:-10px -10px;
+     width:161px; 
+     height:49px;
+     margin: 24px 41px; 
+}
+
+.fontArea {
+    font-size: 20px;
+    text-align: center;
+    color: #444444;
+}
+
+.searchModel {
+    float: left;
+    width: 911px;
+    input {
+        cursor: pointer;
+    }
+}
+
+
+.searchTop {
+    // background: url('@{pic_url}fly_icon.png') left no-repeat;
+    height: 40px;
+    margin-top: 25px;
+    // padding-left: 45px;
+    .flyIcon{
+        display: inline-block;
+        float: left;
+        background:url("@{pic_url}listSprite.png") top left no-repeat;
+        background-position:-10px -112px;  
+        width:36px; 
+        height:20px; 
+        margin:5px;
+    }
+    .inputTop{
+        display: inline-block;
+    }
+    input{
+        float: left;
+    }
+    .margGo,
+    .margBack
+    {
+        margin-left: 8px;
+    }
+    .hei{
+        line-height: 32px;
+        height: 32px;
+    }
+    .searchInp{
+        border: 1px solid @grey;
+        display: inline-block;
+        float: left;
+        font-family: "宋体", "微软雅黑";
+        height: 32px;
+        padding-left: 12px;
+        width: 84px;
+    }
+    .changeIcon {
+        background: url('@{pic_url}change.png') center no-repeat;
+        cursor: pointer;
+        display: inline-block;
+        float: left;
+        height: 32px;
+        width: 32px;
+    }
+    .slecMargAdt,
+    .slecMargChd
+    {
+        float: left;
+        display: inline-block;
+        width: 150px;
+        height: 32px;
+        margin-left: 8px;
+        .downList li {
+            padding:4px 6px;
+        }
+    }
+}
+
+.searchBottom {
+    // background: url('@{pic_url}hotel_icon.png') left no-repeat;
+    height: 40px;
+    .hotelIcon{
+        display: inline-block;
+        float: left;
+        background:url("@{pic_url}listSprite.png") top left no-repeat;
+         background-position:-52px -69px; 
+         width:30px; 
+         height:31px; 
+        margin: 1px 8px;
+    }
+    .inputBottom{
+        display: inline-block;
+    }
+    input{
+        float: left;
+    }
+    .margIn,
+    .margOut
+    {
+        margin-left: 8px;
+    }
+    .hei{
+        line-height: 32px;
+        height: 32px;
+    }
+    .cityName {
+        float: left;
+        width: 200px;
+    }
+    .hotelPlus {
+            display: inline-block;
+        color: @orange;
+        cursor: pointer;
+        b {
+            float: left;
+            font-size: 34px;
+            line-height: 32px;
+            line-height: 32px;
+            margin-left: 25px;
+        }
+        .plusText {
+            display: block;
+            float: left;
+            line-height: 37px;
+            margin-left: 10px;
+        }
+    }
+}
+
+.flotRight {
+    border-radius: 3px;
+    float: right;
+    margin-top: 16px;
+    width: 110px;
+    height: 34px;
+    font-size: 16px;
+    padding: 0 9px 0 46px;
+    background-position: 24px 11px;
+}
+
+.listContain {
+    border: 1px solid #efefef;
+    margin: 0 auto;
+    width: 1200px;
+    background: @white;
+    .filter {
+        border: 1px solid #efefef;
+        height: 50px;
+        div {
+            display: inline-block;
+            height: 100%;
+            line-height: 47px;
+            margin-left: 30px;
+            text-align: center;
+            vertical-align: middle;
+            .priRan{
+                position: absolute;
+                top:17px;
+                display: inline-block;
+                background: url('@{pic_url}up.png') right no-repeat;
+                width:9px;
+                height:5px; 
+                padding-right: 14px;
+                padding-top: 12px;
+            }
+        }
+        .welcome {
+            cursor: pointer;
+            span {
+                &:hover {
+                    color:#ff7f00;
+                }
+            }
+            .welSelect {
+                color:#ff7f00;
+            }
+        }
+        .price {
+            width: 50px;
+            position: relative;
+            cursor: pointer;
+            span {
+                &:nth-child(1) {
+                    width: 30px;
+                    &:hover {
+                        color:#ff7f00;
+                    }
+                }
+            }
+        }
+
+        .pagination {
+            float: right;
+            height: 100%;
+            line-height: 50px;
+            margin-right: 30px;
+            text-align: center;
+            vertical-align: middle;
+            .pageNum{
+                margin-right: -25px;
+                span{
+                    color:@orange;
+                }
+            }
+            div {
+                display: inline-block;
+                margin-right: 14px;
+                width: 60px;
+            }
+            #prev {
+                span {
+                    border: 1px solid #cccccc;
+                    color: #727272;
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    width: 60px;
+                }
+            }
+            #next {
+                span {
+                    border: 1px solid #cccccc;
+                    color: #727272;
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    width: 60px;
+                }
+            }
+
+        }
+
+        .priceRange {
+
+            .step{
+                padding: 0 2px;
+                display: inline-block;
+            }
+            div {
+                display: inline-block;
+                height: inherit;
+                margin-right: 8px;
+                text-align: center;
+                vertical-align: middle;
+                margin-left: 2px;
+            }
+            input {
+                border: 1px solid #cccccc;
+                height: 20px;
+                width: 60px;
+            }
+            .checkCont {
+                margin-left: 10px;
+                cursor: pointer;
+                .checkB {
+                    display: inline-block;
+                    height: 20px;
+                    margin: -7px 0;
+                    padding: 13px 9px;
+                }
+                span {
+                    &:hover{
+                        color:#ff7f00;
+                    }
+                }
+            }
+        }
+
+    }
+}
+#pagerControls {
+        height: 53px;
+        background: @white;
+    text-align: center;
+        .ui-paging-container {
+            display: inline-block;
+            height: 53px;
+            ul {
+                height: 53px;
+                li {
+                    height: 53px;
+                    line-height: 53px;
+                    padding: 0 0;
+                }
+            }
+            .ui-paging-body {
+                width: auto;
+                li {
+                    width: 40px;
+                    &.js-page-prev {
+                        width: 80px;
+                        border: none;
+                        line-height: 53px;
+                        background-color: white;
+                        background-image:url('@{pic_url}icon_pre.png');
+                        background-repeat: no-repeat;
+                        background-position: 8px 23px;
+                        padding-left: 5px;
+                        cursor: pointer;
+                    }
+                    &.js-page-next{
+                        width: 80px;
+                        border: none;
+                        line-height: 53px;
+                        background-color: white;
+                        background-image: url('@{pic_url}icon_next.png');
+                        background-repeat: no-repeat;
+                        background-position: 66px 23px;
+                        padding-right: 8px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .ui-paging-toolbarWrap {
+                width: 135px;
+            }
+            .ui-paging-count {
+                width: 36px;
+                height: 23px;
+            }
+            .go {
+                height: 53px;
+                line-height: 53px;
+                border: none;
+                background: none;
+                padding: 0 10px;
+                &:hover {
+                    color:#5aa5f0;
+                }
+            }
+        }
+    }
+//页面无数据时的样式
+.noProduct {
+    display: none;
+  /*  width: 100%;
+    text-align: center;
+    height: 500px;
+    line-height: 500px;
+    border:1px solid #efefef;
+    border-top:0;
+    p {
+        height: 50px;
+      //line-height: 50px;
+        font-size: 30px;
+        &:nth-child(2) {
+            font-size: 20px;
+            color:#555;
+        }
+    }*/
+}
+#prev {
+    margin-right: -21px;
+    span {
+        background-image:url('@{pic_url}icon_pre.png');
+        background-repeat: no-repeat;
+        background-position: 4px 6px;
+        padding-left: 5px;
+        cursor: pointer;
+    }
+}
+
+#next {
+    span {
+        
+        background-image: url('@{pic_url}icon_next.png');
+        background-repeat: no-repeat;
+        background-position: 48px 6px;
+        padding-right: 8px;
+        cursor: pointer;
+    }
+}
+
+.card {
+    border: 1px solid #efefef;
+    padding: 15px 30px;
+    .row1 {
+        float: left;
+        .imageContain {
+            display: block;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+            width: 220px;
+            width: 100%;
+            img {
+                -moz-transition: transform .5s;
+                -o-transition: transform .5s;
+                -webkit-transition: transform .5s;
+                display: block;
+                height: 150px;
+                transition: transform .5s;
+                width: 220px;
+                background-size:cover ;
+                /* &:hover {
+                     -moz-transform: scale(1.1);
+                     -ms-transform: scale(1.1);
+                     -o-transform: scale(1.1);
+                     -webkit-transform: scale(1.1);
+                     transform: scale(1.1);
+                 }*/
+            }
+            span {
+                //background: url('@{pic_url}free.png') center no-repeat;
+                 background-color: @blue;
+                 color: @white;
+                display: block;
+                height: 20px;
+                left: 0;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                width: 60px;
+                z-index: 9;
+            }
+        }
+    }
+    .row2 {
+        float: left;
+        padding-left: 20px;
+        width: 680px;
+        .title {
+            font-size: 16px;
+            &:hover{
+                color: #5aa5f0;
+            }
+        }
+        i {
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            color: #5A5A5A;
+            display: inline-block;
+            font-size: 12px;
+            margin: 10px 2px 0;
+            padding: 2px 8px;
+        }
+       .null {
+            background: @white;
+            color:@white;
+            border: none!important;
+            margin: 0!important;
+            padding: 0!important;
+            display: none;
+        }
+        .warning {
+            background-color: @orange;
+            border: 1px solid transparent;
+            color: @white;
+        }
+        .danger {
+            background-color: #FB6A80;
+            border: 1px solid transparent;
+            color: @white;
+        }
+        .success {
+            background-color: #68BF7B;
+            border: 1px solid transparent;
+            color: @white;
+        }
+        .descrip {
+            color: #727272;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 10px;
+            width: 459px;
+        }
+        .schedule {
+            color: #727272;
+            height: 40px;
+            margin-top: 10px;
+            width: 459px;
+        }
+    }
+    .row3 {
+        float: right;
+        width: 160px;
+        .fenqiBg {
+            width: 58px;
+            float: right;
+            background: url('@{pic_url}fenqi_03.png') right no-repeat;
+            height: 20px;
+        }
+        .priceStart {
+            color: #ff8f20;
+            display: block;
+            //font-size: 12px;
+            font-weight: 400;
+            letter-spacing: -5px;
+            margin-top: 30px;
+            text-align: right;
+            span {
+                font-size: 28px;
+                font-weight: 700;
+                letter-spacing: 0;
+                i {
+                    font-size: 12px;
+                }
+            }
+            .realPrice {
+                font-size: 22px;
+            }
+        }
+        .checkDetails {
+            margin-top: 30px;
+            text-align: right;
+            a {
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                background-position: 67px 10px;
+                background-image: url('@{pic_url}icon_blue.png');
+                background-repeat: no-repeat;
+                border-radius: 3px;
+                border: 1px solid #5ba6f0;
+                color: #5ba6f0;
+                display: inline-block;
+                height: 30px;
+                line-height: 28px;
+                text-align: center;
+                vertical-align: middle;
+                width: 80px;
+                &:hover{
+                    background:#5ba6f0;
+                    color:#fff;
+                }
+            }
+        }
+    }
+}

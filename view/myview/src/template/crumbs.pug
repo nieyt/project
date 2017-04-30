@@ -1,0 +1,13 @@
+//-
+    Created by Alan(000058) on 2016/12/28.
+    Email: 1480801@qq.com
+    Name: 面包屑
+
+ul#crumbs.crumbs.clearfix
+    li.t 当前位置：
+    -for(var i=0,len=config.crumbs.length;i<len;i++){
+        li(data-key=config.crumbs[i].pageKey) #{config.crumbs[i].pageName}
+        -if(i<len-1){
+            li(class="arrow") &gt;
+        -}
+    -}

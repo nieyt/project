@@ -1,0 +1,379 @@
+extends ../src/template/pageDefault.pug
+block vars
+    - var config = {title:"首页", body:{cls:""}}
+block css
+    link(href='css/travel.css',rel='stylesheet')
+//- 页面主体内容
+block mainContent
+    //-首页顶部导航搜索
+    .topNav
+        .tnContent
+          .tc02.clearfix
+            .startPlace.lt_place
+              span.palce.city 烟台
+              span.choisePace.changeCity 所在城市
+                i.arrow
+            .productSearch.clearfix
+                input.searchInput(type='text',placeholder='请输入关键字查询')
+                a.ls_btn.searchBtn 搜索
+            .sign
+              a(href='./sign#signup').signup 注册
+              span.gap &nbsp;&nbsp;|&nbsp;&nbsp;
+              a(href='./sign#signin').signin 登录
+            .signed(style="display:none")
+              a.publish 
+                i
+                |发布闲置
+              a.personLink 
+                i
+                |个人中心
+    //图片轮播
+    #imageScroll.imageScroll
+      a.next
+      a.prev
+      ul.imgList
+          li(style="background-image: url('img/group_1.jpg');")
+            a(href='#',target='_blank',title="aaa")
+          li(style="background-image: url('img/group_2.jpg');")
+            a(href='#',target='_blank',title="aaa")
+          li(style="background-image: url('img/group_3.jpg');")
+            a(href='#',target='_blank',title="aaa")
+          li(style="background-image: url('img/group_4.jpg');")
+            a(href='#',target='_blank',title="aaa")
+    //首页侧边导航
+    .indexLeftNav
+      .ilfnbox
+          dl.mainNav
+            dd
+              .ilfContent
+                span.navIco.Ico1
+                span.arrow
+                div.bigTitle 手机
+            dd
+              .ilfContent
+                span.navIco.Ico2
+                span.arrow
+                div.bigTitle 平板电脑
+            dd
+              .ilfContent
+                span.navIco.Ico3
+                span.arrow
+                div.bigTitle 笔记本
+            dd
+              .ilfContent
+                span.navIco.Ico4
+                span.arrow
+                div.bigTitle 摄影摄像
+            dd
+              .ilfContent
+                span.navIco.Ico5
+                span.arrow
+                div.bigTitle 智能数码
+            dd
+              .ilfContent
+                span.navIco.Ico6
+                span.arrow
+                div.bigTitle 家用电器
+          //首页侧边导航弹出层
+          .indexLeftNavContent
+              .ilNavContent.NavBlock.clearfix
+                  dl.towNav
+                    dt 苹果
+                    dd.clearfix
+                      a 苹果 iPhone 6s
+                      a 苹果 iPhone 6s Plus
+                      a 苹果 iPhone 6
+                      a 苹果 iPhone 6 Plus
+                      a 苹果 iPhone 7
+                      a.more 更多&gt;
+                  dl.towNav
+                    dt 三星
+                    dd.clearfix
+                      a 三星 GALAXY s7
+                      a 三星 GALAXY s7 edge
+                      a 三星 GALAXY s6
+                      a 三星 GALAXY s6 edge
+                      a 三星 note 3
+                      a.more 更多&gt;
+                  dl.towNav
+                    dt 小米
+                    dd.clearfix
+                      a 小米Mix
+                      a 小米手机5
+                      a 小米手机4s
+                      a 小米手机4c
+                      a 小米Note
+                      a.more 更多&gt;
+                  dl.towNav
+                    dt 华为
+                    dd.clearfix
+                      a 华为 Mate8
+                      a 华为 Mate7
+                      a 华为 MateS
+                      a 华为 荣耀 7
+                      a 华为 荣耀 7i
+                      a.more 更多&gt;
+                  //- dl.towNav
+                  //-   dt 魅族
+                  //-   dd.clearfix
+                  //-     a 魅族 Mx6
+                  //-     a 魅族 Mx5e
+                  //-     a 魅族 Mx5
+                  //-     a 魅族 Mx4 pro
+                  //-     a 魅族 Mx4
+                  //-     a.more 更多&gt;
+                  .towNav.moreBrand 更多品牌&gt; 
+              .ilNavContent.clearfix
+                dl.towNav
+                  dt 二级字段（国内旅游）
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+              .ilNavContent.clearfix
+                dl.towNav
+                  dt 二级字段（港澳台）
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+              .ilNavContent.clearfix
+                dl.towNav
+                  dt 二级字段（东南亚）
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+              .ilNavContent.clearfix
+                dl.towNav
+                  dt 二级字段（欧美）
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                          a 三级字段
+                          a 三级字段
+                          a 三级字段
+              .ilNavContent.clearfix
+                dl.towNav
+                  dt 二级字段（澳新中东非）
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+    //我们的保障
+    //- .ourSecurity
+    //-   .osContent
+    //-     ul.clearfix
+    //-      li
+    //-        span.bzIco.bzIco01
+    //-        p.title 优惠的旅游价格
+    //-        p.detail 惊喜优惠价，为您节省旅游预算
+    //-      li
+    //-        span.bzIco.bzIco02
+    //-        p.title 优质的客服支持
+    //-        p.detail 7*16小时专业客服为您服务
+    //-      li
+    //-        span.bzIco.bzIco03
+    //-        p.title 优选的机酒资源
+    //-        p.detail 丰富的东航机票线路，优质的全球品牌酒店
+    //-      li
+    //-        span.bzIco.bzIco04
+    //-        p.title 会员的权益保障
+    //-        p.detail 指定产品东方万里行会员出行结束可返积分
+    //-      li
+    //-        span.bzIco.bzIco05
+    //-        p.title 透明的旅行方案
+    //-        p.detail 透明的一站式旅游出行解决方案，所见即所得
+    //-      li
+    //-        span.bzIco.bzIco06
+    //-        p.title 灵活的支付方式
+    //-        p.detail 支持部分或全额万里行积分支付旅游产品
+    //旅游特惠卖
+    .firstBanner
+       h1.head.mt20 热门商品
+       .fbContent
+         span.next
+         span.prev
+         #fbImgScroll.fbImgScroll
+           ul.clearfix
+             li
+                 a(href='#',target='_blank')
+                     span.title 小米
+                     img(src='images/imgDefault.png',data-src='img/timg.jpg')
+             li
+                 a(href='#',target='_blank',title="魅族")
+                     span.title 魅族
+                     img(src='images/imgDefault.png',data-src='img/timg_1.jpg')
+             li
+                 a(href='#',target='_blank')
+                     span.title 外星人
+                     img(src='images/imgDefault.png',data-src='img/timg_2.jpg')
+             li
+                 a(href='#',target='_blank')
+                     span.title mac
+                     img(src='images/imgDefault.png',data-src='img/timg_3.jpg')
+             li
+                 a(href='#',target='_blank')
+                    span.title 小米
+                    img(src='images/imgDefault.png',data-src='img/timg.jpg')
+             li
+                 a(href='#',target='_blank')
+                    span.title 魅族
+                    img(src='images/imgDefault.png',data-src='img/timg_1.jpg')
+    
+    //底部广告
+    .bottomBanner
+        a(href='#')
+            img(src='images/imgDefault.png',data-src='img/group_1.jpg')
+
+//-页面使用到的js
+block js
+    script(src='js/index.min.js',type='text/javascript') 

@@ -1,0 +1,33 @@
+extends ../src/template/pageDefault.pug
+block vars
+	- var config = {title:"注册/登录", body:{cls:""}}
+block css
+	//- link(href='css/travel.css',rel='stylesheet')
+	link(rel='stylesheet', href='css/sign.css')
+block mainContent
+	.main
+		.signlogin#tab
+			a#register(href='#signup') 注册
+			|	
+			a#login(href='#signin') 登录
+		form#registerbox(method="post", action="/sign")
+			.form.register
+				- var user={}
+				label 昵称
+					input#name.width(type='text', name='user[name]', placeholder='请输入昵称',value=user.username)
+				label 手机号
+					input#tel.width(type='text', name='user[tel]', placeholder='请输入手机号',value=user.userid)
+				label 密码
+					input#password.width(type='password', name='user[password]', placeholder='请输入密码（不少于6位）',value=user.password)
+				.button.width 
+					button.btn(type='submit') 注册
+		form.login#loginbox(method="post", action="/sign#signin")
+			.form
+				label 手机号
+					input#tel.width(type='text', name='tel', placeholder='请输入手机号')
+				label 密码
+					input#password.width(type='password', name='password', placeholder='请输入密码')
+				.button.width 
+					button.btn(type='submit') 登录
+block js
+	script(src='js/sign.min.js',type='text/javascript') 

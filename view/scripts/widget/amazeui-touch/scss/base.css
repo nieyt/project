@@ -1,0 +1,80 @@
+/*
+Error: Invalid GBK character "\xE5"
+        on line 4 of E:/code/scripts/widget/amazeui-touch/scss/helper/_fallback.scss
+        from line 19 of E:/code/scripts/widget/amazeui-touch/scss/env.scss
+        from line 6 of E:\code\scripts\widget\amazeui-touch\scss\base.scss
+
+1: // Browser compatibility fallback
+2: // -----------------------------------------------------------------------------
+3: 
+4: // 在安卓里 flex 里的子元素一定要是 block 元素，如果用行内元素 可以用flex-inline。
+5: // (不过 flex-inline 兼容也不好，所以全改成块元素就好了)
+6: // @see https://github.com/amazeui/amazeui-touch/issues/12#issuecomment-169879658
+7: @mixin fixes-flexbox-for-android {
+8:   display: block;
+9: }
+
+Backtrace:
+E:/code/scripts/widget/amazeui-touch/scss/helper/_fallback.scss:4
+E:/code/scripts/widget/amazeui-touch/scss/env.scss:19
+E:\code\scripts\widget\amazeui-touch\scss\base.scss:6
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/util.rb:1323:in `rescue in block in find_encoding_error'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/util.rb:1320:in `block in find_encoding_error'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/util.rb:1319:in `each'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/util.rb:1319:in `each_with_index'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/util.rb:1319:in `find_encoding_error'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/util.rb:896:in `check_sass_encoding'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:423:in `check_encoding!'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:379:in `_to_tree'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:299:in `to_tree'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:313:in `block in visit_import'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:88:in `block in with_import'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:88:in `with_import'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:312:in `visit_import'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `block (2 levels) in visit_import'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `map'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `block in visit_import'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:88:in `block in with_import'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:88:in `with_import'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:312:in `visit_import'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+D:/koala/Koala_3987.com/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+D:/koala/Koala_3987.com/bin/sass:18:in `load'
+D:/koala/Koala_3987.com/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid GBK character \"\xE5\"\A         on line 4 of E:/code/scripts/widget/amazeui-touch/scss/helper/_fallback.scss\A         from line 19 of E:/code/scripts/widget/amazeui-touch/scss/env.scss\A         from line 6 of E:\code\scripts\widget\amazeui-touch\scss\base.scss\A \A 1: // Browser compatibility fallback\A 2: // -----------------------------------------------------------------------------\A 3: \A 4: // 在安卓里 flex 里的子元素一定要是 block 元素，如果用行内元素 可以用flex-inline。\A 5: // (不过 flex-inline 兼容也不好，所以全改成块元素就好了)\A 6: // @see https://github.com/amazeui/amazeui-touch/issues/12#issuecomment-169879658\A 7: @mixin fixes-flexbox-for-android {\A 8:   display: block;\A 9: }"; }

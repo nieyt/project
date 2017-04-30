@@ -1,0 +1,398 @@
+.backArea.clearfix
+    - var ProductSegment=AirPlaneTicketInfo.ProductSegment
+    - var FlightList=AirPlaneTicketInfo.AirPlaneTicketList
+    .backTop
+        .leaveCheck
+            //判断去程返程还是中间程
+            if FlightList[0].AirPlaneDetailList[0].Direction==1||FlightList[0].AirPlaneDetailList[0].Direction==null
+                .labelGo 去程
+                span 选择去程
+            else if FlightList[0].AirPlaneDetailList[0].Direction==2
+                .labelGo 返程
+                span 选择返程
+            else if FlightList[0].AirPlaneDetailList[0].Direction == 0
+                .labelGo 中程
+                span 选择中间程
+        .destina
+            span #{ProductSegment.DepartureTravelCityName}
+            span.desIcon
+            span #{ProductSegment.DestinationTravelCityName}
+            - var startDate=(ProductSegment.DepartureTime).substring(0,10)
+            span #{startDate}
+        .conform
+            | 共计
+            span #{FlightList.length}
+            | 个航班结果
+    .backMidd
+        if FlightList[0].AirPlaneTicketType==2
+            .sortArea
+                span(data-direction=FlightList[0].AirPlaneDetailList[0].Direction class=pageInfo.getOrderClass(0,pageInfo.currentParamInfo.OrderByType)) 默认排序
+                span(data-direction=FlightList[0].AirPlaneDetailList[0].Direction  data-order=pageInfo.getOrderStatus(1)  class=pageInfo.getOrderClass(1,pageInfo.currentParamInfo.OrderByType)) 起飞时间
+                //span 航程时长
+                span(data-direction=FlightList[0].AirPlaneDetailList[0].Direction  data-order=pageInfo.getOrderStatus(2)  class=pageInfo.getOrderClass(2,pageInfo.currentParamInfo.OrderByType)) 价格
+        .space
+            span 头等/公务舱
+            span.good 经济舱
+    .backDown
+        - for(var i=0,len=FlightList.length;i<len;i++)
+             //直达或经停起飞时间处理
+             - var startGo=new Date(Date.parse(FlightList[i].AirPlaneDetailList[0].DepartureTime))
+             - var gohours=startGo.getHours()>=10?startGo.getHours():"0"+startGo.getHours();
+             - var gominutes=startGo.getMinutes()>=10?startGo.getMinutes():"0"+startGo.getMinutes();
+             - var startTime=gohours+":"+gominutes;
+             //直达或经停到达时间处理
+             - var endBack=new Date(Date.parse(FlightList[i].AirPlaneDetailList[0].DestinationTime))
+             - var backhours=endBack.getHours()>=10?endBack.getHours():"0"+endBack.getHours();
+             - var backminutes=endBack.getMinutes()>=10?endBack.getMinutes():"0"+endBack.getMinutes();
+             - var endTime=backhours+":"+backminutes;
+             - var intervalMonth=endBack.getMonth()-startGo.getMonth();
+             - var intervalDay=endBack.getDate()-startGo.getDate();
+             - var intervalMsg=intervalDay>=1||intervalMonth>=1?" +1":"";
+             //如果有中转信息
+             if  FlightList[i].TransferFlightList&&FlightList[i].TransferFlightList.length>=2
+                //前一段出发时间
+                - var start1=new Date(FlightList[i].TransferFlightList[0].FightStartDate*1000)
+                - var goYear1=start1.getFullYear();
+                - var goMonth1=start1.getMonth()+1<10?"0"+(start1.getMonth()+1):start1.getMonth()+1
+                - var goDay1=start1.getDate()<10?"0"+start1.getDate():start1.getDate()
+                - var gohours1=start1.getHours()>=10?start1.getHours():"0"+start1.getHours();
+                - var gominutes1=start1.getMinutes()>=10?start1.getMinutes():"0"+start1.getMinutes();
+                - var startTime1=gohours1+":"+gominutes1;
+                - var startDate1=goYear1+"-"+goMonth1+"-"+goDay1;
+                //前一段到达时间
+                - var back1=new Date(FlightList[i].TransferFlightList[0].FightEndDate*1000)
+                - var backYear1=back1.getFullYear();
+                - var backMonth1=back1.getMonth()+1<10?"0"+(back1.getMonth()+1):back1.getMonth()+1
+                - var backDay1=back1.getDate()<10?"0"+back1.getDate():back1.getDate()
+                - var backhours1=back1.getHours()>=10?back1.getHours():"0"+back1.getHours();
+                - var backminutes1=back1.getMinutes()>=10?back1.getMinutes():"0"+back1.getMinutes();
+                - var endTime1=backhours1+":"+backminutes1;
+                - var backDate1=backYear1+"-"+backMonth1+"-"+backDay1;
+                //后一段出发时间
+                - var start2=new Date(FlightList[i].TransferFlightList[1].FightStartDate*1000)
+                - var goYear2=start2.getFullYear();
+                - var goMonth2=start2.getMonth()+1<10?"0"+(start2.getMonth()+1):start2.getMonth()+1
+                - var goDay2=start2.getDate()<10?"0"+start2.getDate():start2.getDate()
+                - var gohours2=start2.getHours()>=10?start2.getHours():"0"+start2.getHours();
+                - var gominutes2=start2.getMinutes()>=10?start2.getMinutes():"0"+start2.getMinutes();
+                - var startTime2=gohours2+":"+gominutes2;
+                - var startDate2=goYear2+"-"+goMonth2+"-"+goDay2;
+                //后一段到达时间
+                - var back2=new Date(FlightList[i].TransferFlightList[1].FightEndDate*1000)
+                - var backhours2=back2.getHours()>=10?back2.getHours():"0"+back2.getHours();
+                - var backminutes2=back2.getMinutes()>=10?back2.getMinutes():"0"+back2.getMinutes();
+                - var diffMonth=back2.getMonth()-start1.getMonth();
+                - var diffDay=back2.getDate()-start1.getDate();
+                - var diffMsg=diffDay>=1||diffMonth>=1?" +1":"";
+                - var endTime2=backhours2+":"+backminutes2;
+                //中间经停时间
+                -var stopoverMinites=(FlightList[i].TransferFlightList[1].FightStartDate-FlightList[i].TransferFlightList[0].FightEndDate)/60
+                -var hours = parseInt(stopoverMinites / 60)==0?"":parseInt(stopoverMinites / 60)+ "小时"
+                -var minites = parseInt(stopoverMinites % 60)==0?"":parseInt(stopoverMinites % 60) + "分钟"
+                -var stopoverTime = hours + minites
+             .backMessage
+                     //航班主要信息
+                     //直达或者经停
+                     if  FlightList[i].AirPlaneDetailList[0].IsDirect || FlightList[i].AirPlaneDetailList[0].IsStopOver && !FlightList[i].AirPlaneDetailList[0].IsTransfer
+                         .backBottom.clearfix
+                             .flightNo
+                                 img(src="./images/logo.png")
+                                 //是否共享
+                                 if FlightList[i].AirPlaneDetailList[0].IsShareAirLineLine
+                                     .flyDescr
+                                         | #{FlightList[i].AirLineName} &nbsp;#{FlightList[i].AirPlaneDetailList[0].FlightNo}
+                                         br
+                                         |#{FlightList[i].AirPlaneDetailList[0].FlightStyle}共享
+                                 else
+                                     .flyDescr
+                                         | #{FlightList[i].AirLineName} &nbsp;#{FlightList[i].AirPlaneDetailList[0].FlightNo}
+                                         br
+                                         |#{FlightList[i].AirPlaneDetailList[0].FlightStyle}
+                             .flightInfor
+                                 .flightInforTop.clearfix
+                                     .startDesti
+                                         .Site #{FlightList[i].DepartureTravelCityName}
+                                         .Port #{FlightList[i].AirPlaneDetailList[0].DepartureAirPort}#{FlightList[i].AirPlaneDetailList[0].StartTerminalName}
+                                     .stateTime
+                                        //判断是直达，经停，中转
+                                        if FlightList[i].AirPlaneDetailList[0].IsDirect
+                                           .timeTop 直达
+                                        else if FlightList[i].AirPlaneDetailList[0].IsStopOver&&!FlightList[i].AirPlaneDetailList[0].IsTransfer
+                                           .timeTop 经停
+                                        .timeIcon
+                                     .endDesti
+                                         .Site #{FlightList[i].DestinationTravelCityName}
+                                         .Port #{FlightList[i].AirPlaneDetailList[0].DestinationAirPort}#{FlightList[i].AirPlaneDetailList[0].EndTerminalName}
+                                 .flightInforBtm.clearfix
+                                     .flyTime #{startTime}
+                                     .mid
+                                     .flyTime #{endTime + intervalMsg}
+                             .flighDescr 航班详情
+                             .priceTick.priceTick1
+                                //假如有头等公务舱
+                                if FlightList[i].IsHasFirstBusinessClass
+                                    .noCheck.check(data-rank="best")
+                                else
+                                    .noCheck.check(data-rank="best" style="display:none")
+                                .priceConten
+                                    if  FlightList[i].FirstBusinessClassMinPriceDiff >= 0&&FlightList[i].IsHasFirstBusinessClass
+                                        .ticketPric
+                                            | ￥
+                                            span +#{FlightList[i].FirstBusinessClassMinPriceDiff}
+                                        //.ticketTax 参考税费￥
+                                    else if FlightList[i].FirstBusinessClassMinPriceDiff < 0&&FlightList[i].IsHasFirstBusinessClass
+                                        .ticketPric(style="color:#59a5f0")
+                                            | ￥
+                                            span #{FlightList[i].FirstBusinessClassMinPriceDiff}
+                                        //.ticketTax 参考税费￥
+                                    else if !FlightList[i].IsHasFirstBusinessClass
+                                        .ticketPric(style="color:#ccc; padding-left: 24px")
+                                            span — —
+                                        //.ticketTax 参考税费￥
+                             .priceTick
+                                //假如有经济舱
+                                if FlightList[i].IsHasEconomyClass
+                                    .noCheck.check(data-rank="good")
+                                else
+                                    .noCheck.check(data-rank="good" style="display:none")
+                                .priceConten
+                                    if FlightList[i].EconomyClassMinPriceDiff >= 0&&FlightList[i].IsHasEconomyClass
+                                        .ticketPric
+                                            | ￥
+                                            span +#{FlightList[i].EconomyClassMinPriceDiff}
+                                        //.ticketTax 参考税费￥
+                                    else if FlightList[i].EconomyClassMinPriceDiff < 0&&FlightList[i].IsHasEconomyClass
+                                        .ticketPric(style="color:#59a5f0")
+                                            | ￥
+                                            span #{FlightList[i].EconomyClassMinPriceDiff}
+                                        //.ticketTax 参考税费￥
+                                    else if !FlightList[i].IsHasEconomyClass
+                                        .ticketPric(style="color:#ccc; padding-left: 24px")
+                                            span — —
+                                        //.ticketTax 参考税费￥
+                     else if FlightList[i].AirPlaneDetailList[0].IsTransfer
+                        //航班主要信息
+                        .backBottom.clearfix
+                            .flightNo
+                                img(src="./images/logo.png")
+                                .flyDescr 多航空公司 | #{FlightList[i].TransferFlightList.length}个航班
+                            .flightInfor
+                                .flightInforTop.clearfix
+                                    .startDesti
+                                        .Site #{FlightList[i].TransferFlightList[0].StartCityName}
+                                        .Port #{FlightList[i].TransferFlightList[0].StartAirportName}#{FlightList[i].TransferFlightList[0].StartTerminalName}
+                                    .stateTime
+                                        .timeTop 中转
+                                        .timeIcon
+                                    .endDesti
+                                        .Site #{FlightList[i].TransferFlightList[1].EndCityName}
+                                        .Port #{FlightList[i].TransferFlightList[1].EndAirportName}#{FlightList[i].TransferFlightList[1].EndTerminalName}
+                                .flightInforBtm.clearfix
+                                    .flyTime #{startTime1}
+                                    .mid
+                                    .flyTime #{endTime2 + diffMsg}
+                            .flighDescr 航班详情
+                            .priceTick.priceTick1
+                                //假如有头等公务舱
+                                if FlightList[i].IsHasFirstBusinessClass
+                                    .noCheck.check(data-rank="best")
+                                else
+                                    .noCheck.check(data-rank="best" style="display:none")
+                                .priceConten
+                                    if  FlightList[i].FirstBusinessClassMinPriceDiff >= 0&&FlightList[i].IsHasFirstBusinessClass
+                                        .ticketPric
+                                            | ￥
+                                            span +#{FlightList[i].FirstBusinessClassMinPriceDiff}
+                                        //.ticketTax 参考税费￥
+                                    else if FlightList[i].FirstBusinessClassMinPriceDiff < 0&&FlightList[i].IsHasFirstBusinessClass
+                                        .ticketPric(style="color:#59a5f0")
+                                            | ￥
+                                            span #{FlightList[i].FirstBusinessClassMinPriceDiff}
+                                        //.ticketTax 参考税费￥
+                                    else if !FlightList[i].IsHasFirstBusinessClass
+                                        .ticketPric(style="color:#ccc; padding-left: 24px")
+                                            span — —
+                                        //.ticketTax 参考税费￥
+                            .priceTick
+                                //假如有经济舱
+                                if FlightList[i].IsHasEconomyClass
+                                    .noCheck.check(data-rank="good")
+                                else
+                                    .noCheck.check(data-rank="good" style="display:none")
+                                .priceConten
+                                    if FlightList[i].EconomyClassMinPriceDiff >= 0&&FlightList[i].IsHasEconomyClass
+                                        .ticketPric
+                                            | ￥
+                                            span +#{FlightList[i].EconomyClassMinPriceDiff}
+                                        //.ticketTax 参考税费￥
+                                    else if FlightList[i].EconomyClassMinPriceDiff < 0&&FlightList[i].IsHasEconomyClass
+                                        .ticketPric(style="color:#59a5f0")
+                                            | ￥
+                                            span #{priceInfo.EconomyClassMinPriceDiff}
+                                        //.ticketTax 参考税费￥
+                                    else if !FlightList[i].IsHasEconomyClass
+                                        .ticketPric(style="color:#ccc; padding-left: 24px")
+                                            span — —
+                                        //.ticketTax 参考税费￥
+                     //直达或者经停
+                     if  FlightList[i].AirPlaneDetailList[0].IsDirect||FlightList[i].AirPlaneDetailList[0].IsStopOver&&!FlightList[i].AirPlaneDetailList[0].IsTransfer
+                        //航班详情
+                        .details.clearfix
+                            .concrete
+                                .flyDate
+                                    .flyDateTop #{startDate}
+                                .breakIcon
+                                .flyMessage
+                                    .flyMessageTop
+                                        .leaveDesc
+                                            span 出发
+                                            span #{startTime}
+                                            span #{FlightList[i].DepartureTravelCityName}
+                                            span #{FlightList[i].AirPlaneDetailList[0].DepartureAirPort} #{FlightList[i].AirPlaneDetailList[0].StartTerminalName}
+                                        .arriveDesc
+                                            span 到达
+                                            span #{endTime+intervalMsg}
+                                            span #{FlightList[i].DestinationTravelCityName}
+                                            span #{FlightList[i].AirPlaneDetailList[0].DestinationAirPort} #{FlightList[i].AirPlaneDetailList[0].EndTerminalName}
+                                        .totalTime
+                            //判断是否是共享航班
+                            if FlightList[i].AirPlaneDetailList[0].IsShareAirLineLine
+                                .flyNo
+                                    | #{FlightList[i].AirLineName}&nbsp;#{FlightList[i].AirPlaneDetailList[0].FlightNo}<br/>#{FlightList[i].AirPlaneDetailList[0].FlightStyle}共享
+                            else
+                                .flyNo
+                                    | #{FlightList[i].AirLineName}&nbsp;#{FlightList[i].AirPlaneDetailList[0].FlightNo}<br/>#{FlightList[i].AirPlaneDetailList[0].FlightStyle}
+                     else if FlightList[i].AirPlaneDetailList[0].IsTransfer
+                        //航班详情
+                        .details.clearfix
+                            .concrete
+                                .flyDate
+                                    .flyDateTop #{startDate1}
+                                    .flyDateMin #{backDate1}
+                                    .flyDateBtm #{startDate2}
+                                .breakIcon.icon
+                                .flyMessage
+                                    .flyMessageTop.clearfix
+                                        .flyMessageTop-l
+                                            .leaveDesc
+                                                span 出发
+                                                span #{startTime1}
+                                                span #{FlightList[i].TransferFlightList[0].StartCityName}
+                                                span #{FlightList[i].TransferFlightList[0].StartAirportName} #{FlightList[i].TransferFlightList[0].StartTerminalName}
+                                            .arriveDesc
+                                                span 到达
+                                                span #{endTime1}
+                                                span #{FlightList[i].TransferFlightList[0].EndCityName}
+                                                span #{FlightList[i].TransferFlightList[0].EndAirportName} #{FlightList[i].TransferFlightList[0].EndTerminalName}
+                                        if FlightList[i].TransferFlightList[0].IsShare
+                                             .flyNo(style="float:right")
+                                                 | #{FlightList[i].TransferFlightList[0].AirlineName}&nbsp;#{FlightList[i].TransferFlightList[0].FightCode}<br/>#{FlightList[i].TransferFlightList[0].AirType}共享
+                                        else
+                                             .flyNo(style="float:right")
+                                                 | #{FlightList[i].TransferFlightList[0].AirlineName}&nbsp;#{FlightList[i].TransferFlightList[0].FightCode}<br/>#{FlightList[i].TransferFlightList[0].AirType}
+                                    .flyMessageMid
+                                        span 中转
+                                        span #{FlightList[i].TransferFlightList[0].EndCityName}
+                                        span.line
+                                    .flyMessageBtm
+                                        .flyMessageBtm-l
+                                            .leaveDesc
+                                                span 出发
+                                                span #{startTime2}
+                                                span #{FlightList[i].TransferFlightList[1].StartCityName}
+                                                span #{FlightList[i].TransferFlightList[1].StartAirportName} #{FlightList[i].TransferFlightList[1].StartTerminalName}
+                                            .arriveDesc
+                                                span 到达
+                                                span #{endTime2}
+                                                span #{FlightList[i].TransferFlightList[1].EndCityName}
+                                                span #{FlightList[i].TransferFlightList[1].EndAirportName} #{FlightList[i].TransferFlightList[1].EndTerminalName}
+                                        if FlightList[i].TransferFlightList[0].IsShare
+                                            .flyNo(style="float:right")
+                                                | #{FlightList[i].TransferFlightList[1].AirlineName}&nbsp;#{FlightList[i].TransferFlightList[1].FightCode}<br/>#{FlightList[i].TransferFlightList[1].AirType}共享
+                                        else
+                                            .flyNo(style="float:right")
+                                                | #{FlightList[i].TransferFlightList[1].AirlineName}&nbsp;#{FlightList[i].TransferFlightList[1].FightCode}<br/>#{FlightList[i].TransferFlightList[1].AirType}
+                     //舱位详情
+                     .freightSpace.clearfix
+                        - for(var j=0, le=FlightList[i].AirPlaneDetailList.length;j<le;j++)
+                            .priceContain
+                                .leftArea
+                                    .cabin(data-airspacecategory=FlightList[i].AirPlaneDetailList[j].AirSpaceCategory) #{FlightList[i].AirPlaneDetailList[j].ShippingSpaceName}
+                                    .labelcontain
+                                        .ruleWrap(data-text=FlightList[i].AirPlaneDetailList[j].ExchangeRule)
+                                            span.left
+                                            span.rule 退改签
+                                            span.right
+                                        if FlightList[i].AirPlaneDetailList[j].ManyAirSpaceName
+                                            .spaceWrap
+                                                span.left
+                                                span.space #{FlightList[i].AirPlaneDetailList[j].ManyAirSpaceName}
+                                                span.right
+                                .rightArea
+                                    //假如是静态产品动态接口并且是正值
+                                    if  pageInfo.paramInfo.entryType == 2 && FlightList[i].AirPlaneDetailList[j].PriceInfoList[0].Price>=0
+                                            .bookingNow
+                                                | ￥
+                                                span +#{FlightList[i].AirPlaneDetailList[j].PriceInfoList[0].Price}
+                                                //直达或者经停
+                                                if  FlightList[i].AirPlaneDetailList[0].IsDirect || FlightList[i].AirPlaneDetailList[0].IsStopOver && !FlightList[i].AirPlaneDetailList[0].IsTransfer
+                                                    a.yellowBtn( data-segmentid=FlightList[i].SegmentID  data-needbookinghotel=ProductSegment.NeedBookingHotel data-info=FlightList[i].AirPlaneDetailList[j] data-airlinename=FlightList[i].AirLineName  data-productsegment=ProductSegment )
+                                                        | 立即预定
+                                                        i &gt;
+                                                else if FlightList[i].AirPlaneDetailList[0].IsTransfer
+                                                    a.yellowBtn(data-segmentid=FlightList[i].SegmentID data-needbookinghotel=ProductSegment.NeedBookingHotel data-info=FlightList[i].AirPlaneDetailList[j] data-gotime=startTime1 data-backtime=endTime2 + diffMsg  data-godate=startDate1 data-transfer1=FlightList[i].TransferFlightList[0] data-transfer2=FlightList[i].TransferFlightList[1])
+                                                        | 立即预定
+                                                        i &gt;
+                                    else if pageInfo.paramInfo.entryType == 2 &&FlightList[i].AirPlaneDetailList[j].PriceInfoList[0].Price<0
+                                            .bookingNow.color
+                                                | ￥
+                                                span #{FlightList[i].AirPlaneDetailList[j].PriceInfoList[0].Price}
+                                                //直达或者经停
+                                                if  FlightList[i].AirPlaneDetailList[0].IsDirect || FlightList[i].AirPlaneDetailList[0].IsStopOver && !FlightList[i].AirPlaneDetailList[0].IsTransfer
+                                                    a.yellowBtn( data-segmentid=FlightList[i].SegmentID  data-needbookinghotel=ProductSegment.NeedBookingHotel data-info=FlightList[i].AirPlaneDetailList[j] data-airlinename=FlightList[i].AirLineName  data-productsegment=ProductSegment )
+                                                        | 立即预定
+                                                        i &gt;
+                                                else if FlightList[i].AirPlaneDetailList[0].IsTransfer
+                                                    a.yellowBtn(data-segmentid=FlightList[i].SegmentID data-needbookinghotel=ProductSegment.NeedBookingHotel data-info=FlightList[i].AirPlaneDetailList[j] data-gotime=startTime1 data-backtime=endTime2 + diffMsg  data-godate=startDate1 data-transfer1=FlightList[i].TransferFlightList[0] data-transfer2=FlightList[i].TransferFlightList[1])
+                                                        | 立即预定
+                                                        i &gt;
+                                    else if pageInfo.paramInfo.entryType == 1 && FlightList[i].AirPlaneDetailList[j].PriceDifference>=0
+                                            .bookingNow
+                                                | ￥
+                                                span +#{FlightList[i].AirPlaneDetailList[j].PriceDifference}
+                                                //直达或者经停
+                                                if  FlightList[i].AirPlaneDetailList[0].IsDirect || FlightList[i].AirPlaneDetailList[0].IsStopOver && !FlightList[i].AirPlaneDetailList[0].IsTransfer
+                                                    a.yellowBtn( data-segmentid=FlightList[i].SegmentID  data-needbookinghotel=ProductSegment.NeedBookingHotel data-info=FlightList[i].AirPlaneDetailList[j] data-airlinename=FlightList[i].AirLineName  data-productsegment=ProductSegment )
+                                                        | 立即预定
+                                                        i &gt;
+                                                else if FlightList[i].AirPlaneDetailList[0].IsTransfer
+                                                    a.yellowBtn(data-segmentid=FlightList[i].SegmentID data-needbookinghotel=ProductSegment.NeedBookingHotel data-info=FlightList[i].AirPlaneDetailList[j] data-gotime=startTime1 data-backtime=endTime2 + diffMsg  data-godate=startDate1 data-transfer1=FlightList[i].TransferFlightList[0] data-transfer2=FlightList[i].TransferFlightList[1])
+                                                        | 立即预定
+                                                        i &gt;
+                                    else if pageInfo.paramInfo.entryType == 1 && FlightList[i].AirPlaneDetailList[j].PriceDifference<0
+                                            .bookingNow.color
+                                                | ￥
+                                                span #{FlightList[i].AirPlaneDetailList[j].PriceDifference}
+                                                //直达或者经停
+                                                if  FlightList[i].AirPlaneDetailList[0].IsDirect||FlightList[i].AirPlaneDetailList[0].IsStopOver&&!FlightList[i].AirPlaneDetailList[0].IsTransfer
+                                                    a.yellowBtn( data-segmentid=FlightList[i].SegmentID  data-needbookinghotel=ProductSegment.NeedBookingHotel data-info=FlightList[i].AirPlaneDetailList[j] data-airlinename=FlightList[i].AirLineName  data-productsegment=ProductSegment )
+                                                        | 立即预定
+                                                        i &gt;
+                                                else if FlightList[i].AirPlaneDetailList[0].IsTransfer
+                                                    a.yellowBtn(data-segmentid=FlightList[i].SegmentID data-needbookinghotel=ProductSegment.NeedBookingHotel data-info=FlightList[i].AirPlaneDetailList[j] data-gotime=startTime1 data-backtime=endTime2 + diffMsg  data-godate=startDate1 data-transfer1=FlightList[i].TransferFlightList[0] data-transfer2=FlightList[i].TransferFlightList[1])
+                                                        | 立即预定
+                                                        i &gt;
+                                    if FlightList[i].AirPlaneDetailList[j].AirPlaneCode
+                                        .cabinMess
+                                            if FlightList[i].AirPlaneDetailList[j].Quantity==">9"|| FlightList[i].AirPlaneDetailList[j].Quantity=="9" || FlightList[i].AirPlaneDetailList[j].Quantity>9
+                                               .tickets(style="display:none")
+                                               .positionCabin #{FlightList[i].AirPlaneDetailList[j].AirPlaneCode}舱
+                                            else
+                                               .tickets.hide 剩#{FlightList[i].AirPlaneDetailList[j].Quantity}张
+                                               .positionCabin #{FlightList[i].AirPlaneDetailList[j].AirPlaneCode}舱
+                                    else
+                                        .cabinMess(style="margin-right:0")
+                                            if FlightList[i].AirPlaneDetailList[j].Quantity == ">9" || FlightList[i].AirPlaneDetailList[j].Quantity=="9" || FlightList[i].AirPlaneDetailList[j].Quantity>9
+                                                .tickets(style="display:none")
+                                            else
+                                                .tickets.hide 剩#{FlightList[i].AirPlaneDetailList[j].Quantity}张

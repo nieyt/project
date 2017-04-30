@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "ignore": ["client/**/*", "public/**/*"],
+  "watch": [
+    "../../lib/",
+    "webpack.config.dev.js",
+    "bootstrap.js"
+  ]
+}

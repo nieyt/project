@@ -1,0 +1,28 @@
+//-
+   Created by Alan(000058) on 2016/12/27.
+   Email: 1480801@qq.com
+   Update: Alan 2016-12-27 14:49:02
+   Name: 接送机默认模版
+
+block vars
+    //- - var debug='css/',ol=''
+    //- - var urlConfig=debug;
+doctype html
+html(lang="en-us")
+    //- HTML head
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        title #{(config.title?config.title+' - ':'')+'闲置电子产品交易'}
+        meta(name='keywords',content=config.keywords)
+        meta(name='description',content=config.description)
+        block css
+        block head
+    //- HTML BODY
+    body(class = config.body.cls, page-key=config.body.key)
+        //-页面内容区域
+        .mainContent(class=config.body.contentCls)
+            block mainContent
+        script(src='libs/jquery-1.8.3.min.js',type='text/javascript')
+        block js
+

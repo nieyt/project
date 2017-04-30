@@ -1,0 +1,44 @@
+extends ../src/template/pageDefault.pug
+block vars
+	- var config = {title:"发布信息", body:{cls:""},keywords:'发布信息',description:'发布信息'}
+block css
+	link(href='css/publish.css',rel='stylesheet')
+//-页面使用到的js
+block js
+	script(src='js/component.min.js',type='text/javascript')
+//- 页面主体内容
+block mainContent
+	include ../src/template/header.pug
+	.publishWrap
+		label.group.required 类别
+		.selectModel
+			span.select 手机
+			ul.downList(style='display: none;')
+				li(value='0') 手机
+				li(value='1') 平板电脑
+				li(value='2') 笔记本
+				li(value='3') 摄影摄像
+				li(value='4') 智能数码
+				li(value='5') 家用电器
+			input(type='hidden',value='2',name='adtCount')
+		.title.inputWrap
+			label.required 
+				span 标题
+				input(placeholder="类型品牌型号都是买家喜欢搜索的")
+		.description.inputWrap
+			label.required 
+				span 描述
+				textarea(placeholder="描述一下你的闲置")
+		.price.inputWrap
+			label.required 
+				span 价格
+				input(placeholder="请填写正整数")
+		.selectPic
+			label 
+				span 上传图片
+				input.textfield(type="text" placeholder="请选择电脑图片上传")
+				input.btn(type='button', value='浏览...')
+				input#fileField.file(type='file', name='fileField', size='28', onchange="document.getElementById('textfield').value=this.value")
+				//- input.addPic(type="file" multiple="multiple")
+		//- <div id="list"><img src=""></div> 
+		.yellowBtn 发布

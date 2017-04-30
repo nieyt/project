@@ -1,0 +1,632 @@
+@pic_url: "../images/";
+@mypic_url: "../img/";
+@5AA5F0: #5AA5F0;  /*蓝色*/
+@FF7F00: #FF7F00;  /*橙色*/
+
+.topNav {
+  // position: absolute;
+  // top: 0;
+  width: 100%;
+  background-color: rgba(51, 51, 51, 0.4);
+  z-index: 100;
+  .sign,.signed{
+    font-size: 14px;
+    color: #FFF;
+    float: right;
+    padding-top: 10px;
+    cursor: pointer;
+    .gap{
+      color: #DDDDDD;
+    }
+    a{
+       color: #FFF;
+    }
+  }
+  .sign{
+    margin-right: 50px;
+  }
+  .signed{
+      i{
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        background-size: 100% 100%;
+        vertical-align: middle;
+      }
+      .publish{
+        i{
+          width: 25px;
+          height: 25px;
+          background-image: url('@{mypic_url}send.png');
+        }
+      }
+      .personLink{
+        i{
+          background-image: url('@{mypic_url}person.png');
+        }
+        margin-left: 20px;
+      }
+  }
+  .tnContent {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 15px 0 10px;
+    .tc01 {
+      text-align: center;
+      .tcTab {
+        a {
+          color: #ffffff;
+          font-size: 15px;
+          margin: 0 5px;
+          padding: 5px 15px;
+          cursor: pointer;
+          &.all {
+            margin-right: 50px;
+          }
+          &:hover, &.active {
+            background-color: #ff7f00;
+          }
+        }
+      }
+      .tcOther {
+        margin-left: 30px;
+        a {
+          color: #ffffff;
+          font-size: 15px;
+          margin: 0 10px;
+          cursor: pointer;
+          &.locationPlay {
+            color: #e47a10;
+            background-position: -5px -37px;
+            padding-left: 17px;
+          }
+          &.useCar01 {
+            color: #e47a10;
+            background-position: 0px 3px;
+            padding-left: 23px;
+          }
+        }
+      }
+    }
+    .tc02 {
+      position: relative;
+      padding: 18px 0 0 128px;
+      .startPlace {
+        float: left;
+        display: inline;
+        width: 160px;
+        height: 36px;
+        background-color: #ffffff;
+        line-height: 36px;
+        position: relative;
+        font-size: 15px;
+        .palce {
+          margin: 0 10px 0 5px;
+          &:before{
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-image: url("@{mypic_url}location.png");
+            background-size: 100% 100%;
+            vertical-align: -2px;
+          }
+        }
+        .choisePace {
+          position: relative;
+          color: #7ab6f3;
+          padding-right: 20px;
+          cursor: pointer;
+          .arrow {
+            position: absolute;
+            right: 0;
+            top: 8px;
+            background-position: -110px -425px;
+            width: 12px;
+            height: 6px;
+          }
+        }
+      }
+      .productType {
+        float: left;
+        margin-left: 2px;
+        display: inline;
+        width: 160px;
+        height: 36px;
+        background-color: #ffffff;
+        line-height: 36px;
+        position: relative;
+        font-size: 15px;
+        .flyIco {
+          position: absolute;
+          left: 14px;
+          top: 10px;
+          background-position: -5px -100px;
+          width: 26px;
+          height: 16px;
+        }
+        .addFont {
+          position: absolute;
+          left: 41px;
+          top: 0;
+          color: #b3c6ee;
+        }
+        .hotelIco {
+          position: absolute;
+          left: 56px;
+          top: 9px;
+          background-position: -60px -100px;
+          width: 19px;
+          height: 18px;
+        }
+        .chioseType {
+          position: relative;
+          margin-left: 90px;
+          color: #7ab6f3;
+          padding-right: 20px;
+          cursor: pointer;
+          .arrow {
+            position: absolute;
+            right: 0;
+            top: 8px;
+            background-position: -110px -425px;
+            width: 12px;
+            height: 6px;
+          }
+        }
+      }
+      .productSearch {
+        background-color: #fff;
+        height: 36px;
+        margin-left: 31px;
+        float: left;
+        .searchInput {
+          width: 400px;
+          height: 20px;
+          line-height: 20px;
+          margin: 8px 0 0 14px;
+          float: left;
+        }
+        .searchBtn {
+          float: left;
+        }
+      }
+    }
+  }
+}
+.ajax_loading{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100000;
+  overflow: hidden;
+  background: url("@{pic_url}common/bj02.png") repeat 0 0 transparent;
+  //默认小loading
+  .info{
+    display: block;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width:112px;
+    height:112px;
+    margin: -56px 0 0 -56px;
+    overflow: hidden;
+    text-align: center;
+    .imgArea{
+      position: relative;
+      width:112px;
+      height:112px;
+      .simg{
+        width: 62px;
+        height: 72px;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top:50%;
+        margin:-36px 0 0 -31px;
+      }
+      .dimg{
+        display: block;
+        width:112px;
+        height:112px;
+      }
+    }
+  }
+  .tipContent{
+    font-size: 12px;
+    color: #444444;
+    text-align: center;
+    width: 100%;
+    position:absolute;
+    top:50%;
+    margin-top: 71px;
+  }
+  //大loadingb
+  &.bigLoding{
+    .info{
+      width:225px;
+      height:225px;
+      margin: -113px 0 0 -113px;
+      .imgArea{
+        width:225px;
+        height:225px;
+        .simg{
+          width: 124px;
+          height: 143px;
+          margin:-72px 0 0 -62px;
+        }
+        .dimg{
+          width:225px;
+          height:225px;
+        }
+      }
+    }
+    .tipContent{
+      font-size: 20px;
+      margin-top: 160px;
+    }
+  }
+  &.absolute{
+    position: absolute;
+    background: transparent;
+  }
+  &.dotLoading{
+    .info{
+      width: 80px;
+      height: 30px;
+      margin: -15px 0 0 -40px;
+      background: url("@{pic_url}common/loading.gif") no-repeat 0 0 transparent;
+    }
+    .imgArea{
+      display: none;
+    }
+    &.absolute{
+      background-color: rgba(255,255,255,0.5);
+    }
+  }
+}
+.noDataInfo{
+    text-align: center;
+    font-size: 16px;
+    padding: 100px 0;
+    i{
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background:url("@{pic_url}info.png");
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  }
+/*没有数据*/
+.noData{
+  text-align: center;
+  font-size: 12px;
+  padding: 100px 0;
+  color: #555555;
+  background-color: #fff;
+  border: 1px solid #eee;
+  .noDataImg{
+    height: 122px;
+    background: url("@{pic_url}common/noData.png") no-repeat scroll center 0 transparent;
+  }
+  .noDataTitle{
+    font-size: 30px;
+    font-family: "microsoft yahei";
+    font-weight: bold;
+    margin: 30px 0 15px;
+  }
+  .noDataTip{
+    font-size: 20px;
+    margin-bottom:30px;
+    .selectKey{
+      color:#ef8532;
+    }
+  }
+  .noDataBtn{
+    font-size: 14px;
+    .blueBtn,.yellowBtn{
+      color: #fff;
+      padding: 10px 15px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+    .blueBtn{
+      background-color: #6ba5ea;
+      &:hover{
+        background-color:#85baf9;
+        color: #fff;
+      }
+    }
+    .yellowBtn{
+      background-color: #ef8532;
+      &:hover{
+        background-color:#f99c54;
+        color: #fff;
+      }
+    }
+  }
+}
+
+
+.transition(@property;@delay) {
+  transition: @property @delay linear;
+  -moz-transition: @property @delay linear;
+  -webkit-transition: @property @delay linear;
+  -o-transition: @property @delay linear;
+}
+//模拟checkbox框
+.checkBox{
+  cursor: pointer;
+  background: url("@{pic_url}common/input.png") no-repeat scroll 0 -192px transparent;
+  padding-left: 23px;
+  &.active{
+    background-position: 0 -153px;
+  }
+}
+
+//按钮集合
+.searchBtn,.smallSearchBtn,.backBtn,.nextBtn .arrow{
+   background-image:url("@{pic_url}common/commonSpirt.png");
+   background-repeat: no-repeat;
+}
+.searchBtn{
+   cursor: pointer;
+   display: inline-block;
+   background-position: 42px 11px;
+   color: #ffffff;
+   background-color:#FF7F00;
+   height: 36px;
+   line-height: 36px;
+   padding: 0 44px 0 65px;
+   font-size: 16px;
+}
+.smallSearchBtn{
+  cursor: pointer;
+  display: inline-block;
+  background-position: 28px -28px;
+  color: #ffffff;
+  background-color:#FF7F00;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 30px 0 49px;
+  font-size: 16px;
+}
+.blueSmallBtn{
+  cursor: pointer;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  background-color:#5AA5F0;
+  color: #ffffff;
+  padding:0 15px;
+  border-radius: 2px;
+}
+.graySmallBtn{
+  cursor: pointer;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  background-color:#576B95;
+  color: #ffffff;
+  padding:0 15px;
+  border-radius: 2px;
+}
+.yellowSmallBtn{
+   cursor: pointer;
+   display: inline-block;
+   height: 24px;
+   line-height: 24px;
+   background-color:#FF7F00;
+   color: #ffffff;
+   padding:0 15px;
+   border-radius: 2px;
+}
+.yellowBtn{
+  display: inline-block;
+  background: #FF7F00;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 32px;
+  height: 32px;
+  padding: 0 20px;
+  cursor: pointer;
+  i{
+    font-family: simsun;
+    margin-left: 5px;
+  }
+  &:hover{
+    background-color:#fc9127;
+  }
+}
+.backBtn{
+  display: inline-block;
+  color: #ffffff;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  padding: 0 25px 0 45px;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color:#FF7F00;
+  background-position:18px -72px;
+  .transition(background-position;0.2s);
+  &:hover{
+    background-position:10px -72px;
+  }
+}
+.nextBtn{
+  display: inline-block;
+  color: #ffffff;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  padding: 0 45px 0 25px;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color:#FF7F00;
+  position: relative;
+  i.arrow{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 17px;
+    top:9px;
+    background-position:-45px -136px;
+    .transition(right;0.2s);
+  }
+  &:hover{
+    background-position:10px -72px;
+    .arrow{
+      right: 10px;
+    }
+  }
+}
+
+//阶段步骤样式
+.newStep{
+  position: relative;
+  height: 25px;
+  width: 1200px;
+  background: url('@{pic_url}common/stepModBj01.png') no-repeat scroll center 0 transparent;
+  .step{
+    position: absolute;
+    top:-7px;
+    text-align: center;
+    line-height: normal;
+    .ico{
+      display:inline-block;
+      width:18px;
+      height: 18px;
+      background: url('@{pic_url}common/stepModSpirt.png') no-repeat scroll -60px 0 transparent;
+    }
+    .text{
+      display: block;
+      color: #A1A1A1;
+    }
+    &.doing{
+       .ico{
+         background-position: -31px 0;
+       }
+       .text{
+         color: #444444;
+       }
+     }
+    &.done{
+      .ico{
+        background-position: 0 0;
+      }
+    }
+    &.step01{
+      left: 30%;
+    }
+    &.step02{
+      left: 50%;
+    }
+    &.step03{
+      left: 70%;
+    }
+  }
+}
+/*输入框的样式*/
+.inputCss {
+  border: 1px solid #ccc;
+  height: 32px;
+  line-height: 32px;
+  background-color: #fff;
+  padding: 0 12px !important;
+  display: inline-block;
+  font-size: 12px;
+  &.date {
+    background: url('@{pic_url}common/input.png') right 10px no-repeat #fff;
+  }
+}
+
+//动态机酒搜索模块通用样式
+.planAddHotelPannel{
+   .planPanner{
+     position: relative;
+     padding-left: 55px;
+     margin-bottom: 20px;
+     .flyIco{
+       position: absolute;
+       left: 10px;
+       top: 3px;
+       background-position: -5px -100px;
+       width: 26px;
+       height: 16px;
+     }
+   }
+   .ppline{
+     position: relative;
+     margin-bottom: 15px;
+     .inputCss{
+       float: left;
+       display: inline;
+       height: 25px;
+       line-height: 25px;
+       width:157px;
+     }
+     .changePosition{
+       cursor: pointer;
+       float: left;
+       background:url("@{pic_url}indexSpirt.png") no-repeat scroll -179px -568px transparent;
+       width: 20px;
+       height: 20px;
+       margin: 5px;
+       margin-bottom: 0;
+     }
+     .backDate,.hotelLeaveDate,.childSelcet{
+       margin-left: 30px;
+     }
+     .hotelCity{
+       width:344px;
+     }
+     .selectModel{
+       width:157px;
+       float: left;
+       display: inline;
+     }
+   }
+   .hotelPanner{
+     position: relative;
+     padding-left: 55px;
+     .hotelIco{
+       position: absolute;
+       left:15px;
+       top:4px;
+       background-position: -60px -100px;
+       width: 19px;
+       height: 18px;
+     }
+   }
+  .btnPanner{
+    position: relative;
+    margin-top: 20px;
+    text-align: right;
+    .searchBtn{
+      padding: 0 69px 0 90px;
+      border-radius: 3px;
+      background-position: 65px 11px;
+    }
+  }
+}
+.topNav.list{
+  .back{
+    color: #FFF;
+    padding-top: 10px;
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    // vertical-align: middle;
+  }
+  // background:transparent;
+}

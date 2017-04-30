@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>发布信息 - 闲置电子产品交易</title>
+    <meta name="keywords" content="发布信息">
+    <meta name="description" content="发布信息">
+    <link href="css/publish.css?_=1493558535658" rel="stylesheet">
+  </head>
+  <body>
+    <div class="mainContent">
+      <div class="topNav list">
+        <div class="tnContent">
+          <div class="tc02 clearfix">
+            <div class="productSearch clearfix">
+              <input class="searchInput" type="text" placeholder="请输入关键字查询"><a class="ls_btn searchBtn">搜索</a>
+            </div><a class="back">去首页</a>
+            <div class="signed"><a class="publish"> <i></i>发布闲置</a><a class="personLink"> <i></i>个人中心</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="publishWrap">
+        <label class="group required">类别</label>
+        <div class="selectModel"><span class="select">手机</span>
+          <ul class="downList" style="display: none;">
+            <li value="0">手机</li>
+            <li value="1">平板电脑</li>
+            <li value="2">笔记本</li>
+            <li value="3">摄影摄像</li>
+            <li value="4">智能数码</li>
+            <li value="5">家用电器</li>
+          </ul>
+          <input type="hidden" value="2" name="adtCount">
+        </div>
+        <div class="title inputWrap">
+          <label class="required"> <span>标题</span>
+            <input placeholder="类型品牌型号都是买家喜欢搜索的">
+          </label>
+        </div>
+        <div class="description inputWrap">
+          <label class="required"> <span>描述</span>
+            <textarea placeholder="描述一下你的闲置"></textarea>
+          </label>
+        </div>
+        <div class="price inputWrap">
+          <label class="required"> <span>价格</span>
+            <input placeholder="请填写正整数">
+          </label>
+        </div>
+        <div class="selectPic">
+          <label> <span>上传图片</span>
+            <input class="textfield" type="text" placeholder="请选择电脑图片上传">
+            <input class="btn" type="button" value="浏览...">
+            <input class="file" id="fileField" type="file" name="fileField" size="28" onchange="document.getElementById('textfield').value=this.value">
+          </label>
+        </div>
+        <div class="yellowBtn">发布</div>
+      </div>
+    </div>
+    <script src="libs/jquery-1.8.3.min.js?_=1493558535658" type="text/javascript"></script>
+    <script src="js/component.min.js?_=1493558535658" type="text/javascript"></script>
+  </body>
+</html>

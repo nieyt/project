@@ -1,0 +1,115 @@
+if info.IsDirect||info.IsStopOver&&!info.IsTransfer
+    .leaveArea
+        .leaveTop
+            .leaveCheck
+                if info.Direction == 1
+                    .labelGo 去程
+                    span 去程已选
+                else if info.Direction == 2
+                    .labelGo 返程
+                    span 返程已选
+                else if info.Direction == 0
+                    .labelGo 中程
+                    span 中间程已选
+            .destina
+                span #{productSegment.DepartureTravelCityName}
+                span.desIcon
+                span #{productSegment.DestinationTravelCityName}
+                - var startDate=(productSegment.DepartureTime).substring(0,10)
+                span #{startDate}
+            a.backBtn.flotBt 返回修改
+        .leaveBottom.clearfix
+            .flightNo
+                img(src="./images/logo.png")
+                .flyDescr #{airLineName}&nbsp;#{info.FlightNo}<br/>#{info.FlightStyle}
+            .flightInfor
+                .flightInforTop.clearfix
+                    .startDesti
+                        .Site #{productSegment.DepartureTravelCityName}
+                        .Port #{info.DepartureAirPort}#{info.StartTerminalName}
+                    .stateTime
+                        if  info.IsDirect
+                            .timeTop 直达
+                        else if info.IsStopOver
+                            .timeTop 经停
+                        .timeIcon
+                    .endDesti
+                        .Site #{productSegment.DestinationTravelCityName}
+                        .Port #{info.DestinationAirPort}#{info.EndTerminalName}
+                .flightInforBtm.clearfix
+                        //起飞时间处理
+                        - var startGo=info.DepartureTime
+                        - var startTime=startGo.substring(11,16)
+                        - var staticStartTime=startGo.slice(-8,-3)
+                        if startGo.indexOf("-") != -1
+                            .flyTime #{startTime}
+                        else
+                            .flyTime #{staticStartTime}
+                        .mid
+                        //到达时间处理
+                        - var endBack=info.DestinationTime
+                        - var endTime=endBack.substring(11,16)
+                        - var staticEndTime=endBack.slice(-8,-3)
+                        if endBack.indexOf("-") != -1
+                            .flyTime #{endTime}
+                        else
+                            .flyTime #{staticEndTime}
+
+            .flightRuler
+                .tank #{info.ShippingSpaceName}
+                a.rul(data-text=info.ExchangeRule) 退改签规则
+                if info.Quantity == ">9" || info.Quantity == "9" || info.Quantity>9
+                   .tickets(style="display:none")
+                else
+                   .tickets 剩#{info.Quantity}张
+            .flghtReset
+                span.resetIcon
+                span 重新选择
+else if info.IsTransfer
+    .leaveArea
+        .leaveTop
+            .leaveCheck
+                if info.Direction == 1
+                    .labelGo 去程
+                    span 去程已选
+                else if info.Direction == 2
+                    .labelGo 返程
+                    span 返程已选
+                else if info.Direction == 0
+                    .labelGo 中程
+                    span 中间程已选
+            .destina
+                span #{transFer1.StartCityName}
+                span.desIcon
+                span #{transFer2.EndCityName}
+                span #{goDate}
+            a.backBtn.flotBt 返回修改
+        .leaveBottom.clearfix
+            .flightNo
+                img(src="./images/logo.png")
+                .flyDescr 多航空公司 | 2个航班
+            .flightInfor
+                .flightInforTop.clearfix
+                    .startDesti
+                        .Site #{transFer1.StartCityName}
+                        .Port #{transFer1.StartAirportName}#{transFer1.StartTerminalName}
+                    .stateTime
+                        .timeTop 中转
+                        .timeIcon
+                    .endDesti
+                        .Site #{transFer2.EndCityName}
+                        .Port #{transFer2.EndAirportName}#{transFer2.EndTerminalName}
+                .flightInforBtm.clearfix
+                    .flyTime #{goTime}
+                    .mid
+                    .flyTime #{backTime}
+            .flightRuler
+                .tank #{info.ShippingSpaceName}
+                a.rul(data-text=info.ExchangeRule) 退改签规则
+                if info.Quantity == ">9" || info.Quantity == "9" || info.Quantity>9
+                    .tickets(style="display:none")
+                else
+                    .tickets 剩#{info.Quantity}张
+            .flghtReset
+                span.resetIcon
+                span 重新选择

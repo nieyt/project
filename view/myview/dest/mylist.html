@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>旅游度假 - 闲置电子产品交易</title>
+    <meta name="keywords" content="旅游度假">
+    <meta name="description" content="旅游度假服务">
+    <link href="css/travel.css?_=1493558535658" rel="stylesheet">
+  </head>
+  <body>
+    <div class="mainContent">
+      <div class="Container">
+        <div class="searchContain">
+          <div class="btnBg lt_place"><em class="location city" data-id="3"></em>
+            <div class="changeCity" id="ga_pcjindex_c"><span>出发</span><span></span></div>
+          </div>
+          <div class="btnBg">
+            <div class="planeHotel chioseType"><span></span><span>机+酒</span><span></span></div>
+            <div class="planAddHotelPop hideBox" id="indexSearchModel"></div>
+          </div>
+          <div class="btnBg small">
+            <div class="hotelMess" id="hotelMess">
+              <div class="hotMeal"></div><span></span>
+            </div>
+            <ul class="hideBox" id="productType">
+              <!--li 全部-->
+              <li>自由行</li>
+              <li>跟团游</li>
+              <li>酒店套餐</li>
+            </ul>
+          </div>
+          <input class="keyWord" type="text" placeholder="请输入目的地或关键字查询"><a class="smallSearchBtn floatBtn">搜索</a>
+          <div class="other">
+            <div class="localPlay"><span> </span><span>当地玩乐</span></div>
+            <div class="useCar"> <span> </span><span>用车</span></div>
+          </div>
+        </div>
+      </div>
+      <!--选择的内容-->
+      <div class="showBox">
+        <div class="clearAll"> 清除全部</div>
+      </div>
+      <div class="productContain clearfix"></div>
+      <div class="hotel_planContain clearfix">
+        <div class="freeArea">
+          <div class="picBg"></div>
+          <div class="fontArea">机票+酒店+X</div>
+        </div>
+        <div class="searchModel">
+          <div class="searchTop">
+            <div class="flyIcon"></div>
+            <div class="inputTop">
+              <input class="input goCity1 airCitySelect start1 searchInp" type="text" title="出发城市" placeholder="出发城市" name="AirStarCity1" autocomplete="off"><span class="changeIcon changePosition1 change"></span>
+              <input class="input leaveCity1 airCitySelect searchInp" type="text" title="到达城市" placeholder="到达城市" name="AirEndCity1" autocomplete="off">
+              <input class="inputCss date margGo timeStart" title="出发时间" type="text" placeholder="出发时间" name="checkInDate" autocomplete="off" id="margGo">
+              <input class="inputCss date margBack timeEnd" title="返程时间" type="text" placeholder="返程时间" name="checkOutDate" autocomplete="off" id="margBack">
+              <div class="selectModel slecMargAdt"><span class="select hei">2 成人</span>
+                <ul class="downList hideBox" style="display: none;">
+                  <li value="1">1 成人</li>
+                  <li value="1">2 成人</li>
+                  <li value="1">3 成人</li>
+                  <li value="1">4 成人</li>
+                  <li value="1">5 成人</li>
+                  <li value="1">6 成人</li>
+                  <li value="1">7 成人</li>
+                  <li value="1">8 成人</li>
+                  <li value="1">9 成人</li>
+                </ul>
+                <input type="hidden" value="2" name="adtCount">
+              </div>
+              <div class="selectModel slecMargChd"><span class="select hei">0 儿童(2-12岁)</span>
+                <ul class="downList hideBox" style="display: none;">
+                  <li value="1">0 儿童</li>
+                  <li value="1">1 儿童</li>
+                  <li value="1">2 儿童</li>
+                  <li value="1">3 儿童</li>
+                  <li value="1">4 儿童</li>
+                  <li value="1">5 儿童</li>
+                  <li value="1">6 儿童</li>
+                </ul>
+                <input type="hidden" value="2" name="childCount">
+              </div>
+            </div>
+          </div>
+          <div class="searchBottom">
+            <div class="hotelIcon"></div>
+            <div class="inputBottom">
+              <input class="inputCss cityName input city1 select_city1" type="text" title="城市名" placeholder="城市名" autocomplete="off" name="gw_city1" data-type="hotel1">
+              <input class="inputCss date margIn" title="入住日期" type="text" placeholder="入住日期" value="" id="margIn">
+              <input class="inputCss date margOut" title="退房日期" type="text" placeholder="退房日期" value="" id="margOut">
+              <!--.hotelPlus-->
+              <!--  b +-->
+              <!--  span.plusText 添加酒店(支持不同城市)  最多三个酒店-->
+            </div>
+          </div><a class="searchBtn flotRight" id="flotRight">搜索</a>
+        </div>
+      </div>
+      <div class="listContain clearfix">
+        <div class="filter">
+          <div class="welcome"><span>最受欢迎</span></div>
+          <div class="price"><span>价格</span><span class="priRan"></span></div>
+          <div class="priceRange">
+            <div>价格区间</div>
+            <div>
+              <input class="minPrice" type="text"><span class="step">-</span>
+              <input class="maxPrice" type="text">
+            </div>
+            <div class="sureBtn"><a class="blueSmallBtn">确定</a></div>
+            <div class="checkCont">
+              <div class="checkbox checkB"></div><span>只看促销优惠</span>
+            </div>
+          </div>
+          <div class="pagination">
+            <div class="pageNum"><span></span> /<span></span> 页</div>
+            <div id="prev"><span>上一页</span></div>
+            <div id="next"><span>下一页</span></div><a class="blueSmallBtn">确定</a>
+          </div>
+        </div>
+        <div id="pagerControls"></div>
+        <div class="noProduct" id="#noProduct"></div>
+      </div>
+    </div>
+    <script src="libs/jquery-1.8.3.min.js?_=1493558535658" type="text/javascript"></script>
+    <script src="js/list.min.js?_=1493558535658" type="text/javascript"></script>
+  </body>
+</html>

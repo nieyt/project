@@ -1,0 +1,27 @@
+{
+     "presets": ["react","es2015-loose","stage-0"],
+     "plugins": [
+      	"syntax-export-extensions",
+      	"babel-plugin-add-module-exports",
+        "react-html-attrs",
+        "transform-class-properties",
+        "transform-decorators-legacy",
+        "transform-runtime",
+        "transform-es3-property-literals",
+        "transform-es3-member-expression-literals",
+        ["import",
+          { "style": "css",
+            "libraryName": "antd-mobile"
+          }
+        ]
+      ],
+      "compact": false,
+	  "ignore":[
+        "jquery.js",
+        "jquery.min.js",
+        "angular.js",
+        "angular.min.js",
+        "bootstrap.js",
+        "bootstrap.min.js"
+    ]
+}

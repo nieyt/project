@@ -1,0 +1,514 @@
+div.datepicker {
+  position: relative;
+  font-size: 12px;
+  width: 196px;
+  height: 147px;
+  position: absolute;
+  cursor: default;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.datepickerContainer {
+  background: #121212;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.datepickerBorderT {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  right: 5px;
+  height: 5px;
+  background:#000;
+}
+.datepickerBorderB {
+  position: absolute;
+  left: 5px;
+  bottom: 0;
+  right: 5px;
+  height: 5px;
+  background:#000;
+}
+.datepickerBorderL {
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  top: 5px;
+  width: 5px;
+  background:#000;
+}
+.datepickerBorderR {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  top: 5px;
+  width: 5px;
+  background:#000;
+}
+.datepickerBorderTL {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background:#000;
+}
+.datepickerBorderTR {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height:5px;
+  background:#000;
+}
+.datepickerBorderBL {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background:#000;
+}
+.datepickerBorderBR {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 5px;
+  height: 5px;
+  background:#000;
+}
+.datepickerHidden {
+  display: none;
+}
+div.datepicker table {
+  border-collapse:collapse;
+}
+div.datepicker a {
+  color: #eee;
+  text-decoration: none;
+  cursor: default;
+  outline: none;
+}
+div.datepicker table td {
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+div.datepicker th {
+  text-align: center;
+  color: #666;
+  font-weight: normal;
+}
+div.datepicker tbody th {
+  text-align: left;
+}
+div.datepicker tbody a {
+  display: block;
+}
+.datepickerDays a {
+  width: 20px;
+  line-height: 16px;
+  height: 16px;
+  padding-right: 2px;
+}
+.datepickerYears a,
+.datepickerMonths a{
+  width: 44px;
+  line-height: 36px;
+  height: 36px;
+  text-align: center;
+}
+td.datepickerNotInMonth a {
+  color: #666;
+}
+tbody.datepickerDays td.datepickerSelected{
+  background: #136A9F;
+}
+tbody.datepickerDays td.datepickerNotInMonth.datepickerSelected {
+  background: #17384d;
+}
+tbody.datepickerYears td.datepickerSelected,
+tbody.datepickerMonths td.datepickerSelected{
+  background: #17384d;
+}
+div.datepicker a:hover,
+div.datepicker a:hover {
+  color: #88c5eb;
+}
+div.datepicker td.datepickerNotInMonth a:hover {
+  color: #fff;
+  background:#d4e9fe;
+}
+.datepickerSpace div {
+  width: 10px;
+}
+.datepickerGoNext a,
+.datepickerGoPrev a,
+.datepickerMonth a {
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+}
+.datepickerGoNext a {
+  float: right;
+  width: 20px;
+}
+.datepickerGoPrev a {
+  float: left;
+  width: 20px;
+}
+table.datepickerViewDays tbody.datepickerMonths,
+table.datepickerViewDays tbody.datepickerYears {
+  display: none;
+}
+table.datepickerViewMonths tbody.datepickerDays,
+table.datepickerViewMonths tbody.datepickerYears,
+table.datepickerViewMonths tr.datepickerDoW {
+  display: none;
+}
+table.datepickerViewYears tbody.datepickerDays,
+table.datepickerViewYears tbody.datepickerMonths,
+table.datepickerViewYears tr.datepickerDoW {
+  display: none;
+}
+td.datepickerDisabled a,
+td.datepickerDisabled.datepickerNotInMonth a{
+  color: #333;
+}
+td.datepickerDisabled a:hover {
+  color: #333;
+}
+td.datepickerSpecial a {
+  background: #700;
+}
+td.datepickerSpecial.datepickerSelected a {
+  background: #a00;
+}
+.datepickerMonths .monthsOrYear a,.datepickerYears .monthsOrYear a{
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+.datepickerMonths .monthsOrYear a.curMonth{
+  color: #FFF;
+  border-radius: 0;
+  background:#bfdefd ;
+}
+
+/*pc样式控制*/
+#pcDate{position: relative;min-height: 393px;}
+div.pcDate.w500{
+  width: 500px;
+  background: #FFF;
+}
+div.pcDate{
+  width: 300px;
+  background: #ffffff;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+div.w500.pcDate .datepickerViewDays td{
+  border:1px solid #D7D8DA;
+  width: 14%;
+}
+div.w500.pcDate .datepickerViewDays td.datepickerNotInMonth a{
+  color:#9e9b9b;
+}
+div.w500.pcDate .datepickerViewDays td .dateTxt{
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+div.pcDate .datepickerViewDays td{
+  background: #fbfbfb;
+  border:none;
+}
+
+div.pcDate .datepickerViewDays td a{
+  padding: 2px 0 5px 0;
+  text-align: center ;
+  color: #666;
+}
+tbody.datepickerDays td.workday a:hover{
+  color: #FFF;
+  border-radius: 0;
+  background:#ff7f00 ;
+}
+tbody.datepickerDays td.dateTxt a:hover .price,tbody.datepickerDays td.dateTxt a:hover .price .stock{
+  color: #FFF;
+}
+div.pcDate  tbody.datepickerDays td.datepickerSelected{
+  color: #FFF !important;
+  border-radius: 0;
+  background:#5AA5F0;
+}
+div.pcDate  tbody.datepickerDays td.datepickerSelected a{
+  color: #FFF;
+}
+div.pcDate  tbody.datepickerDays td.datepickerNotInMonth.datepickerSelected{
+  background-color: #d4e9fe;
+}
+div.pcDate  .datepickerSelected2{
+  border:1px solid #358BE1;
+}
+div.pcDate  .datepickerSelected2 a,div.pcDate  .datepickerSelected.last a,div.pcDate  .datepickerSelected.first a{
+  color: #FFF;
+  border-radius: 0;
+  background: #5AA5F0 ;
+}
+div.pcDate  .datepickerSelected2 a .price,div.pcDate  .datepickerSelected.last a .price,div.pcDate  .datepickerSelected.first a .price{
+  color: #FFF;
+}
+div.pcDate  .datepickerSelected2 a .stock,div.pcDate  .datepickerSelected.last a .stock,div.pcDate  .datepickerSelected.first a .stock{
+  color: #FFF;
+}
+div.pcDate  tbody.datepickerDays td.datepickerNotInMonth .price{
+  color: #d9d8d7;
+}
+.datepickerDisabled a:hover{
+  background-color: #fff!important;
+  color: #aaaaaa!important;
+  background: none ;
+  cursor: no-drop!important;
+}
+
+div.pcDate .datepickerGoPrev, div.pcDate .datepickerGoNext{
+}
+
+div.pcDate .price{
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  white-space: nowrap;
+  z-index: 0;
+  color: #FF794C;
+  font-weight: bold;
+}
+div.pcDate .price.dynamicPrice{
+  font-weight:normal;
+}
+div.pcDate .stock{
+  color: #666;
+  position: absolute;
+  left: 5px;
+  top: -28px;
+}
+div.pcDate .noPrice{
+  position: absolute;
+  left: 29px;
+  bottom:5px;
+}
+div.pcDate .stock em{
+  font-style: normal;
+}
+div.pcDate tbody.datepickerDays td.dateTxt a{
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+div.pcDate.priceDate.w500 .datepickerListTr{
+  width: 500px;
+  /*border: 1px solid #CCC;*/
+}
+div.pcDate.priceDate .datepickerContainer {
+  background-color: #ffffff;
+}
+div.pcDate.priceDate .datepickerContainer th{
+  border: none;
+  width: 40px;
+}
+div.pcDate.priceDate .datepickerMonth a span{
+  border: 1px #fff solid;
+  padding: 0 10px;
+  line-height: 19px;
+  cursor: pointer;
+  display: inline-block;
+}
+div.pcDate.priceDate .datepickerContainer th .week6{
+  color: #ff7f00;
+}
+div.pcDate.priceDate .datepckerMonthShow{
+  background: #5AA5F0;
+}
+div.pcDate.priceDate .datepckerMonthShow a{
+  padding: 3px 0;
+  width: auto;
+  font-size: 14px;
+  color: #FFF;
+  .myPrev,.myNext{
+    display: inline-block;
+    cursor: pointer;
+    width: 10px;
+    height: 11px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    background-image:url("images/calendar-arrow.png");
+    transition:opacity 0.3s ease;
+    -moz-transition:opacity 0.3s ease;
+    -webkit-transition:opacity 0.3s ease;
+    -ms-transition:opacity 0.3s ease;
+    -o-transition:opacity 0.3s ease;
+    &:hover{
+      opacity:1;
+      filter: alpha(opacity=99);
+      -moz-opacity:1;
+    }
+  }
+  .myPrev{
+    background-position: left top;
+  }
+  .myNext{
+    background-position: -10px top;
+  }
+}
+
+div.pcDate.priceDate .datepckerMonthShow .datepickerGoPrev,div.pcDate.priceDate .datepckerMonthShow .datepickerGoNext{
+  padding: 0 10px;
+}
+div.pcDate.priceWrap .datepickerViewDays td a{
+  position: relative;
+  width: 100%;
+  padding: 5px 0 15px 0;
+  text-align: right;
+  height: 50px;
+  *height: 33px!important;
+  cursor: pointer;
+}
+div.pcDate.priceWrap .datepickerViewDays{
+  border-bottom:1px solid #d7d8da;
+}
+//add by sunaixiang  价格日历改样式
+div.pcDate.priceWrap .datepickerSelected .price{
+  color:#fff;
+}
+.datepckertableBox.d_box_first .myNext,.datepckertableBox.d_box_last .myPrev{
+  display: none;
+}
+div.pcDate.priceWrap tbody.datepickerDays td.workday.datepickerSelected{
+}
+div.pcDate.priceWrap tbody.datepickerDays td.workday.datepickerSelected a:hover{
+  background-color:#5AA5F0;
+}
+div.pcDate.priceWrap tbody.datepickerDays td.workday a:hover .price{
+  color:#fff;
+}
+div.pcDate.priceWrap .datepickerContainer th .week6{
+  color: #ff7f00;
+}
+div.pcDate.priceWrap tbody th{
+  padding: 5px 0;
+  text-align: center;
+}
+div.pcDate.priceWrap table{
+  width:477px;
+  height: 100%;
+}
+div.priceWrap .datepickerGoPrev a{
+  width: 100%;height: auto;
+  text-align: left;
+}
+div.priceWrap .datepickerGoNext a{
+  width: 100%;height: auto;
+  text-align: right;
+}
+div.pcDate.priceWrap .datepickerContainer{
+  background-color: #fff;
+}
+div.pcDate.priceWrap .datepickerBorderT,div.pcDate.priceWrap .datepickerBorderB,div.pcDate.priceWrap .datepickerBorderL,div.pcDate.priceWrap .datepickerBorderR,div.pcDate.priceWrap .datepickerBorderTL,div.pcDate.priceWrap .datepickerBorderTR,div.pcDate.priceWrap .datepickerBorderBL,div.pcDate.priceWrap .datepickerBorderBR{
+  background:#fff;
+}
+//首页日历
+div.pcDate.priceDate{
+  border: 1px solid #CCC;
+  z-index: 9999;
+}
+div.pcDate.priceDate .datepickerDoW{
+  width: 300px;
+}
+div.pcDate.priceDate .datepickerDays a{
+  width: auto;
+  cursor: pointer;
+}
+div.pcDate.priceDate .datepickerDoW th{
+  padding:5px 0;
+  text-align: center;
+}
+div.pcDate.priceDate table{
+  width: 300px;
+  height: 100%;
+}
+div.pcDate.priceDate .datepickerBorderT,div.pcDate.priceDate .datepickerBorderB,div.pcDate.priceDate .datepickerBorderL,div.pcDate.priceDate .datepickerBorderR,div.pcDate.priceDate .datepickerBorderTL,div.pcDate.priceDate .datepickerBorderTR,div.pcDate.priceDate .datepickerBorderBL,div.pcDate.priceDate .datepickerBorderBR{
+  background:#fff;
+}
+div.pcDate.priceDate a{
+  color:#666666;
+  padding:2px 0 5px 0;
+  height: auto;
+  line-height: inherit;
+}
+div.pcDate.priceDate .datepickerNotInMonth a,div.pcDate.priceDate .datepickerDisabled a{
+  color:#ccc;
+}
+div.pcDate.priceDate .datepickerNotInMonth a{
+  color:#9e9b9b;
+}
+div.pcDate.priceDate .datepickerYears a,
+div.pcDate.priceDate .datepickerMonths a{
+  text-align: center;
+}
+div.pcDate.priceDate .datepickerMonths td{
+  width: 25%;
+}
+div.pcDate.priceDate .monthsOrYear{
+  padding: 22px 0;
+  vertical-align: top;
+  a{
+    height:45px;
+    line-height:45px;
+    font-size: 14px;
+    padding: 0;
+    &:hover{background: #bfdefd;;cursor: pointer;
+      color: #fff;}
+  }
+}
+
+//新增
+.datepicker .datepickerContainer .otherDo{
+  text-align: left;
+  border:1px solid #CCC;
+  border-top: 0 none;
+  background-color: #ffffff;
+  margin: 0 -6px;
+  padding: 2px 10px 5px;
+  position: relative;
+  overflow: hidden;
+  .clear{
+    padding: 3px 6px;
+    cursor: pointer;
+    display: inline;
+    float: left;
+    &:hover{
+      background-color:#ff7f00;
+      color: #fff;
+    }
+  }
+  .close{
+    float: right;
+    display: inline;
+    padding: 3px 6px;
+    cursor: pointer;
+    &:hover{
+      background-color:#ff7f00;
+      color: #fff;
+    }
+  }
+}
+.datepicker.w500 .datepickerContainer .otherDo{
+  display: none;
+}

@@ -1,0 +1,111 @@
+if HotelList && HotelList.length
+    - for(var i=0,il=HotelList.length;i<il;i++)
+        - var HotelListi=HotelList[i];
+        .hotelItem
+        .num #{i+1}
+        .item.mt10
+            .topInfo
+                img.previewPic(src=HotelListi.PicUrl)
+                .textIntroduction.clearfix
+                    .leftDetail
+                        h2 #{HotelListi.HotelName}
+                        if HotelListi.HotelStar
+                            div(class='star star'+HotelListi.HotelStar)
+                        .addressDetail(title=HotelListi.HotelAddress) #{HotelListi.HotelAddress}
+                        .introduceDetail(title=HotelListi.HotelDes) #{HotelListi.HotelDes}
+                        .group
+                            if HotelListi.WIFI
+                                span
+                                    i.wifi
+                                    | 免费WI-FI
+                            span
+                                i.food
+                                | 含早餐
+                            span
+                                i.park
+                                | 停车场
+                            span
+                                i.freeCancel
+                                | 免费取消
+                    .evaluation
+                        if HotelListi.RatingValue
+                            span.review 好极了
+                            span.score #{HotelListi.RatingValue}
+                            span.after /5
+                            .commentPic
+                                img(src=HotelListi.RatingUrl)
+                            .comment
+                                span #{HotelListi.RatingCount}
+                                | 条点评
+                        else
+                            .noComment 暂无评分
+
+            if HotelListi.RoomList && HotelListi.RoomList.length
+                .tableWrap(data-hotelid=HotelListi.HotelID)
+                    table.roomTypeWrap
+                        tr.header
+                            th.roomTypeCol 房型
+                            th.remarkCol
+                            th.foodCol 早餐
+                            th.bedTypeCol 床型
+                            th.netCol 宽带
+                            th.infoCol
+                            th.countCol 间数
+                            th.bedCountCol 加床
+                            th.differenceCol 差价
+                            th.checkCol
+                        - for(var j=0,jl=HotelListi.RoomList.length;j<jl;j++)
+                            - var RoomListj=HotelListi.RoomList[j]
+                                - for(var k=0,kl=RoomListj.Group.length;k<kl;k++)
+                                    tr(class=k===0&&k===kl-1&&j===jl-1?'first last':k===0&&k===kl-1?'first last lastItem':k===0?'first':k===kl-1&&j===jl-1?'last':k===kl-1?'last lastItem':'')
+                                        if k === 0
+                                            td(rowspan=RoomListj.Group.length,class=j === jl-1 ? 'roomTypeCol lastCol' : 'roomTypeCol')
+                                                img(src=RoomListj.PictureURL)
+                                                .description #{RoomListj.ResourceName}
+                                        td
+                                            if RoomListj.Group[k].RatePlanName
+                                                |#{RoomListj.Group[k].RatePlanName}
+                                        td
+                                            case RoomListj.Group[k].Breakfast
+                                                when 0
+                                                    | 无早
+                                                when 1
+                                                    | 单早
+                                                when 2
+                                                    | 双早
+                                        td #{RoomListj.Group[k].BedTypeName}大床
+                                        td
+                                            if RoomListj.Group[k].WIFI
+                                                | 免费WiFi
+                                            else
+                                                | 无WiFi
+                                        td
+                                            if RoomListj.Group[k].Quantity && RoomListj.Group[k].Quantity<4
+                                                .rest 剩#{RoomListj.Group[k].Quantity}间
+                                        td.selectCol
+                                            .selectModel
+                                                if RoomListj.Group[k].MaxBookingQuantity
+                                                    span.select(data-max=RoomListj.Group[k].MaxBookingQuantity,data-min=RoomListj.Group[k].MinBookingQuantity) #{BookingCount}
+                                                else
+                                                    span.select(data-max=RoomListj.Group[k].MaxBookingCount,data-min=RoomListj.Group[k].MinBookingCount) #{BookingCount}
+                                                input(type='hidden',value=BookingCount,name='roomCount')
+                                        td.bedCount
+                                            if RoomListj.Group[k].CanAddBed
+                                                | 可加床
+                                            else
+                                                | 不可加床
+                                        if RoomListj.Group[k].PriceInfoList
+                                            if RoomListj.Group[k].PriceInfoList[0].OriginalPrice * BookingCount >= Price
+                                                td.diff(data-price=RoomListj.Group[k].PriceInfoList[0].OriginalPrice) #{RoomListj.Group[k].PriceInfoList[0].OriginalPrice * BookingCount - Price}
+                                            else
+                                                td.diff.less(data-price=RoomListj.Group[k].PriceInfoList[0].OriginalPrice) #{Price - RoomListj.Group[k].PriceInfoList[0].OriginalPrice * BookingCount}
+                                        else
+                                            if RoomListj.Group[k].PriceDifference>=0
+                                                td.diff(data-price=RoomListj.Group[k].SalePrice) #{RoomListj.Group[k].PriceDifference}
+                                            else
+                                                td.diff.less(data-price=RoomListj.Group[k].SalePrice) #{-RoomListj.Group[k].PriceDifference}
+                                        td.checkCol
+                                            i(data-rid=RoomListj.Group[k].ResourceID,data-id=RoomListj.Group[k].ID,data-pid=RoomListj.Group[k].ProviderID,data-rateid=RoomListj.Group[k].RatePlanID,data-hotel)
+                .foldOrNot(data-hotelid=HotelListi.HotelID)
+                    .icon
+                    .foldText 展开房型

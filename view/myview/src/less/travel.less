@@ -1,0 +1,724 @@
+/**
+ * Created by Alan(000058) on 2017/03/09.
+ * Email: 1480801@qq.com
+ */
+@import "public/base";
+@import "public/common";
+@import "mod/mod-travel-component";
+@import "mod/mod-travel-list";
+// @import "mod/mod-travel-detail";
+@import "mod/mod-travel-index";
+@import "mod/mod-travel-ticket";
+body .layui-layer-dialog .layui-layer-content {
+  overflow: visible;
+  overflow-x: visible;
+  overflow-y: visible;
+}
+
+#boxContent {
+  position: relative
+}
+//选择城市弹框（头部点击搜索）
+.cityfrom1 {
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 999;
+  left: 10px;
+  top: 20px;
+  padding-bottom: 0;
+  font-size: 12px;
+  color: #666;
+}
+.cityfrom1 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: content-box;
+}
+.cityfrom1 .type {
+  background-color: #5aa5f0;
+}
+.cityfrom1 .type ul {
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  padding-left: 15px;
+}
+.cityfrom1 .type ul li {
+  background-color: #5aa5f0;
+  color: #fff;
+  float: left;
+  height: 28px;
+  line-height: 28px;
+  margin-top: 2px;
+  padding: 0 15px;
+  text-align: center;
+  width: auto;
+  cursor: pointer;
+}
+.cityfrom1 .type ul li.active {
+  background-color: #ffffff;
+  color: #000;
+}
+.cityfrom1 .tips {
+  background-color: #5aa5f0;
+  color: #fff;
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 5px;
+  padding: 0 10px;
+  position: relative;
+}
+.cityfrom1 .regional {
+  width: 440px;
+  display: block;
+  margin: 5px;
+}
+.cityfrom1 .regional .title {
+  min-height: 0;
+  width: auto;
+  margin: 5px 10px;
+  height: auto;
+  font-size: 12px;
+  background-color: transparent;
+  color: #666;
+  cursor: pointer;
+  background-image: none;
+}
+.cityfrom1 .regional .title ul {
+  height: 20px;
+  border-bottom: 2px #f1f1f1 solid;
+}
+.cityfrom1 .regional .title li {
+  float: left;
+  height: 16px;
+  line-height: 16px;
+  padding: 2px 9px;
+  text-align: center;
+  margin-right: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+.cityfrom1 .regional .title li:hover,
+.cityfrom1 .regional .title li.active {
+  border-bottom: 2px solid #5aa5f0;
+  color: #5aa5f0;
+}
+.cityfrom1 .regional .body {
+  padding: 0 10px;
+}
+.cityfrom1 .regional .body .city_body {
+  display: none;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+.cityfrom1 .regional .body .city_body ul {
+  width: 382px;
+  float: right;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.cityfrom1 .regional .body .city_body li {
+  display: block;
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+  padding: 4px 0 4px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 60px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #FFF;
+}
+.cityfrom1 .regional .body .city_body li:hover {
+  background-color: #eef2fb;
+  border: 1px solid #b0bbd2 !important;
+}
+.cityfrom1 .regional .body .city_body i {
+  background-color: #fc9c24;
+  color: #fff;
+  float: left;
+  font-style: normal;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  width: 15px;
+  margin: 6px 0 0 5px;
+}
+
+//选择城市弹框（出发城市）
+.cityfrom {
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 999;
+  left: 10px;
+  top: 20px;
+  padding-bottom: 0;
+  font-size: 12px;
+  color: #666;
+}
+.cityfrom * {
+  -webkit-box-sizing: border-box;
+  box-sizing: content-box;
+}
+.cityfrom .type {
+  background-color: #5aa5f0;
+}
+.cityfrom .type ul {
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  padding-left: 15px;
+}
+.cityfrom .type ul li {
+  background-color: #5aa5f0;
+  color: #fff;
+  float: left;
+  height: 28px;
+  line-height: 28px;
+  margin-top: 2px;
+  padding: 0 15px;
+  text-align: center;
+  width: auto;
+  cursor: pointer;
+}
+.cityfrom .type ul li.active {
+  background-color: #ffffff;
+  color: #000;
+}
+.cityfrom .tips {
+  background-color: #5aa5f0;
+  color: #fff;
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 5px;
+  padding: 0 10px;
+  position: relative;
+}
+.cityfrom .regional {
+  width: 440px;
+  display: block;
+  margin: 5px;
+}
+.cityfrom .regional .title {
+  min-height: 0;
+  width: auto;
+  margin: 5px 10px;
+  height: auto;
+  font-size: 12px;
+  background-color: transparent;
+  color: #666;
+  cursor: pointer;
+  background-image: none;
+}
+.cityfrom .regional .title ul {
+  height: 20px;
+  border-bottom: 2px #f1f1f1 solid;
+}
+.cityfrom .regional .title li {
+  float: left;
+  height: 16px;
+  line-height: 16px;
+  padding: 2px 9px;
+  text-align: center;
+  margin-right: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+.cityfrom .regional .title li:hover,
+.cityfrom .regional .title li.active {
+  border-bottom: 2px solid #5aa5f0;
+  color: #5aa5f0;
+}
+.cityfrom .regional .body {
+  padding: 0 10px;
+}
+.cityfrom .regional .body .city_body {
+  display: none;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+.cityfrom .regional .body .city_body ul {
+  width: 382px;
+  float: right;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.cityfrom .regional .body .city_body li {
+  display: block;
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+  padding: 4px 0 4px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 60px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #FFF;
+}
+.cityfrom .regional .body .city_body li:hover {
+  background-color: #eef2fb;
+  border: 1px solid #b0bbd2 !important;
+}
+.cityfrom .regional .body .city_body i {
+  background-color: #fc9c24;
+  color: #fff;
+  float: left;
+  font-style: normal;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  width: 15px;
+  margin: 6px 0 0 5px;
+}
+
+/*选择城市弹框（到达城市）*/
+.cityPanel {
+  background-color: #FFF;
+  border: 1px solid #CCCCCC;
+  overflow-y: auto;
+  position: absolute;
+  left: 0;
+  top: 60px;
+  z-index: 99999;
+  font-size: 12px;
+}
+.cityPanel ul li {
+  cursor: pointer;
+  line-height: 16px;
+  padding: 5px 8px;
+}
+.cityPanel ul li.select {
+  background-color: #96d2ff;
+}
+.cityPanel ul.clearfix {
+  height: 22px;
+}
+.cityPanel .tips {
+  background-color: #FFF;
+  color: #CCC;
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 5px;
+  padding: 0 10px;
+  position: relative;
+}
+.cityPanel .type {
+  background-color: #5aa5f0;
+}
+.cityPanel .type ul {
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  padding-left: 15px;
+}
+.cityPanel .type ul li {
+  background-color: #5aa5f0;
+  color: #fff;
+  float: left;
+  height: 28px;
+  line-height: 28px;
+  margin-top: 2px;
+  padding: 0 15px;
+  text-align: center;
+  width: auto;
+}
+.cityPanel .type ul li.active {
+  background-color: #ffffff;
+  color: #000;
+}
+.cityPanel .regional {
+  width: 404px;
+}
+.cityPanel .regional .title {
+  height: 20px;
+  margin: 8px 10px;
+}
+.cityPanel .regional .title li {
+  float: left;
+  height: 24px;
+  line-height: 16px;
+  padding: 2px 9px;
+  text-align: center;
+  border-bottom: 2px solid #f1f1f1;
+}
+.cityPanel .regional .title li:hover,
+.cityPanel .regional .title li.active {
+  border-bottom: 2px solid #5aa5f0;
+  color: #5aa5f0;
+}
+.cityPanel .regional .titleBorder li {
+  border-bottom: 2px #f1f1f1 solid;
+}
+.cityPanel .regional .body {
+  padding: 0 10px;
+}
+.cityPanel .regional .body .city_body {
+  display: none;
+  float: left;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+}
+.cityPanel .regional .body .city_body li {
+  border: 1px solid #FFF;
+  display: block;
+  float: left;
+  overflow: hidden;
+  padding: 4px 0 4px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 64px;
+  text-align: center;
+}
+.cityPanel .regional .body .city_body li:hover {
+  background-color: #eef2fb;
+  border: 1px solid #b0bbd2 !important;
+}
+/*
+
+.cityPanel {
+  position: absolute;
+  z-index: 999;
+  width: 540px;
+  height: 228px;
+  background: #000 \9;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.20);
+  border-radius: 4px;
+  color: #fff;
+  ins {
+    position: absolute;
+    top: -8px;
+    left: 15px;
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #000 \9;
+    border-bottom: 8px solid rgba(0, 0, 0, 0.75);
+  }
+  .tabPanel {
+    overflow: hidden;
+    div {
+      float: left;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      padding: 0 30px;
+      cursor: pointer;
+      &.cur {
+        background-color: #FDD4AB;
+        color: #000;
+      }
+    }
+  }
+}
+
+.cityPanel {
+  ul {
+    li {
+      cursor: pointer;
+    }
+  }
+}
+
+.cityPanel .tips {
+  background-color: #5aa5f0;
+  color: #fff;
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 5px;
+  padding: 0 10px;
+  position: relative;
+}
+
+.cityPanel .type {
+  background-color: #5aa5f0;
+}
+
+.cityPanel .type ul {
+  height: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.cityPanel .type ul li {
+  background-color: #5aa5f0;
+  color: #fff;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 0;
+  text-align: center;
+  width: 50%
+}
+
+.cityPanel .type ul li.active {
+  background-color: #f8f8f8;
+  color: #000;
+}
+
+.cityPanel .regional {
+  display: block;
+}
+
+.cityPanel .regional .title {
+  height: 24px;
+  margin-top: 15px;
+}
+
+.cityPanel .regional .title li {
+  float: left;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  padding: 0 17px;
+  border-bottom: 1px solid #fff;
+}
+
+.cityPanel .regional .title li:hover, .cityPanel .regional .title li.active {
+  border-bottom: 2px solid @FF7F00;
+  color: @FF7F00;
+}
+
+.cityPanel .regional .body {
+  overflow: hidden;
+}
+
+.cityPanel .city_body {
+  display: none;
+  margin-top: 2px;
+  max-height: 130px;
+  overflow-y: auto;
+  ul {
+    overflow: hidden;
+    li {
+      display: inline-block;
+      float: left;
+      width: 80px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      &.cur, &:hover {
+        background-color: #FDD4AB;
+        color: #000;
+      }
+    }
+  }
+}
+
+.autoComplete {
+  position: absolute;
+  background: #000 \9;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.20);
+  border-radius: 4px;
+  z-index: 10;
+  width: 371px;
+  max-height: 400px;
+  color: #fff;
+  ins {
+    position: absolute;
+    top: -8px;
+    left: 15px;
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #000 \9;
+    border-bottom: 8px solid rgba(0, 0, 0, 0.75);
+  }
+  .groups {
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 349px;
+    margin-top: 10px;
+    border-top: 1px solid #7F8389;
+    div {
+      margin: 8px 0;
+      padding: 0 20px;
+      overflow: hidden
+    }
+    p {
+      text-align: center;
+      padding: 15px
+    }
+    span {
+      float: left;
+      max-width: 220px;
+      display: inline-block;
+      line-height: 26px;
+      cursor: pointer;
+      padding: 0 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .cur span, span:hover {
+      background-color: #FDD4AB;
+      color: #000;
+    }
+  }
+  .line {
+    border-bottom: 1px solid #7F8389;
+  }
+  .group {
+    position: relative;
+    sub {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      line-height: 26px;
+      i {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        vertical-align: middle;
+        margin-left: 3px;
+      }
+      .icon_Inland {
+        background: url("@{pic_url}icon_Inland.png") no-repeat;
+      }
+      .icon_Foreign {
+        background: url("@{pic_url}icon_Foreign.png") no-repeat;
+      }
+    }
+  }
+  .autoCompleteInfo {
+    height: 36px;
+    line-height: 36px;
+    border-top: 1px solid #7F8389;
+    color: #FAD3AC;
+    padding: 0 24px;
+    overflow: hidden;
+  }
+}
+
+.autoCompleteInfo {
+  span {
+    float: left;
+    display: inline-block;
+    width: 283px;
+    em {
+      float: left;
+      max-width: 56px;
+    }
+  }
+  .closeAuto {
+    float: left;
+    display: inline-block;
+    width: 40px;
+    color: @FF7F00;
+    cursor: pointer;
+    i {
+      display: inline-block;
+      padding-left: 5px;
+      font-size: 14px;
+    }
+  }
+}
+
+.hotelHistory {
+  h3 {
+    font-size: 18px;
+  }
+  .hisContent {
+    li {
+      float: left;
+      width: 100%;
+      background: #fff;
+      border: 1px solid #DCE0E0;
+      overflow: hidden;
+      padding: 15px;
+      margin-top: 10px;
+      &:hover {
+        border-color: @FF7F00;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.20);
+      }
+    }
+
+    .hisPic {
+      float: left;
+      width: 80px;
+      height: 70px;
+      img {
+        width: 80px;
+        height: 70px;
+        border: 0;
+      }
+    }
+    .hisInfo {
+      float: left;
+      width: 169px;
+      margin-left: 9px;
+      color: #000;
+      line-height: 18px;
+      font-size: 14px;
+      a {
+        display: block;
+      }
+      .star {
+        width: 60px;
+        height: 12px;
+      }
+    }
+    p {
+      text-align: center;
+      padding: 10px 0;
+    }
+  }
+}
+
+.hotelMap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.map-mark {
+  padding-left: 3px;
+  overflow: hidden;
+  .map-mark-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 101;
+    width: 23px;
+    height: 30px;
+    display: block
+  }
+  .map-mark-content {
+    padding-left: 22px;
+    padding-right: 10px;
+    position: relative;
+    z-index: 100;
+    white-space: nowrap;
+    background-color: #fff;
+    border: 1px solid #ff7f00;
+    border-radius: 18px;
+    height: 20px;
+    line-height: 19px;
+    overflow: hidden
+  }
+}*/

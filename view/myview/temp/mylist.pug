@@ -1,0 +1,128 @@
+extends ../src/template/pageDefault.pug
+block vars
+  - var config = {title:"旅游度假", body:{cls:""},keywords:'旅游度假',description:'旅游度假服务'}
+block css
+  link(href='css/travel.css',rel='stylesheet')
+//- 页面主体内容
+block mainContent
+  .Container
+    .searchContain
+      .btnBg.lt_place
+        em.location.city(data-id='3')
+        .changeCity(id='ga_pcjindex_c')
+           span 出发
+           span
+      .btnBg
+        .planeHotel.chioseType
+            span
+            span 机+酒
+            span
+        //-动态机酒弹框
+        #indexSearchModel.planAddHotelPop.hideBox
+            //- include src/template/planAddHotel.pug
+      .btnBg.small
+        .hotelMess(id='hotelMess')
+            .hotMeal
+            span
+        ul(id='productType' class='hideBox')
+            //li 全部
+            li 自由行
+            li 跟团游
+            li 酒店套餐
+      input(type='text', placeholder='请输入目的地或关键字查询',class='keyWord')
+      a.smallSearchBtn.floatBtn 搜索
+      .other
+        .localPlay
+           span 
+           span 当地玩乐
+        .useCar 
+           span 
+           span 用车
+
+  //选择的内容
+  .showBox
+    .clearAll  清除全部
+  .productContain.clearfix
+  .hotel_planContain.clearfix
+    .freeArea
+      .picBg
+      .fontArea 机票+酒店+X
+    .searchModel
+      .searchTop
+        .flyIcon
+        .inputTop
+            input(type='text', title='出发城市', placeholder='出发城市' class="input goCity1 airCitySelect start1 searchInp" name="AirStarCity1" autocomplete="off")
+            span.changeIcon.changePosition1.change
+            input(type='text', title='到达城市', placeholder='到达城市' class="input leaveCity1 airCitySelect searchInp" name="AirEndCity1" autocomplete="off")
+            input.inputCss.date.margGo.timeStart(title='出发时间', type='text', placeholder='出发时间',name='checkInDate',autocomplete="off" ,id='margGo' )
+            input.inputCss.date.margBack.timeEnd(title='返程时间', type='text', placeholder='返程时间',name='checkOutDate',autocomplete="off" ,id='margBack' )
+            .selectModel.slecMargAdt
+              span.select.hei 2 成人
+              ul.downList.hideBox(style='display: none;')
+                li(value='1') 1 成人
+                li(value='1') 2 成人
+                li(value='1') 3 成人
+                li(value='1') 4 成人
+                li(value='1') 5 成人
+                li(value='1') 6 成人
+                li(value='1') 7 成人
+                li(value='1') 8 成人
+                li(value='1') 9 成人
+              input(type='hidden',value='2',name='adtCount')
+            .selectModel.slecMargChd
+              span.select.hei 0 儿童(2-12岁)
+              ul.downList.hideBox(style='display: none;')
+                li(value='1') 0 儿童
+                li(value='1') 1 儿童
+                li(value='1') 2 儿童
+                li(value='1') 3 儿童
+                li(value='1') 4 儿童
+                li(value='1') 5 儿童
+                li(value='1') 6 儿童
+              input(type='hidden',value='2',name='childCount')
+      .searchBottom
+        .hotelIcon
+        .inputBottom
+            input.inputCss.cityName(type='text', title='城市名', placeholder='城市名',class="input city1 select_city1", autocomplete="off", name="gw_city1", data-type="hotel1" )
+            input.inputCss.date.margIn(title='入住日期', type='text', placeholder='入住日期', value='' ,id='margIn')
+            input.inputCss.date.margOut(title='退房日期', type='text', placeholder='退房日期', value='',id='margOut')
+            //.hotelPlus
+            //  b +
+            //  span.plusText 添加酒店(支持不同城市)  最多三个酒店
+      a.searchBtn.flotRight(id='flotRight') 搜索
+  .listContain.clearfix
+    .filter
+      div.welcome
+        span 最受欢迎
+      div.price
+        span 价格
+        span.priRan
+      .priceRange
+        div 价格区间
+        div
+          input(type='text' class = 'minPrice')
+          span.step
+            | -
+          input(type='text' class = 'maxPrice')
+        div.sureBtn
+          a.blueSmallBtn 确定
+        .checkCont
+          .checkbox.checkB
+          span 只看促销优惠
+      .pagination
+        .pageNum
+          span
+          |  /
+          span
+          |  页
+        #prev
+          span 上一页
+        #next
+          span 下一页
+        a.blueSmallBtn 确定
+    #pagerControls
+    .noProduct(id="#noProduct")
+//-页面使用到的js
+block js
+  script(src='js/list.min.js',type='text/javascript')
+    

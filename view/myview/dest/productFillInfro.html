@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>产品详情页 - 中国东方航空</title>
+    <meta name="keywords" content="产品详情页">
+    <meta name="description" content="产品详情页">
+    <link rel="stylesheet" type="text/css" href="oldTravelAsset/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="oldTravelAsset/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="oldTravelAsset/css/Reservation.min.css"/>
+    <!--[if IE 7]> <link rel="stylesheet" type="text/css" media="all" href="oldTravelAsset/css/ie7.min.css" /><![endif]-->
+</head>
+<body data-page="productFillInfro">
+<!--身体 开始-->
+<div class="bodyer">
+    <!--订单步骤及提示 开始-->
+    <div id="orderHead">
+        <div class="newStep">
+            <div class="step step01 done"><i class="ico"></i><span class="text">选择资源 </span></div>
+            <div class="step step02 doing"><i class="ico"></i><span class="text">填写订单</span></div>
+            <div class="step step03"><i class="ico"></i><span class="text">提交订单</span></div>
+        </div>
+    </div>
+    <!--订单步骤及提示 结束-->
+    <!--订单信息 开始-->
+    <div class="orderInfromation">
+        <!--<h1 class="headTitle" ><a class="backModifyBtn" id="backModifyBtn"><span class="text"><i id="ga_fill_fhxg" class="type modify">返回修改</i></span></a></h1>-->
+        <div id="orderInfor" style="position: relative;min-height: 290px;">
+            <!--<dl id="orderDetail" class="orderTableDl" style="display: none">-->
+            <!--<dt><span class="orderTitle" id="orderTitle"></span><a id="ga_fill_ddxq" class="downArrow"></a></dt>-->
+            <!--<dd class="productInfor" id="productInfor" style="display: none">-->
+            <!--</dd>-->
+            <!--</dl>-->
+            <div class="hotelDescription orderTableDl" id="orderDetail">
+                <i class="hotelIcon"></i>
+                <p id="orderTitle"></p>
+                <a href="javascript:void(0)" class="backBtn" id="backModifyBtn">返回修改</a>
+            </div>
+            <div class="productInfor" id="productInfor" style="display: none"></div>
+            <div id="ga_fill_ddxq" class="downArrow"></div>
+            <div class="otherOrderInfor" id="otherOrderInfor" style="display: none">
+                <!--套餐统计 开始-->
+                <div class="packageCount" id="packageCount">
+                </div>
+                <!--套餐统计 结束-->
+                <div class="ooi_contatin">
+                    <!--填写旅客信息 开始-->
+                    <dl class="orderTableDl" id="passengerInfor">
+                        <dt><span class="orderTitle">填写旅客信息</span></dt>
+                        <dd class="passenger" id="passenger">
+                        </dd>
+                        <dd class="passengerInput" id="passengerInput">
+                            <div id="otherPassenger">
+                            </div>
+                            <input type="hidden" value="1" name="choisePassenger">
+                        </dd>
+                        <dd class="specialReminder">
+                            <h1 class="title"><b>特别提醒</b></h1>
+                            <ul class="detail">
+                                <li>·为了您能顺利出行，请务必确认所填姓名、性别与所持证件一致。</li>
+                                <li>·为了您能顺利出行，请确保旅行结束日期至少比证件有效期早6个月，并准确填写真实、有效的证件号码，订单提交后将无法进行修改。</li>
+                                <li>·多位旅客去情况下，请至少输入一位出行旅客的手机号码</li>
+                                <li>·儿童年龄以最晚航班起飞日期为准</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <!--填写旅客信息 结束-->
+                    <!--门票使用人 开始-->
+                    <div id="ticketUsers">
+                    </div>
+                    <!--门票使用人 结束-->
+                    <!--填写联系人信息 开始-->
+                    <dl class="orderTableDl mt10" id="passengerInput02">
+                        <dt><span class="orderTitle">填写联系人信息</span></dt>
+                        <dd class="passenger" id="passenger02">
+                        </dd>
+                        <dd class="passengerInput">
+                            <div class="passengerForm">
+                                <!--<span class="p_number">1</span>-->
+                                <form class="contactForm">
+                                    <table class="inputFormTb">
+                                        <tr>
+                                            <td class="name">联系人姓名<i class="required">*</i></td>
+                                            <td>
+                                                <!--<input type="text" class="inputCss name validate" maxlength="26" name="name" errorTip="请输入2~26个字符的中文或拼音" validateType="isName3">-->
+                                                <div class="basefix nameMo"><input type="text" class="inputCss en_name02 validate" placeholder="姓" name="en_name02" maxlength="26" errortip="请输入2~26个字符中文或拼音" validatetype="isName3"><input type="text" class="inputCss en_name01 validate" placeholder="名" name="en_name01" maxlength="26" errortip="请输入2~26个字符中文或拼音" validatetype="isName3"></div>
+                                            </td>
+                                            <td class="name" align="center">邮箱<i class="required">*</i></td>
+                                            <td>
+                                                <input type="text" class="inputCss email validate" name="email" errorTip="请填写正确格式的邮箱" validateType="isEmail">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="name">手机号码<i class="required">*</i></td>
+                                            <td>
+                                                <input type="text" class="inputCss mobilePhone validate" name="mobilePhone" errorTip="请输入11位手机号码" validateType="isMobile">
+                                            </td>
+                                            <td class="name" align="center"></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="name">备注</td>
+                                            <td colspan="2">
+                                                <textarea class="Remarks" id="Remarks" maxlength="50" name="Remarks" placeholder="您还有什么需求？（限制50个字）"></textarea>
+                                            </td>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                        </dd>
+                        <dd class="specialReminder">
+                            <div class="billcheck"><span class="name">发票</span> <label class="needInvoice"><input type="checkbox" autocomplete="off" name="rate" value="1" /><span>&nbsp;需要发票</span></label><em class="tooptip" data-trigger="hover" id="tooptip-Invoice" data-class="newStyle" data-place="top" data-bottom="52px" data-left="96px" data-width="300px" data-text="<h3><b>关于金额：</b><p>发票金额按订单实际支付金额开具(仅支持现金部分，积分及优惠部分不支持开具发票)</p></h3><h3><b>关于递送：</b></h3><p>发票将于行程完成后当月开具，3个月内完成递送</p><h3><b>关于补开：</b></h3><p>如您下单后要求补开发票，最晚可于行程完成后2天内提出</p><h3><b>关于行程单：</b></h3><p>本产品为打包售卖的产品，不单独提供某一资源的发票（包括机票行程单），仅以开具整单金额的增值税普通发票为唯一可报销凭证</p><p>如有任何问题，建议咨询客服热线95530-1-6</p>"></em></div>
+                            <form class="billCheckFrom">
+                                <div id="billcheckBox" style="display: none">
+                                    <table class="inputFormTb">
+                                        <tr>
+                                            <td class="name">发票抬头<i class="required">*</i></td>
+                                            <td>
+                                                <input type="text" class="inputCss invoiceTitle validate" name="invoiceTitle" placeholder="请以个人/公司名称作为发票抬头" errorTip="请正确填写发票个人/公司名称抬头" validateType="isInvoice">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="name">发票类型<i class="required">*</i></td>
+                                            <td>
+                                                <div class="selectModel billTypeSelect" style="z-index:12;width:250px;"><span class="select">旅游费</span> <ul class="downList"> <li value="1">旅游费</li><li value="2">代订住宿费</li><li value="3">代订机票住宿费</li></ul> <input type="hidden" value="1" name="billType"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="name">详细信息<i class="required">*</i></td>
+                                            <td>
+                                                <div class="basefix">
+                                                    <input type="text" class="inputCss recepterNmae validate" name="recepterNmae" placeholder="收件人姓名" errorTip="请输入2~26个字符的中文或拼音" validateType="isName3">
+                                                    <input type="text" class="inputCss recepterPhone validate" name="recepterPhone" placeholder="手机号（非常重要）" errorTip="请输入11位手机号码" validateType="isMobile">
+                                                </div>
+                                                <div class="basefix mt20">
+                                                    <input type="text" class="inputCss recpterAddress validate" name="recpterAddress" placeholder="收件人详细地址" errorTip="请输入正确的收件人详细地址" validateType="isAddress"><input type="text" class="inputCss postcode validate" name="postcode" placeholder="邮编" errorTip="请输入正确的邮编" validateType="isPostCode">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </form>
+                        </dd>
+                    </dl>
+                    <!--填写联系人信息 结束-->
+                    <!--优惠信息 开始-->
+                    <dl class="preferentialInformation orderTableDl  mt10" id="preInfor"></dl>
+                    <!--优惠信息  结束-->
+                    <!--积分优惠 开始-->
+                    <dl class="preferentialInformation orderTableDl  mt10" id="integralPreInfor"></dl>
+                    <!--积分优惠  结束-->
+                    <!--统计价格下一步 开始-->
+                    <div class="lastStep mt30 clearfix">
+                        <span id="backJF" class="backJF"></span>
+                        <a class="nextBtnOrder" id="ga_fill_xyb">去支付<i class="arrow"></i></a>
+                        <span class="totalNext" id="totalPrice"></span>
+                        <div id="isStagesMod" class="isStagesMod"></div>
+                    </div>
+                    <!--统计价格下一步 结束-->
+                    <!--预定须知 开始-->
+                    <div class="orderKnow mt20">
+                        <h1 class="ok_title"><label class="needInvoice"><input type="checkbox" name="rate" value="1"><span>&nbsp;我已阅读并同意</span></label>&nbsp;&nbsp;<span id="agreeKnow">《东航旅游度假以及附加产品预订须知》</span></h1>
+                        <div class="ok_detail" style="display: none;height:300px;overflow: auto;">
+                            <h1 class="yellow">服务说明</h1>
+                            <p class="yellow">
+                                中国东方航空股份有限公司及所属东方航空官网和APP（以下简称东方航空）是将有资质的旅游服务项目提供商信息汇集于东方航空官网和APP等相关平台供用户查阅的互联网信息服务提供商，同时帮助用户通过互联网与上述具有资质的旅游服务商联系并预订相关旅游服务项目。对用户预订的旅游服务项目中出现的瑕疵等问题，并不承担责任，东方航空将尽力协助用户与相关旅游服务项目提供商进行协商，不能协商解决的，用户可以向消费者协会投诉或通过法律途径解决。
+                                <br>1、旅游者报名参加出境旅游，应当自行确保已持有目的地国家/地区的有效签证/签注，并应与目的地国家使（领）馆或有关机关确认所<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执签证/签注符合出入境条件，如因签证/签注事宜造成未能出行的相关损失应由旅游者承担。
+                                <br>2、若您持港澳台护照入境中国大陆地区，请务必在出行时携带有效的回乡证或台胞证原件，以确保您能正常出入境。若您持外籍护照，<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请务必有有效的回中国签证，以确保您能正常再次入境。
+                                <br>3、自助游产品均为即时计价，请以我方最终确认价格为准。
+                                <br>4、我司收到您确认购买的订单后，实际仍需由我司向旅游服务商提出订位需求并经回覆后方可确认预订是否成功，在此期间我司无法担<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保预订成功，本产品预订成功信息请以我司与您所作二次确认为准。
+                                <BR>5、若您预订的机票是团队机票，存在航班调整的可能（包括航空公司、起飞时间的变化），故最终航班情况以出票时的具体信息为准，<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;团队机票一经开出，不得签转退票。
+                                <br>6、酒店价格为团队优惠房价，一经成交无法退订。若因游客方原因无法出行，需游客自行承担相应损失。
+                                <br>7、按照国际惯例，酒店须在14：00后方能办理入住，在12：00之前办理退房手续。
+                                <br>8、床型以酒店视当天房态安排，以最终确认为准。
+                                <br><b>Tips：我司可能将不定期依据不同销售渠道、特定促销活动、清仓、企业同盟、异业合作等等因素进行营销特惠活动，因此并不保证相同产品的旅客售价皆保持一致，请以您购买下单时公布的价格及活动为准。</b>
+                            </p>
+                            <h1 style="margin-top:12px">退票说明</h1>
+                            <p>1、由于本特价产品均为打包整体销售，因此若您因自身原因未能出行的则视为自动放弃，我司将无法退费用予您，希望您能够谅解。</p>
+                            <p>2、如遇天气、战争、罢工、地震等人力不可抗力因素无法成行，我司将按照相关规定，退还相应费用，但赠送项目费用不退。</p>
+                            <h1 style="margin-top:12px">补退费说明</h1>
+                            <p>1、如遇航空公司政策性调整机票价格，请按规定补交差价。机票价格为团队机票，不得改签换人退票。</p>
+                            <p>2、如果旅游目的地国家政策性调整门票或其他相关价格，请按规定补交差价。</p>
+                            <p>3、游客入住酒店后如有升级、更换房型或加床等需求，需补交相关的房差费用。</p>
+                            <p>4、如确认产品预订不成功，则我司将依您原付款路径全额退款。</p>
+                        </div>
+                    </div>
+                    <!--预定须知  结束-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--订单信息 结束-->
+</div>
+<!--身体 结束-->
+<script src="oldTravelAsset/js/libs/require.js" data-main = "oldTravelAsset/js/common.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+.filterItem(key='Price')
+    span.itemLabel 价格
+    ul.itemSub.checkboxGroup
+        li.not.checked  不限
+            li.checkbox(data-value="0-149") ￥150以下
+            li.checkbox(data-value="150-300") ￥150-300
+            li.checkbox(data-value="301-450") ￥301-450
+            li.checkbox(data-value="451-600") ￥451-600
+            li.checkbox(data-value="600-") ￥600以上
+        li.customPrice
+            span.diy 自定义
+            span
+                input(type='text',name='min')
+            span.sto -
+            span
+                input(type='text',name='max')
+            span.confirm 确认
+            span.cancel 取消
+.filterItem(key='Star')
+    span.itemLabel 星级
+    ul.itemSub.checkboxGroup
+        li.not.checked  不限
+        - for(var i=0,len=StarList.length;i<len;i++)
+            li.checkbox(data-value=StarList[i])
+                case StarList[i]
+                    when 1
+                        |一星级
+                    when 2
+                        |二星级
+                    when 3
+                        |三星级
+                    when 4
+                        |四星级
+                    when 5
+                        |五星级
+.filterItem.last(key='Brand')
+    span.itemLabel 品牌
+    ul.itemSub.tabGroup
+        li.not.checked 不限
+        - for(var i=0,len=BrandLevels.length;i<len;i++)
+            li(data-value=BrandLevels[i].LevelID)
+                case BrandLevels[i].LevelID
+                    when 1
+                        |经济型酒店
+                    when 2
+                        |高端连锁
+                    when 3
+                        |其他品牌
+                i
+    .tabItems.brandWrap
+        - for(var i=0,len=BrandLevels.length;i<len;i++)
+            .itemsWrap.clearfix
+                if BrandLevels[i].BrandList
+                    ul(class=i===0?'itemSub checkboxGroup tabItem show':'itemSub checkboxGroup tabItem')
+                        - for(var j=0,lenj=BrandLevels[i].BrandList.length;j<lenj;j++)
+                            li.checkbox(data-value=BrandLevels[i].BrandList[j].BrandID,title=BrandLevels[i].BrandList[j].BrandName_CN) #{BrandLevels[i].BrandList[j].BrandName_CN}
+                    span.moreBrand 更多

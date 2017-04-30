@@ -1,0 +1,31 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "errorhandler": "^1.4.3",
+    "express": "^4.14.0",
+    "express-generator": "^4.13.4",
+    "express-session": "^1.14.1",
+    "method-override": "^2.3.6",
+    "moment": "^2.18.1",
+    "mongoose": "^4.6.4",
+    "morgan": "^1.7.0",
+    "multer": "^1.2.0",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.3.0",
+    "serve-static": "^1.12.1",
+    "socket.io": "^1.5.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "pug": "^2.0.0-beta.12"
+  }
+}

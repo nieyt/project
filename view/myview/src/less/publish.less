@@ -1,0 +1,82 @@
+@import "public/base";
+@import "public/common";
+@borderGray:#EAECEC;
+@orange:#ff7f00;
+@blue:#5aa5f0;
+@lightGray:darken(@borderGray,14%);
+
+.publishWrap{
+	width: 800px;
+	margin: 30px auto 0;
+	.group{
+		margin-right: 30px;
+	}
+	>div{
+		margin-top: 20px;
+	}
+	label{
+		span{
+			font-size: 16px;
+		}
+		&.group{
+			font-size: 16px;
+		}
+	}
+	.selectModel{
+		display: inline-block;
+	}
+	.title{
+		input{
+			width: 80px;
+		}
+	}
+	.addPic{
+		width: 100px;
+		height: 100px;
+		// display: none;
+	}
+	.inputWrap{
+		input{
+			width: 400px;
+			height: 30px;
+			border:1px solid #CCC;
+			padding: 5px;
+		}
+		span{
+			margin-right: 30px;
+		}
+		&.price input{
+			width: 150px;
+		}
+	}
+	.description{
+		textarea{
+			width: 500px;
+			height: 200px;
+			border:1px solid #CCC;
+			padding: 5px;
+			vertical-align: top;
+		}
+	}
+	.yellowBtn{
+		display: block;
+		margin: 30px 0 50px 70px;
+		width: 150px;
+		border-radius: 4px;
+	}
+}
+.selectPic{
+	label{
+		span{
+			font-size: 16px;
+		}
+	}
+	.textfield{
+		width: 400px;
+		height: 30px;
+		border:1px solid #CCC;
+		padding: 5px;
+	}
+}
+.selectPic .btn{background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px;}
+#fileField{ position:absolute; top:0; right:80px; height:24px; opacity: 0;width:260px; }

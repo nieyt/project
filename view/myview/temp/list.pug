@@ -1,0 +1,63 @@
+extends ../src/template/pageDefault.pug
+block vars
+    - var config = {title:"信息列表", body:{cls:""},keywords:'信息列表',description:'信息列表'}
+block css
+    link(href='css/list.css',rel='stylesheet')
+//-页面使用到的js
+block js
+    //- script(src='js/modifyHotel.min.js',type='text/javascript')
+//- 页面主体内容
+block mainContent
+    include ../src/template/header.pug
+    .eleListWrap
+        .bigBox
+            .conditionFilter.clearfix#filterBox
+                .filterItem(key='Brand')
+                    span.itemLabel 类别
+                    ul.itemSub.checkboxGroup
+                        li.not.checked  不限
+                        - for(var i=0,len=5;i<len;i++)
+                            li.checkbox(data-value=1) 小米
+                .filterItem(key='Price')
+                    span.itemLabel 价格
+                    ul.itemSub.checkboxGroup
+                        li.not.checked  不限
+                            li.checkbox(data-value="0-149") ￥150以下
+                            li.checkbox(data-value="150-300") ￥150-300
+                            li.checkbox(data-value="301-450") ￥301-450
+                            li.checkbox(data-value="451-600") ￥451-600
+                            li.checkbox(data-value="600-") ￥600以上
+                        li.customPrice
+                            span.diy 自定义
+                            span
+                                input(type='text',name='min')
+                            span.sto -
+                            span
+                                input(type='text',name='max')
+                            span.confirm 确认
+                            span.cancel 取消
+                .filterItem(key='Area')
+                    span.itemLabel 区域
+                    ul.itemSub.checkboxGroup
+                        li.not.checked  不限
+                        - for(var i=0,len=5;i<len;i++)
+                            li.checkbox(data-value=1) 烟台
+        .detailListWrap.clearfix#typeList
+            .prodList
+                - for(let i=0;i<6;i++)
+                    .prodItem.clearfix
+                        img.prodPic(src="img/timg_1.jpg")
+                        .detail
+                            h2.title(title="")    三星 16G 99新三星note3 出售
+                            .price 1120
+                            .description(title="") 99新三星盖乐世note3，无拆无修，成色非常新，运行流畅3G运存+16G内存，三星旗舰手机后置1200万摄像头，闲置在家便宜出售。
+                            .location 烟台
+                        .publisher
+                            .head
+                                img(src="img/default.jpg")
+                            .name 小明
+            .history
+                h1 您可能感兴趣的商品
+
+            //- .listFooter
+            //-     #page_id.pagerControls.orderPaging.clearfix

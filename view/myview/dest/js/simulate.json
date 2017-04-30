@@ -1,0 +1,73 @@
+{
+  "Code": 200,
+  "BCode": 0,
+  "Msg": "",
+  "Data": {
+    "ProductList": [
+      {
+        "ID": 120010180,
+        "ProductName": "【上海出发/3月特价精选】北海4天3晚超值自由行",
+        "ProductSubName": "东航往返，可搭配多家豪华酒店组合、优惠接机",
+        "ProductType": 1,
+        "PC_PictureURL": "http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/ProductList/2016/12/7/6504458c-be35-4224-aa97-0ed563645644.jpg",
+        "APP_PictureURL": "http://192.168.1.60:97/image/Vacation/Pc/ProductList/2016/7/13/c7c33707-2bec-4f03-b0ec-f6042754018e.jpg",
+        "MinPrice": -999999,
+        "ScheduleMonth": "201703,201704,",
+        "TagList": "爆款推荐,东南亚,暑期亲子游,周末游说走就走,",
+        "PkgProduct_Tag":[
+          {
+            "ID":"001",
+            "TagName":"国内精选"
+          },
+          {
+            "ID":"002",
+            "TagName":"每日特价"
+          },
+          {
+            "ID":"003",
+            "TagName":"国内海边"
+          },
+          {
+            "ID":"001",
+            "TagName":"海边精选"
+          }
+        ]
+      },
+      {
+        "ID": 120010181,
+        "ProductName": "【上海出发/3月-9月多班期】日本大阪5天4晚自由行",
+        "ProductSubName": "机酒自由搭配  精选大阪市区特色酒店 赠WiFi",
+        "ProductType": 1,
+        "PC_PictureURL": "http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/ProductList/2016/6/21/c8507d0d-c640-44b1-bd42-f81f600753a1.jpg",
+        "APP_PictureURL": "http://192.168.1.60:97/image/Vacation/Pc/ProductList/2016/7/13/c7c33707-2bec-4f03-b0ec-f6042754018e.jpg",
+        "MinPrice": 1999,
+        "ScheduleMonth": "201703,201704,",
+        "TagList": "爆款推荐,东南亚,暑期亲子游,周末游说走就走,",
+        "PkgProduct_Tag":[
+          {
+            "ID":"001",
+            "TagName":"每日特价"
+          },
+          {
+            "ID":"001",
+            "TagName":"国内精选"
+          },
+          {
+            "ID":"001",
+            "TagName":"国内海边"
+          },
+          {
+            "ID":"001",
+            "TagName":"海边精选"
+          }
+        ]
+      }
+    ],
+    "PageInfo": null,
+    "Result": null,
+    "Message": null,
+    "ConsumeTime": 0,
+    "StartTime": null,
+    "EndTime": null
+  }
+}

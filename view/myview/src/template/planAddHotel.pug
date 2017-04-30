@@ -1,0 +1,48 @@
+//-
+   Created by 000144 on 2017/3/17.
+   动态机酒模块
+.planAddHotelPannel
+    .planPanner
+        span.flyIco
+        .ppline.clearfix
+            input.inputCss.goCity.start.airCitySelect(type='text',name='AirStarCity',placeholder='出发城市')
+            a.changePosition
+            input.inputCss.leaveCity.airCitySelect(type='text',name='AirEndCity',placeholder='返回城市')
+        .ppline.clearfix
+            input#inputDate3.inputCss.goDate.timeStart(type='text',placeholder='出发日期')
+            input#inputDate4.inputCss.backDate.timeEnd(type='text',placeholder='返回日期')
+        .ppline.clearfix
+            .selectModel.adtSelect
+                span.select 2 成人
+                ul.downList.hideBox(style='display: none;')
+                    li(value='1') 1 成人
+                    li(value='2') 2 成人
+                    li(value='3') 3 成人
+                    li(value='4') 4 成人
+                    li(value='5') 5 成人
+                    li(value='6') 6 成人
+                    li(value='7') 7 成人
+                    li(value='8') 8 成人
+                    li(value='9') 9 成人
+                input(type='hidden',value='2',name='adtCount')
+            .selectModel.childSelcet
+                span.select 0儿童(2-12周岁)
+                ul.downList.hideBox(style='display: none;')
+                    li(value='0') 0 儿童
+                    li(value='1') 1 儿童
+                    li(value='2') 2 儿童
+                    li(value='3') 3 儿童
+                    li(value='4') 4 儿童
+                    li(value='5') 5 儿童
+                    li(value='6') 6 儿童
+                input(type='hidden',value='0',name='chdCount')
+    .hotelPanner
+        span.hotelIco
+        .ppline.clearfix
+            input.inputCss.hotelCity.select_city(type='text',name='gw_city',data-type="hotel",placeholder='入住城市')
+        .ppline.clearfix
+            input#inputDate.inputCss.hotelGoDate.timeStart(type='text',placeholder='请选择入住日期')
+            input#inputDate2.inputCss.hotelLeaveDate.timeEnd(type='text',placeholder='请选择离店日期')
+    .btnPanner
+        a#ga_pcdindex_s.searchBtn 搜索&nbsp;机票+酒店
+
