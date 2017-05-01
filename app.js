@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');//bodyParser中间件用来解析http请求体
 var serveStatic = require('serve-static');
 var mongoose = require('mongoose');
-var User = require('./models/sign');
 var _ = require('underscore');//引入该模块主要是想使用其extend属性来实现对象的替换
 var path = require('path');
 var port = process.env.PORT ||  8080;
@@ -21,55 +20,3 @@ app.use(bodyParser.urlencoded({extended:true}));//bodyParser.urlencoded()用来�
 app.use(serveStatic('view/myview/dest'));
 app.listen(port);
 console.log('sever is start on ' + port);
-
-app.get('/',function (req,res) {
-	res.render( 'index', {
-      //   user:{
-      //       username: "",
-		    // userid: "",
-		    // password: ""
-      //   }
-    });
-})
-app.get('/sign', function(req, res){
-    res.render( 'sign', {
-        user:{
-            username: "",
-		    userid: "",
-		    password: ""
-        }
-    });
-});
-app.post('/sign',function (req,res) {
-	var userObj=req.body.user,
-	    userid = userObj.tel,
-	    _user;
-    if(userid !== 'undefined'){
-        User.findById(userid,function (err, movie) {
-            if(err){
-                console.log(err);
-            }
-            _user = _.extend(User,userObj);
-            console.log(_user);
-            _user.save(function (err, movie) {
-                if(err){
-                    console.log(err);
-                } 
-
-                // res.redirect("/movie/" + movie._id);
-            })
-        })
-    }else{
-        _user = new User({
-            urername: userObj.name,
-		    userid: userid,
-		    password: userObj.password
-        });
-        _user.save(function (err, movie) {
-            if(err){
-                console.log(err);
-            }
-            // res.redirect('/sign/#signin');
-        })
-    }
-})
