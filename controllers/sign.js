@@ -8,7 +8,6 @@ exports.sign = function(req, res, next) {
   //   return res.redirect('/index');
   // }
   return res.render('sign', {
-    // title: 'zhihu-与世界分享你的知识', 
     err: req.flash('err').toString(),
     loginErr: req.flash('loginErr').toString()
   });
