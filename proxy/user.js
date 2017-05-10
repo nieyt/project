@@ -3,7 +3,7 @@ var User = models.User;
 
 exports.newUserSave = function (name, phone, password, callback) {
   if (isPhone(phone)) {
-    User.find({ userid: phone}, function (err, user) {
+    User.find({phone: phone}, function (err, user) {
       if (user.length > 0) {
         err = {};
         err.message = '该手机号已被注册！';
@@ -11,8 +11,8 @@ exports.newUserSave = function (name, phone, password, callback) {
       }
       // 没被注册
       var user = new User();
-      user.username = name;
-      user.userid = phone;
+      user.name = name;
+      user.phone = phone;
       user.password = password;
       user.save(callback);
     });
@@ -26,7 +26,7 @@ exports.newUserSave = function (name, phone, password, callback) {
 
 exports.login = function (phone, password, callback) {
   if (isPhone(phone)) {
-    User.findOne({ userid: phone }, function (err, user) {
+    User.findOne({ phone: phone }, function (err, user) {
       if (err) {
         err.message = '该手机号未注册';
       }
@@ -55,7 +55,7 @@ exports.updateAvarar = function (user_id, avatar_path, callback) {
 };
 
 exports.updateName = function (user_id, user_name, callback) {
-  User.findByIdAndUpdate(user_id, { $set:{ username: user_name }}, callback);
+  User.findByIdAndUpdate(user_id, { $set:{ name: user_name }}, callback);
 };
 
 // exports.updateEmail = function (user_id, edited_email, callback) {

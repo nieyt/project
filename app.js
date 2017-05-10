@@ -22,51 +22,58 @@ var app = express();/*启动一个web服务器*/
 
 mongoose.Promise = require('bluebird');
 // mongoose.connect("mongodb://localhost/myproj");
-
 app.set('views', 'view/myview/temp');
 app.set('view engine', 'pug');
+app.use(flash());
 app.locals.moment = require('moment');//app.locals中的属性可以在jade模板中调用
-//app.use(bodyParser.json());//bodyParser.json是用来解析json数据格式的
+app.use(bodyParser.json());//bodyParser.json是用来解析json数据格式的
 app.use(bodyParser.urlencoded({extended:true}));//bodyParser.urlencoded()用来解析我们通常的form表单提交的数据;extended选项允许配置使用querystring(值为false)或qs(值为true)来解析数据，默认值是true
 /*app.use(express.bodyParser());bodyParser 已经不再与Express捆绑，需要独立安装*/
 /*app.use(express.static(path.join(__dirname,"bower_components")));//静态资源所在的文件夹, __dirname代表当前的目录*/
 app.use(serveStatic('view/myview/dest'));
+app.use(cookieParser(configure.cookieSecret));
 // auth 中间件
-app.use(auth.authUser);
-
+// app.use(auth.authUser);
+app.use(session({
+  secret: configure.sessionSecret,
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 3 * 24 * 60 * 60 // 3 days   
+  })
+}));
 app.use('/', routes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  return res.render404('404');
-  next(err);
-});
+// app.use(function(req, res, next) {
+//   var err = new Error('Not Found');
+//   err.status = 404;
+//   return res.render404('404');
+//   next(err);
+// });
 
 // error handlers
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
+// if (app.get('env') === 'development') {
+//   app.use(function(err, req, res, next) {
+//     res.status(err.status || 500);
+//     res.render('error', {
+//       message: err.message,
+//       error: err
+//     });
+//   });
+// }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
+// // production error handler
+// // no stacktraces leaked to user
+// app.use(function(err, req, res, next) {
+//   res.status(err.status || 500);
+//   res.render('error', {
+//     message: err.message,
+//     error: {}
+//   });
+// });
 
 
 module.exports = app;

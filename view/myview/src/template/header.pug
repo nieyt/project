@@ -1,22 +1,25 @@
 .topNav.list
     .tnContent
           .tc02.clearfix
-            //- .startPlace.lt_place
-            //-   span.palce.city 烟台
-            //-   span.choisePace.changeCity 所在城市
-            //-     i.arrow
+            .startPlace.lt_place
+              span.palce.city 烟台
+              span.choisePace.changeCity 所在城市
+                i.arrow
             .productSearch.clearfix
                 input.searchInput(type='text',placeholder='请输入关键字查询')
                 a.ls_btn.searchBtn 搜索
-            //- .sign
-            //-   a(href='./sign.html#signup').signup 注册
-            //-   span.gap &nbsp;&nbsp;|&nbsp;&nbsp;
-            //-   a(href='./sign.html#signin').signin 登录
-            a.back 去首页
-            .signed
-              a.publish 
-                i
-                |发布闲置
-              a.personLink 
-                i
-                |个人中心
+            if user
+              .signed
+                unless key=='publish'
+                  a.publish(href="./publish",target='_blank') 
+                    i
+                    |发布闲置
+                a.personLink(href="./person",target='_blank')
+                  img(src=user.avatar)
+                  span.name #{user.name}
+                a.logout(href="/logout") 退出登录
+            else
+              .sign
+                a(href='./sign#signup').signup 注册
+                span.gap &nbsp;&nbsp;|&nbsp;&nbsp;
+                a(href='./sign#signin').signin 登录

@@ -5,28 +5,29 @@ block css
 	//- link(href='css/travel.css',rel='stylesheet')
 	link(rel='stylesheet', href='css/sign.css')
 block mainContent
-	.main
+	.main#main
 		.signlogin#tab
-			a#register(href='#signup') 注册
-			|	
-			a#login(href='#signin') 登录
+			a.signup(href='#signup') 注册
+			a.signin(href='#signin') 登录
 		form#registerbox(method="post", action="/register")
 			.form.register
 				label 昵称
-					input#name.width(type='text', name='username', placeholder='请输入昵称')
+					input.width(type='text', name='name', placeholder='请输入昵称')
 				label 手机号
-					input#tel.width(type='text', name='userid', placeholder='请输入手机号')
+					input.width(type='text', name='phone', placeholder='请输入手机号')
 				label 密码
-					input#password.width(type='password', name='password', placeholder='请输入密码（不少于6位）')
+					input.width(type='password', name='password', placeholder='请输入密码（不少于6位）')
 				.button.width 
 					button.btn(type='submit') 注册
 		form.login#loginbox(method="post", action="/login")
 			.form
 				label 手机号
-					input#tel.width(type='text', name='userid', placeholder='请输入手机号')
+					input.width(type='text', name='phone', placeholder='请输入手机号')
 				label 密码
-					input#password.width(type='password', name='password', placeholder='请输入密码')
+					input.width(type='password', name='password', placeholder='请输入密码')
 				.button.width 
 					button.btn(type='submit') 登录
+		if err
+			.wrong(data-err=err)
 block js
 	script(src='js/sign.min.js',type='text/javascript') 

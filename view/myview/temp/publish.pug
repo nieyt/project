@@ -10,7 +10,8 @@ block js
 block mainContent
 	include ../src/template/header.pug
 	.publishWrap
-		label.group.required 类别
+		label.group.required
+			span 类别
 		.selectModel
 			span.select 手机
 			ul.downList(style='display: none;')
@@ -20,7 +21,7 @@ block mainContent
 				li(value='3') 摄影摄像
 				li(value='4') 智能数码
 				li(value='5') 家用电器
-			input(type='hidden',value='2',name='adtCount')
+			input(type='hidden',value='0',name='adtCount')
 		.title.inputWrap
 			label.required 
 				span 标题

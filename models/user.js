@@ -7,13 +7,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var BaseModel = require('./base_model');
 
-var UserSchema = new mongoose.Schema({
-    urername: {type: String},
-    userid: {type: Number},
+var UserSchema = new Schema({
+    name: {type: String},
+    phone: {type: Number},
     password: {type: String},
     avatar: { type: String, default: '/img/default.jpg' },
   	create_at: { type: Date, default: Date.now }
 });
-UserSchema.index({ userid: 1 });
+
 
 mongoose.model('User', UserSchema);

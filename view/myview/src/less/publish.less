@@ -6,6 +6,11 @@
 @lightGray:darken(@borderGray,14%);
 
 .publishWrap{
+	.required:before{
+		content: '*';
+		color: @orange;
+		font-size: 14px;
+	}
 	width: 800px;
 	margin: 30px auto 0;
 	.group{

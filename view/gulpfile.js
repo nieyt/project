@@ -124,7 +124,6 @@ let method = {
             }));
         }
         compile();
-
         function compile(){
             gulp.src(from)
                 .pipe(gulpwebpack(webpackConfig))
@@ -208,7 +207,7 @@ let method = {
     },
     compilehtml(){
         var from = path.join(__dirname,projectName,'./*.html');
-        var to = path.join(__dirname,projectName,'/','./dest/');
+        var to = path.join(__dirname,projectName,'/','./dest/html/');
         compile();
         function compile() {
             gulp.src(from)
@@ -221,7 +220,7 @@ let method = {
     },
     compilepug(){
         var from = path.join(__dirname,projectName,'./temp/*.pug');
-        var to = path.join(__dirname,projectName,'/','./dest/');
+        var to = path.join(__dirname,projectName,'/','./dest/html/');
         compile();
         function compile() {
             gulp.src(from)

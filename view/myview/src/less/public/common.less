@@ -12,9 +12,10 @@
   .sign,.signed{
     font-size: 14px;
     color: #FFF;
-    float: right;
-    padding-top: 10px;
-    cursor: pointer;
+    padding-top: 5px;
+    margin-left:  50px;
+    
+    display: inline-block;
     .gap{
       color: #DDDDDD;
     }
@@ -24,6 +25,7 @@
   }
   .sign{
     margin-right: 50px;
+    cursor: pointer;
   }
   .signed{
       i{
@@ -34,6 +36,7 @@
         vertical-align: middle;
       }
       .publish{
+         cursor: pointer;
         i{
           width: 25px;
           height: 25px;
@@ -41,10 +44,29 @@
         }
       }
       .personLink{
-        i{
-          background-image: url('@{mypic_url}person.png');
+        // i{
+        //   background-image: url('@{mypic_url}person.png');
+        // }
+         cursor: pointer;
+        img{
+          width: 25px;
+          height: 25px;
+          margin-right: 5px;
+          border-radius: 50px;
+          vertical-align: middle;
+        }
+        .name{
+          vertical-align: middle;
+          display: inline-block;
+          width: 80px;
+          .ellipsis;
         }
         margin-left: 20px;
+      }
+      .logout{
+        font-size: 12px;
+        text-decoration: underline;
+        cursor: pointer;
       }
   }
   .tnContent {

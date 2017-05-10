@@ -1,12 +1,8 @@
-var configure = require('../configure');
+// var configure = require('../configure');
 var User = require('../proxy').User;
-var crypto = require('crypto');
-var password_salt = configure.password_salt;
 
-exports.sign = function(req, res, next) {
-  // if (req.session.user) {
-  //   return res.redirect('/index');
-  // }
+
+exports.signPage = function(req, res, next) {
   return res.render('sign', {
     err: req.flash('err').toString(),
     loginErr: req.flash('loginErr').toString()
@@ -14,59 +10,47 @@ exports.sign = function(req, res, next) {
 };
 
 exports.register = function (req, res, next) {
-  var name = req.body.username,
-      phoneOrEmail = req.body.phoneoremail,
+  var name = req.body.name,
+      phone = req.body.phone,
       password = req.body.password;
-  if (name === '' || name === null) {
+  if (name == '' || name == null) {
     req.flash('err', '用户名不能为空！');
-    return res.redirect('/sign');
+    return res.redirect('/sign#signup');
+  }
+  if (!/^[0-9]{11}$/.test(phone)) {
+    req.flash('err','请输入正确的手机号！');
+    return res.redirect('/sign#signup');
   }
   if (password.length < 6) {
     req.flash('err', '密码至少6位！');
-    return res.redirect('/sign');
+    return res.redirect('/sign#signup');
   }
-  // 密码md5加盐加密
-  var md5 = crypto.createHash('md5'),
-      password = md5.update(password + password_salt).digest('hex');
-  User.newUserSave(name, phoneOrEmail, password, function (err, user) {
+  User.newUserSave(name, phone, password, function (err, user) {
     if (err) {
       req.flash('err', err.message);
-      return res.redirect('/sign');
+      return res.redirect('/sign#signup');
     }
-    res.cookie(configure.auth_cookie_name, user._id, {
-      maxAge: 1000 * 60 * 60 *24 * 30,
-      signed: true
-    });    
     req.session.user = user;
-    return res.redirect('/');
+    req.flash('err', '注册成功，请登录！');
+    return res.redirect('/sign#signin');
   })
 };
 
 exports.login = function (req, res, next) {
-  var phoneOrEmail = req.body.phoneoremail,
-      password = req.body.password,
-      isRemember = req.body.rememberMe;
-  var md5 = crypto.createHash('md5'),
-      password = md5.update(password + password_salt).digest('hex');
-  User.login(phoneOrEmail, password, function (err, user) {
+  var phone = req.body.phone,
+      password = req.body.password;
+  User.login(phone, password, function (err, user) {
     if (err) {
       req.flash('loginErr', err.message);
       return res.redirect('/sign#signin');
     }
     if (!user) {
-      req.flash('loginErr', '该号码未注册！');
-      return res.redirect('/sign#signup');      
+      req.flash('loginErr', '该手机号未注册！');
+      return res.redirect('/sign#signin');      
     }
     if (password != user.password) {
       req.flash('loginErr', '密码错误');
-      return res.redirect('/sign#signin');      
-    }
-    // 记住密码 10天
-    if (isRemember) {
-      res.cookie(configure.auth_cookie_name, user._id, {
-        maxAge: 1000 * 60 * 60 *24 * 30,
-        signed: true
-      });
+      return res.redirect('/sign#signin');   
     }
     req.session.user = user;
     return res.redirect('/');
@@ -75,9 +59,6 @@ exports.login = function (req, res, next) {
 
 exports.logout = function (req, res, next) {
   req.session.user = null;
-  res.clearCookie(configure.auth_cookie_name, {
-    maxAge: 1000 * 60 * 60 *24 * 30,
-    signed: true
-  });
   return res.redirect('/sign');
 };
+
