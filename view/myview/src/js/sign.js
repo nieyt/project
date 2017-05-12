@@ -9,6 +9,9 @@ class sign{
 		if($('#main').find('.wrong')&&$('#main').find('.wrong').data('err')){
 			layer.msg($('#main').find('.wrong').data('err'),{ison:6});
 		}
+		if($('#prompt')&&$('#prompt').data('info')){
+			layer.msg($('#prompt').data('info'));
+		}
 	}
 	selectTab(){
 		let hash=window.location.hash,

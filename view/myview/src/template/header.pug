@@ -11,9 +11,14 @@
             if user
               .signed
                 unless key=='publish'
-                  a.publish(href="./publish",target='_blank') 
-                    i
-                    |发布闲置
+                  if key=='detail'
+                    a.publish(href="../publish",target='_blank') 
+                      i
+                      |发布闲置
+                  else
+                    a.publish(href="./publish",target='_blank') 
+                      i
+                      |发布闲置
                 a.personLink(href="./person",target='_blank')
                   img(src=user.avatar)
                   span.name #{user.name}

@@ -3,11 +3,18 @@
 @5AA5F0: #5AA5F0;  /*蓝色*/
 @FF7F00: #FF7F00;  /*橙色*/
 
+.wrong{
+  display: none;
+}
+#prompt{
+  display: none;
+}
 .topNav {
-  // position: absolute;
-  // top: 0;
+  position: absolute;
+  top:0;
+  left:0;
   width: 100%;
-  background-color: rgba(51, 51, 51, 0.4);
+  background-color: rgba(51, 51, 51, 0.7);
   z-index: 100;
   .sign,.signed{
     font-size: 14px;
@@ -67,6 +74,7 @@
         font-size: 12px;
         text-decoration: underline;
         cursor: pointer;
+        margin-left: 10px;
       }
   }
   .tnContent {

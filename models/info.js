@@ -10,6 +10,7 @@ var InfoSchema = new Schema({
   images: { type: String, default: '/img/default.jpg' },
   area: { type: String, default: '烟台' },
   classify: { type: String },	// 分类
+  brand:{type:String},
   price: { type: Number },
   create_at: { type: Date, default: Date.now },
   update_at: { type: Date, default: Date.now },
@@ -17,7 +18,7 @@ var InfoSchema = new Schema({
   approval: [{ type: ObjectId }]				// 点赞的人	
 });
 
-QuestionSchema.plugin(BaseModel);
+InfoSchema.plugin(BaseModel);
 
 // UserSchema.index({ email: 1 }, { unique: true });
 // QuestionSchema.index({ title: 1 });

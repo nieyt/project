@@ -5,6 +5,7 @@ var ObjectId  = Schema.ObjectId;
 
 var ClassifySchema = new Schema({
   classify: { type: String },
+  brand:{type:String},
   info_id: { type: ObjectId },
   info_title: { type: String },
   create_at: { type: Date, default: Date.now }

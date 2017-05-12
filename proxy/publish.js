@@ -1,16 +1,10 @@
 var models = require('../models');
 var Info = models.Info;
+var _ = require('underscore');
 
-exports.newInfoSave=function () {
+exports.newInfoSave=function (id,obj,callback) {
 	var info = new Info();
-	info.title = title;
-	info.author_id = author_id;
-	info.description = description;
-	info.images = images;
-	info.area = area;
-	info.classify = classify;
-	info.price = price;
-	info.descrip tion = d escription;
+	info.author_id = id;
+	_.extend(info, obj);
 	info.save(callback);
-		
 }

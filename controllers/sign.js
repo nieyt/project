@@ -5,6 +5,7 @@ var User = require('../proxy').User;
 exports.signPage = function(req, res, next) {
   return res.render('sign', {
     err: req.flash('err').toString(),
+    prompt: req.flash('prompt').toString(),
     loginErr: req.flash('loginErr').toString()
   });
 };
@@ -31,7 +32,7 @@ exports.register = function (req, res, next) {
       return res.redirect('/sign#signup');
     }
     req.session.user = user;
-    req.flash('err', '注册成功，请登录！');
+    req.flash('prompt', '注册成功，请登录！');
     return res.redirect('/sign#signin');
   })
 };

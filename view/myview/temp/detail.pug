@@ -1,0 +1,62 @@
+extends ../src/template/pageDefault.pug
+block vars
+	- var config = {title:"商品详情", body:{cls:""},keywords:'商品详情',description:'商品详情'}
+block css
+	link(href='../css/detail.css',rel='stylesheet')
+//-页面使用到的js
+block js
+	script(src='../libs/jquery-1.8.3.min.js',type='text/javascript')
+	//- script(src='../js/publish.min.js',type='text/javascript')
+//- 页面主体内容
+block mainContent
+	include ../src/template/header.pug
+	.wrap.clearfix
+		.detailWraper
+			.detail.clearfix
+				.title #{info.title}
+				.detailWrap.clearfix
+					.imgWrap
+						img(src="../img/timg.jpg")
+					.textWrap
+						.price 现价：
+							span #{info.price}
+							|元
+						.area 区域：
+							span #{info.area}
+						.description #{info.description}
+						.btnWrap.clearfix
+							.connect 联系卖家
+							.buy 我要购买
+						.approval.clearfix
+							.want
+								img(src="../img/ap.png")
+								|想要
+							.num 0人想要
+						.comment 我要留言
+			.desc.hori 
+				.title 宝贝描述
+				.descWrap #{info.description}
+			.comm.hori
+				.title 
+					|宝贝留言（
+					span.num 0
+					|）
+				.commWrap
+					.item
+			.desc.hori 
+				.title 宝贝图片
+				.descWrap
+					if imageArr&&imageArr.length
+						each item in imageArr
+							img(src=item)
+		.sideWrap
+			.label 发布者
+			img(src=author.avatar)
+			.name #{author.name}
+			.nameDetail 他加入平台#{day}天
+
+
+
+
+
+
