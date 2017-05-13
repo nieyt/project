@@ -6,7 +6,7 @@ block css
 //-页面使用到的js
 block js
 	script(src='../libs/jquery-1.8.3.min.js',type='text/javascript')
-	//- script(src='../js/publish.min.js',type='text/javascript')
+	script(src='../js/detail.min.js',type='text/javascript')
 //- 页面主体内容
 block mainContent
 	include ../src/template/header.pug
@@ -15,8 +15,17 @@ block mainContent
 			.detail.clearfix
 				.title #{info.title}
 				.detailWrap.clearfix
-					.imgWrap
-						img(src="../img/timg.jpg")
+					.imgWrap#imgWrap
+						.bigImg
+							if imageArr&&imageArr.length
+								img(src="../userPic/"+imageArr[0])
+						.thumbImg
+							//- span.left
+							.imgGroup
+								- for(let i=0;i<imageArr.length;i++)
+									if i<3
+										img(class=i==0?'active':'',src="../userPic/"+imageArr[i])
+							//- spam.right
 					.textWrap
 						.price 现价：
 							span #{info.price}
@@ -33,6 +42,8 @@ block mainContent
 								|想要
 							.num 0人想要
 						.comment 我要留言
+						span.time 发布于 #{moment(info.create_at).format('YYYY-MM-DD')}
+						span.time 更新于 #{moment(info.update_at).format('YYYY-MM-DD')}
 			.desc.hori 
 				.title 宝贝描述
 				.descWrap #{info.description}
@@ -48,7 +59,7 @@ block mainContent
 				.descWrap
 					if imageArr&&imageArr.length
 						each item in imageArr
-							img(src=item)
+							img(src="../userPic/"+item)
 		.sideWrap
 			.label 发布者
 			img(src=author.avatar)

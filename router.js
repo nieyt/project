@@ -23,6 +23,6 @@ router.post('/uploadimg',publish.uploadimg);
 router.get('/detail/:id',detail.getDetail); 
 
 //信息列表
-router.get('/list',list.renderList);
+router.get('/shouji',list.renderList);
 
 module.exports = router;

@@ -5,6 +5,13 @@
 @blue:#5aa5f0;
 @lightGray:darken(@borderGray,14%);
 
+.descWrap{
+	img{
+		display: block;
+		max-width: 500px;
+		margin-top:10px;
+	}
+}
 .mainContent{
 	padding-top: 100px;
 }
@@ -39,6 +46,28 @@
 		width: 370px;
 		height: 370px;
 		overflow: hidden;
+		.bigImg{
+			height: 280px;
+			img{
+				width: 370px;
+				height: 280px;
+				border:1px solid @borderGray;
+			}
+		}
+		.thumbImg{
+			margin-top: 10px;
+			height: 80px;
+			img{
+				width: 90px;
+				height: 80px;
+				margin: 0 5px 0;
+				cursor: pointer;
+				border:1px solid @borderGray;
+				&.active{
+					border:1px solid @orange;
+				}
+			}
+		}
 	}
 	.textWrap{
 		float: left;
@@ -56,9 +85,18 @@
 			}
 		}
 		.description{
-			height: 50px;
+			height: 40px;
 			width: 350px;
 			.ellipsis;
+		}
+		.time{
+			display: inline-block;
+			padding-top: 16px;
+		    font-size: 10px;
+		    color: #7D7D7D;
+		    margin-right: 20px;
+		    vertical-align: bottom;
+		    float: right;
 		}
 	}
 }

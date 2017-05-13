@@ -10,7 +10,7 @@ block js
 //- 页面主体内容
 block mainContent
 	include ../src/template/header.pug
-	.publishWrap
+	form.publishWrap(method="post",action="/publish")
 		label.group.required
 			span 类别
 		.selectModel
@@ -26,30 +26,27 @@ block mainContent
 		.brand.inputWrap
 			label.required 
 				span 品牌
-				input(placeholder="请填写商品品牌(苹果、佳能...)",name='info[brand]')
+				input(placeholder="请填写商品品牌(苹果、佳能...)",name="info[brand]")
 		.title.inputWrap
 			label.required 
 				span 标题
-				input(placeholder="请填写你的信息标题",name='info[title]')
+				input(placeholder="请填写你的信息标题",name="info[title]")
 		.description.inputWrap
 			label.required 
 				span 描述
-				textarea(placeholder="请描述一下你的闲置",name='info[description]')
+				textarea(placeholder="请描述一下你的闲置",name="info[description]")
 		.price.inputWrap
 			label.required 
 				span 价格
 				input(placeholder="请填写正整数",name='info[price]')
-		form.selectPic(method="post",action="/uploadimg",enctype='multipart/form-data')
+		.selectPic
 			label.notrequired 
 				span 图片
-				//- input.textfield#textfield(type="text" placeholder="请选择电脑图片上传")
 				.wrap
 					input.btn(type='button', value='浏览...')
-					input#fileField.file(type='file', name='pic', size='28',multiple=true)
-				input(type="submit",value="oppic",style="display:none")
+					input#fileField.file(type='file',name='info[images]',size='28',multiple=true)
 				#imgGroup
-		//- <div id="list"><img src=""></div> 
-		button.yellowBtn(type="submit") 发布
+		button.yellowBtn#submitPic(type="submit") 发布信息
 		if err
 			#wrong.wrong(data-err=err)
 		if prompt

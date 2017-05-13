@@ -1,11 +1,20 @@
 import  'es5';
 import './mod/mod-public-method';
+import 'layerPc301';
 
 class publish{
 	constructor(){
+		this.deleteIndex=[];
 		selectdownList();
 		this.imgUpload();
 		this.layer();
+		this.deleteImg();
+		this.init();
+	}
+	init(){
+		let _this=this;
+		// $('#submitPic').click(_this.sendImg);
+		$("#fileField").change(_this.sendImg)
 	}
 	imgUpload(){
 		let _this=this;
@@ -13,7 +22,6 @@ class publish{
 			let objArr=[];
 			for(let i=0,il=this.files.length;i<il;i++){
 				objArr.push(_this.getObjectURL(this.files[i]));
-				console.log(this.files[i]);
 			} 
 			if (objArr.length) {
 				let insert=[];
@@ -22,7 +30,7 @@ class publish{
 				}
 				$("#imgGroup").show().append(insert);
 			}
-		}) ;
+		});
 	}
 	layer(){
 		if($('#wrong')&&$('#wrong').data('err')){
@@ -42,6 +50,37 @@ class publish{
 			url = window.webkitURL.createObjectURL(file) ;
 		}
 		return url ;
+	}
+	deleteImg(){
+		let _this=this;
+		$('#imgGroup').on('click','span',function () {
+			let index=$(this).index();
+			$(this).parent().remove();
+			_this.deleteIndex.push(index);
+			// Array.prototype.splice.call($('#fileField')[0].files,index,1);
+			// Array.from($('#fileField')[0].files).splice(index,1);
+			// console.log($('#fileField')[0].files);
+		})
+
+	}
+	sendImg(){
+		var fd = new FormData();
+		for(let i=0;i<$('#fileField')[0].files.length;i++){
+		    fd.append("file",$('#fileField')[0].files[i]);
+		}
+	    $.ajax({
+	        type:'POST',
+	        processData: false,  // 告诉JSLite不要去处理发送的数据
+	        contentType: false,   // 告诉JSLite不要去设置Content-Type请求头
+	        data:fd,
+	        url:'/uploadimg',
+	        success:function(data){
+	           console.log('success:',data)
+	        },
+	        error:function(d){
+	           console.log('error:',d)
+	        }
+	    })
 	}
 }
 
