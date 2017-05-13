@@ -17,8 +17,10 @@ var auth = require('./middlewares/auth');
 var errorPageMiddleware = require('./middlewares/error_page');
 var crypto = require('crypto');
 var routes = require('./router');
+var busboy = require('connect-busboy');
 
 var app = express();/*启动一个web服务器*/
+app.use(busboy()); 
 
 mongoose.Promise = require('bluebird');
 // mongoose.connect("mongodb://localhost/myproj");

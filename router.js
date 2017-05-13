@@ -17,6 +17,7 @@ router.get('/logout', sign.logout);                // 登录页
 // 发布信息
 router.get('/publish',publish.publish); 
 router.post('/publish',publish.postInfo);
+router.post('/uploadimg',publish.uploadimg);
 
 //信息详情
 router.get('/detail/:id',detail.getDetail); 
