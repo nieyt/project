@@ -14,10 +14,10 @@ block mainContent
         .crumbs 
             a(href="../") 首页
             |&nbsp;&gt;&nbsp;
-            |二手手机
+            |#{crumbs}
         .bigBox
             .conditionFilter.clearfix#filterBox
-                .filterItem(key='Brand')
+                .filterItem(key='brand')
                     span.itemLabel 类别
                     ul.itemSub.checkboxGroup
                         li.not.checked  不限
@@ -27,7 +27,7 @@ block mainContent
                             li.checkbox(data-value="小米") 小米
                             li.checkbox(data-value="魅族") 魅族
                             li.checkbox(data-value="OPPO") OPPO
-                .filterItem(key='Price')
+                .filterItem(key='price')
                     span.itemLabel 价格
                     ul.itemSub.checkboxGroup
                         li.not.checked  不限
@@ -45,7 +45,7 @@ block mainContent
                                 input(type='text',name='max')
                             span.confirm 确认
                             span.cancel 取消
-                .filterItem(key='Area')
+                .filterItem(key='area')
                     span.itemLabel 区域
                     ul.itemSub.checkboxGroup
                         li.not.checked  不限
