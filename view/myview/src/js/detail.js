@@ -1,4 +1,4 @@
-
+import './mod/mod-public-method';
 class detail{
 	constructor(){
 		this.switchImg();

@@ -51,8 +51,8 @@ import 'layerPc301';
     function ajaxLoading() {
     };
     ajaxLoading.prototype.open = function (fng) {
-        var sImg = config._CONFIG_[config.__webState].HOST_URL + "images/common/loadingB.gif";
-        var dImg = config._CONFIG_[config.__webState].HOST_URL + "images/common/loadingD.gif";
+        var sImg = "images/common/loadingB.gif";
+        var dImg = "images/common/loadingD.gif";
         var options = $.extend(true, {
             target: "body",//容器id
             maskClass: "",
@@ -91,7 +91,7 @@ import 'layerPc301';
     };
     noData.prototype.commonShow = function (e, box) {
         this.option = $.extend(true, {
-            noDataTitle: "很抱歉 !123123123",//指定宽度,默认100%
+            noDataTitle: "很抱歉!",//指定宽度,默认100%
             noDataTip: "没有找到符合您产品，请重新搜索！",//指定高度,默认500
             btnShow: false, //是否显示按钮
             btnText: "返回首页", //按钮文本
@@ -287,12 +287,6 @@ var dataOption = {
             str = text.replace(reg1, "<br />");
             return encodeURI(str);
         }
-    },
-    getHotelNightDay: function (date1, date2) {//获取客户住酒店的晚数
-        var hotelStart = new Date(date1.toString().replace(/\-/g, "/"));
-        var hotelEnd = new Date(date2.toString().replace(/\-/g, "/"));
-        var iNight = parseInt(Math.abs(hotelEnd - hotelStart) / 1000 / 60 / 60 / 24);
-        return iNight;
     }
 }
 window.dataOption = dataOption;
@@ -518,14 +512,7 @@ export function ajax(option, success, error) {
     });
 }
 
-//首付游公用数据及方法
-export let stagesData = {
-    dataText: "<h3><b>使用条件说明:</b></h3><p> 1.18-55岁的中国大陆公民可以使用</p><p> 2.购买人必须为出行人之一</p><p>3.出行人数及订单额度根据用户的信用状况调整</p><p>4.支付时无需注册，秒级审核</p><p>5.用户可选择3、6、12期分期付款</p><p>6.本服务由信用飞|京东金融提供</p><p>以上文本仅供参考，具体以产品提供为准</p>",
-    stagesHTML: function (price) {
-        var stagesLowPrice = parseInt(price / 12);
-        return '仅需首付<span class="price"><i>￥</i><em class="num">' + stagesLowPrice + '</em></span><em class="tooptip" data-trigger="hover" id="ga_pcjselect_icon" data-class="newStyle" data-place="top" data-bottom="40px" data-right="" data-width="370px" data-text="' + this.dataText + '"></em>'
-    }
-};
+
 //html转义
 export function html_decode(str) {
     var s = "";
@@ -565,3 +552,23 @@ export function layerTips(obj,tips,time){
         layer.closeAll();
     })
 }
+
+//搜索
+;(function () {
+    console.log(11);
+    let href=window.location.href,
+        _url;
+    if(href.match(/shouji/ig)){
+        _url='/listshouji';
+    }else if(href.match(/pingban/ig)){
+        _url='/listpingban';
+    }else if(href.match(/bijiben/ig)){
+        _url='/listbijiben';
+    }else{
+        _url='/listall';
+    }
+    $('#search .searchBtn').click(function() {
+       let key=$('#search input').val();
+       window.location.href='http://localhost:8080'+_url+'?keyword='+key;
+    });
+}());

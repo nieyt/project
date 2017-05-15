@@ -19,17 +19,20 @@ var _ = require('underscore');
 // }
 
 exports.findList = function(findObj, callback) {
-    Info.find(findObj, function(err, info) {
+    Info.find(findObj).
+    	sort({'create_at':-1}).
+    	exec(function(err, info) {
         const promises = info.map(f => new Promise((resolve, reject) => {
-            f.image = f.images.split(",")[0];
+            f.images = f.images.split(",")[0];
             User.findById(f.author_id, function(error, user) {
                 if (error) {
                     reject(error);
                     return;
                 }
-                f.author_name = user.name;
-                f.author_avatar = user.avatar;
+                f.brand = user.name;
+                f.classify = user.avatar;//bug todo
                 resolve(f);
+                // console.log(f);
             });
         }));
         Promise.all(promises)
@@ -45,14 +48,3 @@ exports.findList = function(findObj, callback) {
             });
     });
 };
-
-exports.findByKeyword=function (keyword,callback) {
-	Info.find(function (err,info) {
-		var Info=json.Parse(info);
-		var matched=[];
-		console.log(Info);
-		for(let i=0;i<Info.length;i++){
-			console.log(Info[i]);
-		}
-	})
-}

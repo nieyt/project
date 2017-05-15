@@ -24,6 +24,6 @@ router.get('/detail/:id',detail.getDetail);
 
 //信息列表
 router.get('/list:sort',list.renderList);
-router.post('/shouji',list.renderData);
+router.post('/list:sort',list.renderData);
 
 module.exports = router;

@@ -20,7 +20,7 @@ var InfoSchema = new Schema({
 
 InfoSchema.plugin(BaseModel);
 
-// UserSchema.index({ email: 1 }, { unique: true });
+InfoSchema.index({ create_at: 1 });
 // QuestionSchema.index({ title: 1 });
 // QuestionSchema.index({ author_id: 1 });
 // QuestionSchema.index({ tags: 1 });

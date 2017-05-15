@@ -35,7 +35,7 @@ block mainContent
                             li.checkbox(data-value="1000-2000") ￥1000-2000
                             li.checkbox(data-value="2000-3000") ￥2000-3000
                             li.checkbox(data-value="3000-4000") ￥3000-4000
-                            li.checkbox(data-value="4000-") ￥4000以上
+                            li.checkbox(data-value="4000-100000") ￥4000以上
                         li.customPrice
                             span.diy 自定义
                             span
@@ -51,11 +51,11 @@ block mainContent
                         li.not.checked  不限
                             li.checkbox(data-value="烟台") 烟台
         .detailListWrap.clearfix#typeList
-            .prodList
+            .prodList#prodList
                 each item in info
                     .prodItem.clearfix
                         a(href='./detail/'+item._id)
-                            img.prodPic(src="../userPic/"+item.image)
+                            img.prodPic(src="../userPic/"+item.images)
                         .detail
                             a.title(href='./detail/'+item._id,title=item.title) #{item.title}
                             .price #{item.price}
@@ -64,8 +64,8 @@ block mainContent
                             .location #{item.area}
                         .publisher
                             .head
-                                img(src=item.author_avatar)
-                            .name #{item.author_name}
+                                img(src=item.classify)
+                            .name #{item.brand}
             .history
                 h1 您可能感兴趣的商品
 

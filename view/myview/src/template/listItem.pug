@@ -1,0 +1,16 @@
+if info&&info.length
+    each item in info
+        .prodItem.clearfix
+            a(href='./detail/'+item._id)
+                img.prodPic(src="../userPic/"+item.images)
+            .detail
+                a.title(href='./detail/'+item._id,title=item.title) #{item.title}
+                .price #{item.price}
+                .description(title=item.description) #{item.description}
+                .time 发布于 #{item.create_at}
+                .location #{item.area}
+            .publisher
+                .head
+                    img(src=item.classify)
+                .name #{item.brand}
+    
