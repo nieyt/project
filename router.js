@@ -6,6 +6,7 @@ var index = require('./controllers/index');
 var publish = require('./controllers/publish');
 var detail = require('./controllers/detail');
 var list = require('./controllers/list');
+var person = require('./controllers/person');
 
 // 首屏
 router.get('/',index.index); 
@@ -25,5 +26,9 @@ router.get('/detail/:id',detail.getDetail);
 //信息列表
 router.get('/list:sort',list.renderList);
 router.post('/list:sort',list.renderData);
+
+//个人中心
+router.get('/person',person.personRender);
+router.delete('/person/publish',person.deteleInfo);
 
 module.exports = router;

@@ -247,18 +247,16 @@
   .detailListWrap{
     margin-top: 12px;
     .prodList{
-      padding:0 20px;
+      // padding:0 20px;
       .prodPic{
         width: 130px;
         height: 130px;
       }
       .detail{
         width: 500px;
-        // border:1px solid red;
         display: inline-block;
         margin-left: 30px;
         .title{
-          // padding-top: 5px;
           font-size: 14px;
           font-weight: bold;
           .ellipsis;
@@ -275,9 +273,6 @@
   width: 850px;
   border:1px solid @borderGray;
   background: #FFF;
-  div{
-    margin-top: 5px;
-  }
   .price{
     color: @orange;
     font-size: 16px;
@@ -333,8 +328,13 @@
   }
 }
 .prodList .prodItem{
-  padding: 10px 0;
+  padding: 12px;
   border-bottom:1px solid @borderGray;
+  transition:all 0.5s;
+  &:hover{
+    // border:1px solid @orange;
+    background-color: #FFF8F0;
+  }
 }
 .history{
   border:1px solid @borderGray;
