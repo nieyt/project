@@ -6,10 +6,10 @@ var ObjectId  = Schema.ObjectId;
 var ChatSchema = new Schema({
   author_id: { type: ObjectId },
   author_name: { type: String },
-  sent_id: { type: ObjectId },
+  send_id: { type: ObjectId },
   content:{type:String},
   create_at: { type: Date, default: Date.now },
-  
+  view: { type: Number, default: 0}
 });
 
 ChatSchema.plugin(BaseModel);

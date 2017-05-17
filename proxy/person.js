@@ -1,5 +1,6 @@
 var models = require('../models');
 var Info = models.Info;
+var Chat = models.Chat;
 
 exports.findByUser=function (user_id,callback) {
 	Info.find({author_id:user_id}).
@@ -8,7 +9,12 @@ exports.findByUser=function (user_id,callback) {
     		for(let i in info){
     			info[i].images=info[i].images.split(',')[0];
     		}
-    		callback(err,info);
+            Chat.find({'send_id':user_id,'view':0}).
+            sort({'create_at':-1}).
+            exec(function (err,msg) {
+                callback(err,info,msg);
+            });
+            console.log(user_id);
     	})
 }
 

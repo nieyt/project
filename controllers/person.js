@@ -4,10 +4,11 @@ var _=require('underscore');
 
 exports.personRender=function (req,res,next) {
 	let user=req.session.user;
-	Person.findByUser(user._id,function (err,info) {
+	Person.findByUser(user._id,function (err,info,msg) {
 		return res.render('person',{
 			user:user,
-			info:info
+			info:info,
+			msg:msg
 		})
 	})
 }

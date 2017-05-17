@@ -63,7 +63,7 @@ class detail extends basePC{
 						author_name: name,
 						content: msg,
 						create_at:time,
-						sent_id:$('#connect').data('id'),
+						send_id:$('#connect').data('id'),
 						author_id:$('#username').data('id')
 					});
 					textarea.value = '';

@@ -23,7 +23,7 @@ block mainContent
 					li.active 我的发布
 					li 我的收藏
 					li 我买到的
-					li 我的消息（0）
+					li 我的消息（#{msg.length}）
 			.content
 				.publishList.list.active
 					each item in info
@@ -57,9 +57,10 @@ block mainContent
 								a.title(href='./detail/') 华为 P8 华为 GRA-TL00 1200元 华为p8
 								.price 1999
 								.description(title) 十月底的 现在因个人原因想换7p 不能说全新 99新是没问题 而且各方面都完好 诚信出售 价格好商量 送自用手机壳两个 带一个一年的屏幕险 一年内屏坏了免费换新
-				.msgList.list
-					- for(var i=0;i<3;i++)
-						.chatLine
-							span.grey-text 小星星
-							span.chat-content 哈哈哈
-							span.grey-text.right 12.11
+				.msgList.list#msgList
+					if msg&&msg.length
+						each line in msg
+							.chatLine
+								span.grey-text #{line.author_name}
+								span.chat-content #{line.content}
+								span.grey-text.right #{moment(line.create_at).format('YYYY-MM-DD hh:mm:ss')}
