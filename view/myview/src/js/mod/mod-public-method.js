@@ -555,7 +555,6 @@ export function layerTips(obj,tips,time){
 
 //搜索
 ;(function () {
-    console.log(11);
     let href=window.location.href,
         _url;
     if(href.match(/shouji/ig)){

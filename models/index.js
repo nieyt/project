@@ -12,6 +12,7 @@ db.once('open', function () {
 require('./user');
 require('./info');
 require('./up');
+require('./chat');
 // require('./answer');
 // require('./topic');
 // require('./push');
@@ -19,6 +20,7 @@ require('./up');
 exports.User = mongoose.model('User');
 exports.Info = mongoose.model('Info');
 exports.Up = mongoose.model('Up');
+exports.Chat = mongoose.model('Chat');
 // exports.Answer = mongoose.model('Answer');
 // exports.Topic = mongoose.model('Topic');
 // exports.Push = mongoose.model('Push');

@@ -110,16 +110,16 @@ class list extends basePC{
         arr.splice(index,1);
     }
     ajax(option,successCall){
-        let _this=this;
+        let _this=this,index;
         $.ajax(
             $.extend({
                 type: 'POST',
                 dataType: 'json',
                 beforeSend(){
-                	_this.loading.open({"maskClass": "hide","target":$('#prodList')});
+                    index = layer.load(2, {shade: false});
                 },
                 complete(){
-                	_this.loading.remove();
+                    layer.close(index);
                 },
                 xhrFields: {
                     withCredentials: true

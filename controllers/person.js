@@ -1,4 +1,5 @@
 var Person = require('../proxy').Person;
+var Chat = require('../proxy').Chat;
 var _=require('underscore');
 
 exports.personRender=function (req,res,next) {
@@ -17,3 +18,4 @@ exports.deteleInfo=function (req,res,next) {
 		return res.json({success:1});
 	})
 }
+

@@ -9,6 +9,7 @@ exports.findDetail=function (info_id,callback) {
 			console.log(error);
 			return;
 		}
+		if(!info) return;
 		User.findById(info.author_id,function (err,author) {
 	      callback(err,info,author);
 		})

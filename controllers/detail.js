@@ -15,5 +15,5 @@ exports.getDetail=function(req,res,next) {
 	 		imageArr:imageArr
 	 	})
 	})
-
 }
+

@@ -19,9 +19,9 @@
                     a.publish(href="./publish",target='_blank') 
                       i
                       |发布闲置
-                a.personLink(href="./person",target='_blank')
+                a.personLink(href=key==='detail'?"../person":"./person",target='_blank')
                   img(src=user.avatar)
-                  span.name #{user.name}
+                  span.name#username(data-id=user._id) #{user.name}
                 a.logout(href="/logout") 退出登录
             else
               .sign

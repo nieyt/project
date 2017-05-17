@@ -13,7 +13,6 @@ exports.publish=function (req,res,next) {
 }
 
 exports.postInfo=function (req,res,next) {
-	console.log(req.body);
 	var info=req.body.info;
 		_id=req.session.user._id;
 	for(var item in info){

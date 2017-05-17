@@ -98,6 +98,7 @@
 	  	width: 100px;
 	  	height: 100px;
 	  	display: inline-block;
+	  	border:1px solid @borderGray;
 	  }
 	  .detail{
 	  	display: inline-block;
@@ -182,5 +183,21 @@
     &.act{
     	background: url(../img/ap_active.png) no-repeat 8px 7px;
     	background-color:#FFF;
+    }
+}
+.chatLine{
+	margin-bottom: 10px;
+	width: 90%;
+	margin: 10px auto; 
+	padding: 6px 10px;
+	border: 1px solid #E0E0E0;
+	border-radius: 6px;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.14), 0 2px 6px 0 rgba(0,0,0,0.10);
+    .grey-text{
+    	color: darken(#CCC, 18%);
+    	padding-right: 6px;
+    }
+    .right{
+    	float: right;
     }
 }
