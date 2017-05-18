@@ -5,6 +5,7 @@ block css
 	//- link(href='css/travel.css',rel='stylesheet')
 	link(rel='stylesheet', href='css/person.css')
 block js
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js',type='text/javascript')
 	script(src='libs/jquery-1.8.3.min.js',type='text/javascript')
 	script(src='js/person.min.js',type='text/javascript')
 block mainContent
@@ -14,7 +15,7 @@ block mainContent
 			.top
 			.bottom
 				img.avator(src='./img/default.jpg')
-				span.name #{user.name}
+				span.name#username #{user.name}
 				.perInfo 暂无个人资料
 				.edit 编辑个人资料
 		.contentMe#contentMe
@@ -57,10 +58,10 @@ block mainContent
 								a.title(href='./detail/') 华为 P8 华为 GRA-TL00 1200元 华为p8
 								.price 1999
 								.description(title) 十月底的 现在因个人原因想换7p 不能说全新 99新是没问题 而且各方面都完好 诚信出售 价格好商量 送自用手机壳两个 带一个一年的屏幕险 一年内屏坏了免费换新
-				.msgList.list#msgList
+				.msgList.list#msgList(data-id=user._id,data-send=msg[0]?msg[0].author_id:'')
 					if msg&&msg.length
 						each line in msg
-							.chatLine
+							.chatLine(data-name=line.author_name)
 								span.grey-text #{line.author_name}
 								span.chat-content #{line.content}
 								span.grey-text.right #{moment(line.create_at).format('YYYY-MM-DD hh:mm:ss')}

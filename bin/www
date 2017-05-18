@@ -21,28 +21,12 @@ var Chat = require('../proxy').Chat;
  * Normalize a port into a number, string, or false.
  */
 io.sockets.on('connection', function(socket){
-  // socket.on('login', function(name){
-  //   if(names.indexOf(name) == -1){
-  //     names.push(name);
-  //     socket.broadcast.emit('login', name);
-  //   }
-  //   io.sockets.emit('usersList', names);
-  // });
   socket.on('chat', function(data){
     io.sockets.emit('chat', data);
     Chat.newChatSave(data,function () {
       console.log('已保存')
     })
   });
-  // socket.on('logout', function(name){
-  //   for(var i = 0; i < names.length; i++){
-  //     if(names[i] == name){
-  //       names.splice(i, 1);
-  //       break;
-  //     }
-  //   }
-  //   io.sockets.emit('usersList', names);
-  // });
 });
 
 
