@@ -17,3 +17,19 @@ exports.getDetail=function(req,res,next) {
 	})
 }
 
+exports.approval=function (req,res,next) {
+	let obj=req.body;
+	// 	msg;
+	// if(obj.add=='true'){
+	// 	msg="收藏成功";
+	// }else{
+	// 	msg="您已取消收藏";
+	// }
+	// console.log(msg)
+	Detail.likeChange(obj,function (data) {
+		res.json({
+			msg:data
+		})
+	})
+	
+}

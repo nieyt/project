@@ -11,7 +11,6 @@ db.once('open', function () {
 
 require('./user');
 require('./info');
-require('./up');
 require('./chat');
 require('./like');
 // require('./answer');
@@ -20,7 +19,6 @@ require('./like');
 
 exports.User = mongoose.model('User');
 exports.Info = mongoose.model('Info');
-exports.Up = mongoose.model('Up');
 exports.Chat = mongoose.model('Chat');
 exports.Like = mongoose.model('Like');
 // exports.Answer = mongoose.model('Answer');

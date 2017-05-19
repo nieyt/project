@@ -17,10 +17,33 @@ block mainContent
             |#{crumbs}
         .bigBox
             .conditionFilter.clearfix#filterBox
-                .filterItem(key='brand')
-                    span.itemLabel 品牌
-                    ul.itemSub.checkboxGroup
-                        li.not.checked  不限
+                if sort=='pingban'
+                    .filterItem(key='brand')
+                        span.itemLabel 品牌
+                        ul.itemSub.checkboxGroup
+                            li.not.checked  不限
+                            li.checkbox(data-value="苹果") 苹果
+                            li.checkbox(data-value="三星") 三星
+                            li.checkbox(data-value="微软") 微软
+                            li.checkbox(data-value="小米") 小米
+                            li.checkbox(data-value="台电") 台电
+                            li.checkbox(data-value="联想") 联想
+                else if sort=='bijiben'
+                    .filterItem(key='brand')
+                        span.itemLabel 品牌
+                        ul.itemSub.checkboxGroup
+                            li.not.checked  不限
+                            li.checkbox(data-value="苹果") 苹果
+                            li.checkbox(data-value="联想") 联想
+                            li.checkbox(data-value="微软") 华硕
+                            li.checkbox(data-value="戴尔") 戴尔
+                            li.checkbox(data-value="雷神") 雷神
+                            li.checkbox(data-value="惠普") 联想
+                else
+                    .filterItem(key='brand')
+                        span.itemLabel 品牌
+                        ul.itemSub.checkboxGroup
+                            li.not.checked  不限
                             li.checkbox(data-value="苹果") 苹果
                             li.checkbox(data-value="三星") 三星
                             li.checkbox(data-value="华为") 华为
@@ -31,11 +54,11 @@ block mainContent
                     span.itemLabel 价格
                     ul.itemSub.checkboxGroup
                         li.not.checked  不限
-                            li.checkbox(data-value="0-1000") ￥1000以下
-                            li.checkbox(data-value="1000-2000") ￥1000-2000
-                            li.checkbox(data-value="2000-3000") ￥2000-3000
-                            li.checkbox(data-value="3000-4000") ￥3000-4000
-                            li.checkbox(data-value="4000-100000") ￥4000以上
+                        li.checkbox(data-value="0-1000") ￥1000以下
+                        li.checkbox(data-value="1000-2000") ￥1000-2000
+                        li.checkbox(data-value="2000-3000") ￥2000-3000
+                        li.checkbox(data-value="3000-4000") ￥3000-4000
+                        li.checkbox(data-value="4000-100000") ￥4000以上
                         li.customPrice
                             span.diy 自定义
                             span
@@ -52,20 +75,23 @@ block mainContent
                             li.checkbox(data-value="烟台") 烟台
         .detailListWrap.clearfix#typeList
             .prodList#prodList
-                each item in info
-                    .prodItem.clearfix
-                        a(href='./detail/'+item._id)
-                            img.prodPic(src="../userPic/"+item.images)
-                        .detail
-                            a.title(href='./detail/'+item._id,title=item.title) #{item.title}
-                            .price #{item.price}
-                            .description(title=item.description) #{item.description}
-                            .time 发布于 #{moment(item.create_at).format('YYYY-MM-DD')}
-                            .location #{item.area}
-                        .publisher
-                            .head
-                                img(src=item.classify)
-                            .name #{item.brand}
+                if info&&info.length
+                    each item in info
+                        .prodItem.clearfix
+                            a(href='./detail/'+item._id)
+                                img.prodPic(src="../userPic/"+item.images)
+                            .detail
+                                a.title(href='./detail/'+item._id,title=item.title) #{item.title}
+                                .price #{item.price}
+                                .description(title=item.description) #{item.description}
+                                .time 发布于 #{moment(item.create_at).format('YYYY-MM-DD')}
+                                .location #{item.area}
+                            .publisher
+                                .head
+                                    img(src=item.classify)
+                                .name #{item.brand}
+                else
+                    .nodatame 对不起，没有符合选择的商品信息
             .history
                 h1 您可能感兴趣的商品
 

@@ -95,13 +95,32 @@ class detail extends basePC{
 		})
 	}
 	approval(){
+		let senddata={
+			info_id:$('#infoId').data('id'),
+			user_id:$('#username').data('id'),
+			add:true
+		};
 		$('#want').click(function () {
 			$(this).toggleClass('active');
-			if($(this).hasClass('active')){
-				layer.msg('收藏成功',{time:500});
+			if(!$(this).hasClass('active')) {
+				senddata.add=false;
 			}else{
-				layer.msg('您已取消收藏',{time:500});
+				senddata.add=true;
 			}
+			$.ajax({
+				url: '/approval',
+				type: 'POST',
+				dataType: 'json',
+				data: senddata
+			})
+			.done(function(data) {
+				layer.msg(data.msg,{
+					time:500
+				});
+			})
+			.fail(function() {
+				console.log("error");
+			})
 		})
 	}
 	

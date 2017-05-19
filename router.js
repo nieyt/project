@@ -22,6 +22,7 @@ router.post('/uploadimg',publish.uploadimg);
 
 //信息详情
 router.get('/detail/:id',detail.getDetail); 
+router.post('/approval',detail.approval); 
 
 //信息列表
 router.get('/list:sort',list.renderList);

@@ -12,7 +12,7 @@ block js
 block mainContent
 	include ../src/template/header.pug
 	.wrap.clearfix
-		.detailWraper
+		.detailWraper#infoId(data-id=info._id)
 			.detail.clearfix
 				.title #{info.title}
 				.detailWrap.clearfix

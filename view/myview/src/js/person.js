@@ -12,6 +12,7 @@ class person extends basePC{
 		this.openPop();
 		this.openTime=0;
 		this.noData=new noDataShow();//实例化无数据显示
+		this.cancelapp();
 	}
 	selectTab(){
 		$('#contentMe .nav').on('click', 'li', function(event) {
@@ -35,6 +36,36 @@ class person extends basePC{
 								layer.msg('删除成功', {time: 800});
 								deleteItem.remove();
 				        })
+					});
+		});
+	}
+	cancelapp(){//detail
+		$('#contentMe .approList').on('click', '.cancel', function(event) {
+            let deleteItem=$(this).parents('.item');
+			let info_id=$(this).data('id');
+			let $this=$(this);
+			layer.confirm('你确定要取消收藏吗？', {
+						  btn: ['确定','取消'] //按钮
+					}, function(){
+						$.ajax({
+							url: '/approval',
+							type: 'POST',
+							dataType: 'json',
+							data: {
+								info_id:info_id,
+								user_id:$('#username').data('id'),
+								add:false
+							}
+						})
+						.done(function(data) {
+							layer.msg(data.msg,{
+								time:500
+							});
+							$this.parents('.item').remove();
+						})
+						.fail(function() {
+							console.log("error");
+						})
 					});
 		});
 	}

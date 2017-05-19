@@ -42,7 +42,8 @@ exports.renderList=function (req,res,next) {
 		return res.render('list',{
 			user:user,
 			info:info,
-			crumbs:crumbsData
+			crumbs:crumbsData,
+			sort:sort
 		})
 	})
 }
