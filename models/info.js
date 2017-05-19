@@ -21,10 +21,5 @@ var InfoSchema = new Schema({
 InfoSchema.plugin(BaseModel);
 
 InfoSchema.index({ create_at: 1 });
-// QuestionSchema.index({ title: 1 });
-// QuestionSchema.index({ author_id: 1 });
-// QuestionSchema.index({ tags: 1 });
-// QuestionSchema.index({ comment_id: 1 });
-// QuestionSchema.index({ pv: -1 });
 
 mongoose.model('Info', InfoSchema);

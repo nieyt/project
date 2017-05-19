@@ -27,6 +27,9 @@ io.sockets.on('connection', function(socket){
       console.log('已保存')
     })
   });
+  socket.on('openPop',function (data) {
+    Chat.viewUpdate(data);
+  })
 });
 
 

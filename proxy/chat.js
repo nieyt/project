@@ -8,3 +8,7 @@ exports.newChatSave=function (obj,callback) {
 	_.extend(info, obj);
 	info.save(callback);
 }
+exports.viewUpdate=function (data) {
+  Chat.update({author_id:data},{$set:{view:1}},{"multi":true,"upsert":false},function (data) {
+  });
+}

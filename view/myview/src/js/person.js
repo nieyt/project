@@ -2,6 +2,7 @@ import  'es5';
 import 'layerPc301';
 import basePC from'basePC';
 import {chat} from './mod/mod-public-template';
+import './mod/mod-public-method';
 
 class person extends basePC{
 	constructor(){
@@ -10,6 +11,7 @@ class person extends basePC{
 		this.delete();
 		this.openPop();
 		this.openTime=0;
+		this.noData=new noDataShow();//实例化无数据显示
 	}
 	selectTab(){
 		$('#contentMe .nav').on('click', 'li', function(event) {
@@ -22,7 +24,6 @@ class person extends basePC{
 		$('#contentMe .publishList').on('click', '.delete', function(event) {
             let deleteItem=$(this).parents('.item');
 			let _id=$(this).data('id');
-			event.preventDefault();
 			layer.confirm('你确定要删除该条信息吗？', {
 						  btn: ['确定','取消'] //按钮
 					}, function(){
@@ -37,7 +38,7 @@ class person extends basePC{
 					});
 		});
 	}
-	socket(){
+	socket($this){
 		let _this=this;
 		if(this.openTime==0){
 			window.socket = io.connect('http://localhost:8080');
@@ -61,6 +62,16 @@ class person extends basePC{
 			})
 			this.openTime=1;
 		}
+		if($this.parent().get(0).id==='msgList'){
+			socket.emit('openPop',$('#msgList').data('send'));
+			$('#chatBody').append($('#msgList>.chatLine'));
+			$('#msgList>.chatLine').remove();
+			$('#msgNum').text('0');
+			$('#msgList').append('<div class="nodatame">暂无未读信息</div>')
+		}else{
+			let msgs=$('#openList>.chatLine').clone(true);
+			$('#chatBody').append(msgs);
+		}
 		this.textarea();
 	}
 	textarea(){
@@ -68,7 +79,7 @@ class person extends basePC{
 		let resize=()=>{
 			textarea.style.height = '0';
 			var height = textarea.scrollHeight;
-			textarea.style.height = height + 'px';
+			textarea.style.height = height+5+ 'px';
 		}
 		textarea.addEventListener('input', resize);
 		document.onkeydown = function(e){
@@ -78,6 +89,7 @@ class person extends basePC{
 				if(textarea.value == ''){
 					return false;
 				}else{
+					e.preventDefault();
 					var name = document.getElementById('username').innerHTML;
 					var msg = textarea.value;
 					socket.emit('chat', {
@@ -92,12 +104,12 @@ class person extends basePC{
 				}
 			}
 		}
-
 	}
 	openPop(){
 		let _this=this;
 		const imgsrc='./img/default.jpg';
-		$('#msgList').on('click', '.chatLine', function(event) {
+		$('#msgList,#openList').on('click', '.chatLine', function(event) {
+			let $this=$(this);
 			const name=$(this).data('name'); 
 			layer.open({
 				  type: 1,
@@ -107,11 +119,10 @@ class person extends basePC{
 				  title:`<img class='layerAvatar' src=${imgsrc}><span>${name}</span>`,
 				  content: chat(),
 				  success:()=>{
-						_this.socket();
+						_this.socket($this);
 				  }
 			});
 		});
 	}
-
 }
 new person();

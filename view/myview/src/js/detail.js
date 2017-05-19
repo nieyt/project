@@ -7,6 +7,7 @@ class detail extends basePC{
 	constructor(){
 		super();
 		this.switchImg();
+		this.approval();
 		this.layerPop();
 		this.openTime=0;
 	}
@@ -47,7 +48,7 @@ class detail extends basePC{
 		let resize=()=>{
 			textarea.style.height = '0';
 			var height = textarea.scrollHeight;
-			textarea.style.height = height + 'px';
+			textarea.style.height = height +5+ 'px';
 		}
 		textarea.addEventListener('input', resize);
 		document.onkeydown = function(e){
@@ -57,6 +58,7 @@ class detail extends basePC{
 				if(textarea.value == ''){
 					return false;
 				}else{
+					e.preventDefault();
 					var name = document.getElementById('username').innerHTML;
 					var msg = textarea.value;
 					socket.emit('chat', {
@@ -90,6 +92,16 @@ class detail extends basePC{
 					_this.socket();
 			  }
 			});
+		})
+	}
+	approval(){
+		$('#want').click(function () {
+			$(this).toggleClass('active');
+			if($(this).hasClass('active')){
+				layer.msg('收藏成功',{time:500});
+			}else{
+				layer.msg('您已取消收藏',{time:500});
+			}
 		})
 	}
 	

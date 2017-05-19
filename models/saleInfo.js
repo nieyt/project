@@ -13,11 +13,5 @@ var SaleInfoSchema = new Schema({
 
 QuestionSchema.plugin(BaseModel);
 
-// UserSchema.index({ email: 1 }, { unique: true });
-// QuestionSchema.index({ title: 1 });
-// QuestionSchema.index({ author_id: 1 });
-// QuestionSchema.index({ tags: 1 });
-// QuestionSchema.index({ comment_id: 1 });
-// QuestionSchema.index({ pv: -1 });
 
 mongoose.model('SaleInfo', InfoSchema);

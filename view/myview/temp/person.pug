@@ -5,7 +5,7 @@ block css
 	//- link(href='css/travel.css',rel='stylesheet')
 	link(rel='stylesheet', href='css/person.css')
 block js
-	script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js',type='text/javascript')
+	script(src='libs/socket.io.js',type='text/javascript')
 	script(src='libs/jquery-1.8.3.min.js',type='text/javascript')
 	script(src='js/person.min.js',type='text/javascript')
 block mainContent
@@ -24,20 +24,27 @@ block mainContent
 					li.active 我的发布
 					li 我的收藏
 					li 我买到的
-					li 我的消息（#{msg.length}）
+					li 
+						|未读消息（
+						span#msgNum #{msg.length}
+						|）
+					li 我的会话
 			.content
 				.publishList.list.active
-					each item in info
-						.item
-							a(href='./detail/'+item._id)
-								img.prodPic(src="../userPic/"+item.images)
-							.detail
-								a.title(href='./detail/'+item._id,title=item.title) #{item.title}
-								.price #{item.price}
-								.description(title=item.description) #{item.description}
-								.editme
-									a.change.blueSmallBtn(href='./publish/'+item._id) 修改
-									span.delete.yellowSmallBtn.delete(data-id=item._id) 删除
+					if info&&info.length
+						each item in info
+							.item
+								a(href='./detail/'+item._id)
+									img.prodPic(src="../userPic/"+item.images)
+								.detail
+									a.title(href='./detail/'+item._id,title=item.title) #{item.title}
+									.price #{item.price}
+									.description(title=item.description) #{item.description}
+									.editme
+										a.change.blueSmallBtn(href='./publish/'+item._id) 修改
+										span.delete.yellowSmallBtn.delete(data-id=item._id) 删除
+					else
+						.nodatame 您还没有发布信息
 				.approList.list
 					- for(var i=0;i<3;i++)
 						.item
@@ -61,7 +68,18 @@ block mainContent
 				.msgList.list#msgList(data-id=user._id,data-send=msg[0]?msg[0].author_id:'')
 					if msg&&msg.length
 						each line in msg
-							.chatLine(data-name=line.author_name)
+							.chatLine.noline(data-name=line.author_name)
 								span.grey-text #{line.author_name}
 								span.chat-content #{line.content}
 								span.grey-text.right #{moment(line.create_at).format('YYYY-MM-DD hh:mm:ss')}
+					else
+						.nodatame 暂无未读信息
+				.openList.list#openList
+					if view&&view.length
+						each viewline in view
+							.chatLine.viewLine(data-name=viewline.author_name)
+								span.grey-text #{viewline.author_name}
+								span.chat-content #{viewline.content}
+								span.grey-text.right #{moment(viewline.create_at).format('YYYY-MM-DD hh:mm:ss')}
+					else
+						.nodatame 暂无会话
