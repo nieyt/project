@@ -17,7 +17,13 @@ var _ = require('underscore');
 // 		}
 // 	})
 // }
-
+exports.findInfoSort=function (callback) {
+    Info.find().
+    sort({approval:-1}).
+    exec(function (err,info) {
+        callback(err,info);
+    })
+}
 exports.findList = function(findObj, callback) {
     Info.find(findObj).
     	sort({'create_at':-1}).

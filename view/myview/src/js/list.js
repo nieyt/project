@@ -121,9 +121,6 @@ class list extends basePC{
                 complete(){
                     layer.close(index);
                 },
-                xhrFields: {
-                    withCredentials: true
-                },
                 error(err){
                     console.log(err);
                 },

@@ -9,3 +9,7 @@ exports.newInfoSave=function (id,obj,callback) {
 	// info.images=img;
 	info.save(callback);
 }
+
+exports.findById=function (id,callback) {
+	Info.findById(id,callback);
+}

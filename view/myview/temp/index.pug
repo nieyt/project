@@ -58,7 +58,7 @@ block mainContent
                 div.bigTitle 家用电器
           //首页侧边导航弹出层
           .indexLeftNavContent
-            - for(var i=0;i<6;i++)
+            - for(var i=0;i<3;i++)
               .ilNavContent.NavBlock.clearfix
                   dl.towNav
                     dt 
@@ -110,6 +110,70 @@ block mainContent
                   //-     a 魅族 Mx4
                   //-     a.more 更多&gt;
                   .towNav.moreBrand 更多品牌&gt; 
+              .ilNavContent.NavBlock.clearfix
+                dl.towNav
+                  dt 
+                    a(href="./listpingban?brand=苹果") 苹果
+                  dd.clearfix
+                    //- a 苹果 iPhone 6s
+                    //- a 苹果 iPhone 6s Plus
+                    //- a 苹果 iPhone 6
+                    //- a 苹果 iPhone 6 Plus
+                    //- a 苹果 iPhone 7
+                    //- a.more 更多&gt;
+                dl.towNav
+                  dt 
+                    a(href="./listpingban?brand=三星") 三星
+                  dd.clearfix
+                    //- a 三星 GALAXY s7
+                    //- a 三星 GALAXY s7 edge
+                    //- a 三星 GALAXY s6
+                    //- a 三星 GALAXY s6 edge
+                    //- a 三星 note 3
+                    //- a.more 更多&gt;
+                dl.towNav
+                  dt 
+                    a(href="./listpingban?brand=微软") 微软
+                  //- dd.clearfix
+                  //-   a 小米Mix
+                  //-   a 小米手机5
+                  //-   a 小米手机4s
+                  //-   a 小米手机4c
+                  //-   a 小米Note
+                  //-   a.more 更多&gt;
+                dl.towNav
+                  dt 
+                    a(href="./listpingban?brand=台电") 台电
+                  //- dd.clearfix
+                  //-   a 华为 Mate8
+                  //-   a 华为 Mate7
+                  //-   a 华为 MateS
+                  //-   a 华为 荣耀 7
+                  //-   a 华为 荣耀 7i
+                  //-   a.more 更多&gt;
+                dl.towNav
+                  dt 
+                    a(href="./listpingban?brand=联想") 联想
+                .towNav.moreBrand 更多品牌&gt; 
+              .ilNavContent.NavBlock.clearfix
+                dl.towNav
+                  dt 
+                    a(href="./listbijiben?brand=苹果") 苹果
+                  dd.clearfix
+                dl.towNav
+                  dt 
+                    a(href="./listbijiben?brand=华硕") 华硕
+                  dd.clearfix
+                dl.towNav
+                  dt 
+                    a(href="./listbijiben?brand=联想") 联想
+                dl.towNav
+                  dt 
+                    a(href="./listbijiben?brand=戴尔") 戴尔
+                dl.towNav
+                  dt 
+                    a(href="./listbijiben?brand=雷神") 雷神
+                .towNav.moreBrand 更多品牌&gt; 
     //旅游特惠卖
     .firstBanner
        h1.head.mt20 热门商品
@@ -118,30 +182,13 @@ block mainContent
          span.prev
          #fbImgScroll.fbImgScroll
            ul.clearfix
-             li
-                 a(href='#',target='_blank')
-                     span.title 小米
-                     img(src='images/imgDefault.png',data-src='img/timg.jpg')
-             li
-                 a(href='#',target='_blank',title="魅族")
-                     span.title 魅族
-                     img(src='images/imgDefault.png',data-src='img/timg_1.jpg')
-             li
-                 a(href='#',target='_blank')
-                     span.title 外星人
-                     img(src='images/imgDefault.png',data-src='img/timg_2.jpg')
-             li
-                 a(href='#',target='_blank')
-                     span.title mac
-                     img(src='images/imgDefault.png',data-src='img/timg_3.jpg')
-             li
-                 a(href='#',target='_blank') 
-                    span.title 小米
-                    img(src='images/imgDefault.png',data-src='img/timg.jpg')
-             li
-                 a(href='#',target='_blank')
-                    span.title 魅族
-                    img(src='images/imgDefault.png',data-src='img/timg_1.jpg')
+            if info&&info.length
+              - for(var i=0;i<6;i++)
+                - let img=info[i].images.split(',')[0];
+                 li
+                   a(href='./detail/'+info[i]._id,target='_blank')
+                     span.title #{info[i].title}
+                     img(src='images/imgDefault.png',data-src='./userPic/'+img)
     //底部广告
     .bottomBanner
         a(href='#')

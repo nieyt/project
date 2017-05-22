@@ -19,7 +19,9 @@ exports.findInfoByLikes=function (likeArr,callback) {
     for(let i in likeArr){
         Info.findById(likeArr[i].info_id).
         exec(function (err,info) {
-            info.images=info.images.split(',')[0];
+            if(info){
+                info.images=info.images.split(',')[0];
+            }
             infoArr.push(info);
             if(i==likeArr.length-1){
                 callback(infoArr);

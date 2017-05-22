@@ -23,11 +23,19 @@ exports.likeChange=function (obj,callback) {
 		like.user_id=obj.user_id;
 		like.info_id=obj.info_id;
 		like.save(function () {
-			callback('收藏成功');			
+				Info.findById(obj.info_id,function (err,info) {
+					Info.findByIdAndUpdate(obj.info_id, { $set: { approval: info.approval+1}},function (err,item) {
+						callback('收藏成功');	
+					})	
+				})
 		});
 	}else{
 		Like.remove({info_id:obj.info_id,user_id:obj.user_id},function (err,info) {
-	        callback('您已取消收藏');
+			Info.findById(obj.info_id,function (err,info) {
+					Info.findByIdAndUpdate(obj.info_id, { $set: { approval: info.approval-1}},function (err,item) {
+						callback('您已取消收藏');	
+					})	
+				})
 	    });
 	}
 }

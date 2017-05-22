@@ -104,8 +104,10 @@ class detail extends basePC{
 			$(this).toggleClass('active');
 			if(!$(this).hasClass('active')) {
 				senddata.add=false;
+				$('#num').text(parseInt($('#num').text())-1);
 			}else{
 				senddata.add=true;
+				$('#num').text(parseInt($('#num').text())+1);
 			}
 			$.ajax({
 				url: '/approval',
@@ -117,6 +119,7 @@ class detail extends basePC{
 				layer.msg(data.msg,{
 					time:500
 				});
+
 			})
 			.fail(function() {
 				console.log("error");

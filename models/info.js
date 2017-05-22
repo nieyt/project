@@ -15,7 +15,7 @@ var InfoSchema = new Schema({
   create_at: { type: Date, default: Date.now },
   update_at: { type: Date, default: Date.now },
   comment_id: [{ type: ObjectId }],             // 评论的人
-  approval: [{ type: ObjectId }]				// 点赞的人	
+  approval: { type: Number },			// 点赞人数	
 });
 
 InfoSchema.plugin(BaseModel);

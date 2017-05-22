@@ -39,7 +39,9 @@ block mainContent
 							.buy 我要购买
 						.approval.clearfix
 							.want#want 想要
-							.num 0人想要
+							.num 
+								span#num #{info.approval}
+								|人想要
 						.comment 我要留言
 						span.time 发布于 #{moment(info.create_at).format('YYYY-MM-DD')}
 						span.time 更新于 #{moment(info.update_at).format('YYYY-MM-DD')}

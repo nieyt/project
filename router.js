@@ -11,12 +11,13 @@ var person = require('./controllers/person');
 // 首屏
 router.get('/',index.index); 
 router.get('/sign', sign.signPage); 
-router.post('/register', sign.register);           // 注册页
+router.post('/register', sign.register);           
 router.post('/login', sign.login);  
-router.get('/logout', sign.logout);                // 登录页
+router.get('/logout', sign.logout);               
 
 // 发布信息
 router.get('/publish',publish.publish); 
+router.get('/publish:id',publish.update); 
 router.post('/publish',publish.postInfo);
 router.post('/uploadimg',publish.uploadimg);
 
