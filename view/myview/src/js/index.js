@@ -1,7 +1,6 @@
 import  'es5';
 // import './mod/mod-public-head';
 import './mod/mod-public-method';
-import * as config from './mod/mod-public-config';
 import basePC from'basePC';
 import 'layerPc301';
 import imgSlider from './control/imgSlider';
@@ -37,9 +36,7 @@ class travelIndex extends basePC {
             next: $('#fbImgScroll').siblings('.next')
         });
         new commonBanner({
-            wrap: $('body>.mainContent>.commonBanner'),
-            api:config.API.baseUrl+config.API.product.IndexMarketProduct,
-            config
+            wrap: $('body>.mainContent>.commonBanner')
         });
         $('.tc01').on('click','.tcTab>a',function () {
             $(this).addClass('active').siblings().removeClass('active');
