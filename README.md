@@ -1,7 +1,7 @@
 # project
 闲置电子产品交易网站 pc端
 
-技术栈：node+mongodb+express+pug(jade)+socket.io+es6+less+gulp+webpack
+技术栈：mongodb+express.js+socket.io
 
 start:
 
